@@ -1,0 +1,7 @@
+[credential]
+	helper = store
+[http]
+	sslVerify = false
+[user]
+	name = Sandeep Kumar
+	email = sandepten@gmail.com

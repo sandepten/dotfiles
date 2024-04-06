@@ -60,3 +60,8 @@ clear
 zsh
 ls
 clear
+l
+ls
+docker-compose up
+ls
+./mvnw clean verify

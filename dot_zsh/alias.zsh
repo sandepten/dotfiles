@@ -1,11 +1,8 @@
 #! These are all the alias I like
 
 # Basic
-alias pn=pnpm
-alias px=pnpx
 alias nv=nvim
 alias prisma="npx prisma"
-alias minecraft="java -jar ~/Downloads/SKlauncher-3.1.1.jar"
 alias cat=bat # bat is a cat clone with syntax highlighting and Git integration
 
 # exa replace ls
@@ -32,9 +29,9 @@ p() { # detect package manager and run it
 
 # Others
 nah() {
-    git reset --hard
-    git clean -df
-    if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then
-        git rebase --abort
-    fi
+  git reset --hard
+  git clean -df
+  if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then
+    git rebase --abort
+  fi
 }

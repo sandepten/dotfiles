@@ -5,3 +5,5 @@
 [user]
 	name = Sandeep Kumar
 	email = sandepten@gmail.com
+[init]
+	defaultBranch = main

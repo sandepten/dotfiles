@@ -65,3 +65,11 @@ ls
 docker-compose up
 ls
 ./mvnw clean verify
+export PS1="::: Terminal allocated for FindItFaster. Do not use. ::: "; clear
+HAS_SELECTION=0 /home/sandepten/.vscode-server/extensions/tomrijndorp.find-it-faster-0.0.37/find_within_files.sh  '/home/sandepten/code/projects/mobile-app'
+clear
+export PS1="::: Terminal allocated for FindItFaster. Do not use. ::: "; clear
+HAS_SELECTION=0 /home/sandepten/.vscode-server/extensions/tomrijndorp.find-it-faster-0.0.38/find_files.sh  '/home/sandepten/code/projects/mobile-app'
+clear
+HAS_SELECTION=0 /home/sandepten/.vscode-server/extensions/tomrijndorp.find-it-faster-0.0.38/find_files.sh  '/home/sandepten/code/projects/mobile-app'
+clear

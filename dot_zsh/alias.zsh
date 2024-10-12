@@ -4,6 +4,7 @@
 alias nv=nvim
 alias prisma="npx prisma"
 alias cat=bat # bat is a cat clone with syntax highlighting and Git integration
+alias vi=nvim
 
 # exa replace ls
 alias tree="exa --tree --level=3"
@@ -19,21 +20,6 @@ alias pl='$aurhelper -Qs'                                              # list in
 alias pa='$aurhelper -Ss'                                              # list availabe package
 alias pc='$aurhelper -Sc'                                              # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -'                        # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-
-# JS Ecosystem
-p() { # detect package manager and run it
-  if [[ -f bun.lockb ]]; then
-    command bun "$@"
-  elif [[ -f pnpm-lock.yaml ]]; then
-    command pnpm "$@"
-  elif [[ -f yarn.lock ]]; then
-    command yarn "$@"
-  elif [[ -f package-lock.json ]]; then
-    command npm "$@"
-  else
-    command pnpm "$@"
-  fi
-}
 
 # Others
 nah() {

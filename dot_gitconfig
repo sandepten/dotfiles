@@ -7,3 +7,5 @@
 	email = sandepten@gmail.com
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim

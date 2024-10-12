@@ -59,8 +59,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
-# source <(fzf --zsh)
+source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fnm env --use-on-cd --shell zsh)"
-
 eval "$(atuin init zsh)"
+
+. "$HOME/.atuin/bin/env"

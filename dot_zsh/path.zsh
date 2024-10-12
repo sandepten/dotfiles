@@ -9,7 +9,7 @@ export PATH=$PATH:/home/sandepten/.local/bin
 FNM_PATH="/home/sandepten/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/sandepten/.local/share/fnm:$PATH"
-  eval "$(fnm env)"
+  eval "`fnm env`"
 fi
 
 # pnpm

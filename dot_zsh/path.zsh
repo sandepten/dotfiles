@@ -23,3 +23,5 @@ esac
 PATH=~/.console-ninja/.bin:$PATH
 
 export PATH="$PATH:$(go env GOPATH)/bin"
+## nvim as default editor
+export EDITOR=/opt/homebrew/bin/nvim

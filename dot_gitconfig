@@ -8,4 +8,9 @@
 [init]
 	defaultBranch = main
 [core]
+	longpaths = true
 	editor = nvim
+[pull]
+	rebase = true
+[rerere]
+	enabled = true

@@ -1,4 +1,5 @@
 palette = "catppuccin_mocha"
+command_timeout = 3000
 
 [aws]
 symbol = "  "
@@ -17,9 +18,6 @@ symbol = " "
 
 [dart]
 symbol = " "
-
-# [directory]
-# read_only = " 󰌾"
 
 [docker_context]
 symbol = " "
@@ -174,7 +172,8 @@ vimcmd_symbol = "[❮](green)"
 [directory]
 truncation_length = 4
 # Catppuccin 'lavender'
-style = "bold lavender"
+style = "bold teal"
+read_only = " 󰌾"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -203,4 +202,3 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
-

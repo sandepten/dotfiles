@@ -1,0 +1,20 @@
+font-family = "FiraCode Nerd Font Mono"
+font-style="Medium"
+font-size=18
+# theme="tokyonight"
+theme="catppuccin-mocha"
+# font-feature="calt liga ss01 ss02 ss03 ss04 ss05 ss06 ss07 ss08 ss09"
+font-feature="-liga"
+
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+background-opacity = 0.96
+# background-blur-radius = 40
+
+cursor-style="bar"
+mouse-hide-while-typing=true
+
+# Keymaps
+keybind = global:cmd+`=toggle_quick_terminal

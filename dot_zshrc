@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 #? Zinit
 # Directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
@@ -20,15 +21,9 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit load atuinsh/atuin
 zinit light Aloxaf/fzf-tab
 
-# vim mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::vscode
 
@@ -36,8 +31,6 @@ zinit snippet OMZP::vscode
 autoload -U compinit && compinit
 
 zinit cdreplay -q
-
-eval "$(starship init zsh)"
 
 source ~/.zsh/alias.zsh
 source ~/.zsh/path.zsh
@@ -65,12 +58,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # bind zsh zsh-autosuggestions accept to same as my neovim copilot
 bindkey '^j' autosuggest-accept
 
-# Shell integrations
-source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(fnm env --use-on-cd --shell zsh)"
-eval "$(atuin init zsh)"
+# color of zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 
-. "$HOME/.atuin/bin/env"
-
-export PATH=$PATH:/home/sandepten/.spicetify
+# zprof

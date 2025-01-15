@@ -8,12 +8,21 @@ alias cat="bat --plain" # bat is a cat clone with syntax highlighting and Git in
 
 # exa replace ls
 alias c='clear'                                                        # clear terminal
-alias l='eza -lh  --icons=auto'                                        # long list
-alias ls='eza -1   --icons=auto'                                       # short list
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto'                                       # long list dirs
-alias lt='eza --icons=auto --tree'                                     # list folder as tree
+# alias l='eza -lh  --icons=auto'                                        # long list
+# alias ls='eza -1   --icons=auto'                                       # short list
+# alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+# alias ld='eza -lhD --icons=auto'                                       # long list dirs
+# alias lt='eza --icons=auto --tree'                                     # list folder as tree
+alias ld='eza -lD' # lists only directories (no files)
+alias lf='eza -lF --color=always | grep -v /' # lists only files (no directories)
+alias lh='eza -dl .* --group-directories-first' # lists hidden files
+alias ll='eza -al --group-directories-first' # lists all files (including hidden) with directories first
+alias ls='eza -alF --color=always --sort=size | grep -v /' # lists only files sorted by size
+alias lt='eza -al --sort=modified' # lists everything sorted by time updated
 alias tree="eza --tree --level=2  --icons --git"
+
+# git
+alias gla='git log --oneline --graph --all'
 
 # AUR Helper
 alias un='$aurhelper -Rns'                                             # uninstall package

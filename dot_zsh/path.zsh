@@ -14,21 +14,21 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-PATH=~/.console-ninja/.bin:$PATH
-
 # pipx
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
   PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-# Add Visual Studio Code (code)
-# export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ "$(uname)" = "Darwin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 eval "$(starship init zsh)"
 
 ## nvim as default editor
-export EDITOR=/opt/homebrew/bin/nvim
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR=nvim
+fi
 
 # Shell integrations
 # source <(fzf --zsh)

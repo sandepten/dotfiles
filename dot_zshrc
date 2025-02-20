@@ -34,7 +34,6 @@ zinit cdreplay -q
 
 source ~/.zsh/alias.zsh
 source ~/.zsh/path.zsh
-source ~/.zsh/arch.zsh
 
 # History
 HISTFILE=~/.zsh_history

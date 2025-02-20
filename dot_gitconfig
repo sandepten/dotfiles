@@ -8,9 +8,15 @@
 [init]
 	defaultBranch = main
 [core]
+  pager = delta
 	longpaths = true
 	editor = nvim
 [pull]
 	rebase = true
+[push]
+  autoSetupRemote = true
+  default = current
 [rerere]
 	enabled = true
+[delta]
+  line-numbers = true

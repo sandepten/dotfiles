@@ -1,18 +1,15 @@
 #! These are all the alias I like
 
-# Basic
+# neovim
 alias nv=nvim
 alias vi=nvim
+alias vim=nvim
+
 alias prisma="npx prisma"
 alias cat="bat --plain" # bat is a cat clone with syntax highlighting and Git integration
+alias c='clear' # clear terminal
 
-# exa replace ls
-alias c='clear'                                                        # clear terminal
-# alias l='eza -lh  --icons=auto'                                        # long list
-# alias ls='eza -1   --icons=auto'                                       # short list
-# alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-# alias ld='eza -lhD --icons=auto'                                       # long list dirs
-# alias lt='eza --icons=auto --tree'                                     # list folder as tree
+# ls eza replacements
 alias ld='eza -lD' # lists only directories (no files)
 alias lf='eza -lF --color=always | grep -v /' # lists only files (no directories)
 alias lh='eza -dl .* --group-directories-first' # lists hidden files
@@ -23,32 +20,7 @@ alias tree="eza --tree --level=2  --icons --git"
 
 # git
 alias gla='git log --oneline --graph --all'
-
-# AUR Helper
-alias un='$aurhelper -Rns'                                             # uninstall package
-alias up='$aurhelper -Syu'                                             # update system/package/aur
-alias pl='$aurhelper -Qs'                                              # list installed package
-alias pa='$aurhelper -Ss'                                              # list availabe package
-alias pc='$aurhelper -Sc'                                              # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -'                        # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-
-# JS Ecosystem
-p() { # detect package manager and run it
-  if [[ -f bun.lockb ]]; then
-    command bun "$@"
-  elif [[ -f pnpm-lock.yaml ]]; then
-    command pnpm "$@"
-  elif [[ -f yarn.lock ]]; then
-    command yarn "$@"
-  elif [[ -f package-lock.json ]]; then
-    command npm "$@"
-  else
-    command pnpm "$@"
-  fi
-}
-
-# Others
-nah() {
+nah() { # git full nuke
   git reset --hard
   git clean -df
   if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then
@@ -66,6 +38,7 @@ alias ......="cd ../../../../.."
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
+# yazi file explorer
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -74,3 +47,95 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# antfu ni (choose the right shell)
+export NI_DEFAULT_AGENT="pnpm"
+export NI_GLOBAL_AGENT="npm"
+
+# port process and kill
+function whichport() {
+  lsof -i tcp:$1
+}
+function killport() {
+  lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill -9
+}
+
+# clenaup node_modules in the current directory recursively
+function cleanmodules() {
+  find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
+}
+
+# extract
+function extract() {
+  local remove_archive
+  local success
+  local file_name
+  local extract_dir
+
+  if (( $# == 0 )); then
+    echo "Usage: extract [-option] [file ...]"
+    echo
+    echo Options:
+    echo "    -r, --remove    Remove archive."
+  fi
+
+  remove_archive=1
+  if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
+    remove_archive=0
+    shift
+  fi
+
+  while (( $# > 0 )); do
+    if [[ ! -f "$1" ]]; then
+      echo "extract: '$1' is not a valid file" 1>&2
+      shift
+      continue
+    fi
+
+    success=0
+    file_name="$( basename "$1" )"
+    extract_dir="$( echo "$file_name" | sed "s/\.${1##*.}//g" )"
+    case "$1" in
+      (*.tar.gz|*.tgz) [ -z $commands[pigz] ] && tar zxvf "$1" || pigz -dc "$1" | tar xv ;;
+      (*.tar.bz2|*.tbz|*.tbz2) tar xvjf "$1" ;;
+      (*.tar.xz|*.txz) tar --xz --help &> /dev/null \
+        && tar --xz -xvf "$1" \
+        || xzcat "$1" | tar xvf - ;;
+    (*.tar.zma|*.tlz) tar --lzma --help &> /dev/null \
+      && tar --lzma -xvf "$1" \
+      || lzcat "$1" | tar xvf - ;;
+  (*.tar) tar xvf "$1" ;;
+  (*.gz) [ -z $commands[pigz] ] && gunzip "$1" || pigz -d "$1" ;;
+  (*.bz2) bunzip2 "$1" ;;
+  (*.xz) unxz "$1" ;;
+  (*.lzma) unlzma "$1" ;;
+  (*.Z) uncompress "$1" ;;
+  (*.zip|*.war|*.jar|*.sublime-package) unzip "$1" -d $extract_dir ;;
+  (*.rar) unrar x -ad "$1" ;;
+  (*.7z) 7za x "$1" ;;
+  (*.deb)
+    mkdir -p "$extract_dir/control"
+    mkdir -p "$extract_dir/data"
+    cd "$extract_dir"; ar vx "../${1}" > /dev/null
+    cd control; tar xzvf ../control.tar.gz
+    cd ../data; tar xzvf ../data.tar.gz
+    cd ..; rm *.tar.gz debian-binary
+    cd ..
+    ;;
+  (*)
+    echo "extract: '$1' cannot be extracted" 1>&2
+    success=1
+    ;;
+esac
+
+(( success = $success > 0 ? $success : $? ))
+(( $success == 0 )) && (( $remove_archive == 0 )) && rm "$1"
+shift
+  done
+}
+
+# finder
+alias f='open -a Finder '
+
+# funny sudo
+alias please='sudo'

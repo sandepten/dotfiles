@@ -14,7 +14,7 @@ macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
 
-background-opacity = 0.96
+background-opacity = 0.95
 # background-blur-radius = 40
 
 cursor-style="bar"

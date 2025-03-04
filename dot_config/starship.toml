@@ -24,8 +24,8 @@ $line_break\
 $character\
 """
 
-# palette = 'catppuccin_mocha'
-palette = 'tokyo_night'
+palette = 'catppuccin_mocha'
+# palette = 'tokyo_night'
 add_newline = true
 command_timeout = 3000
 
@@ -90,7 +90,7 @@ format = '[$all_status](fg:green bg:box)[](fg:box)'
 conflicted = ' ='
 up_to_date = ''
 untracked = ' ?${count}'
-stashed = ' $'
+stashed = ''
 modified = ' !${count}'
 staged = ' +'
 renamed = ' »'

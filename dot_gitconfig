@@ -20,3 +20,5 @@
 	enabled = true
 [delta]
   line-numbers = true
+[commit]
+	gpgsign = true

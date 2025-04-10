@@ -4,7 +4,7 @@
 # font-family = "MonoLisa Nerd Font Mono"
 font-family = "TX-02"
 # font-family = "CaskaydiaCove Nerd Font Mono"
-font-style="Semibold"
+font-style="Bold"
 font-size=16
 theme="tokyonight_night"
 # theme="catppuccin-mocha"
@@ -27,3 +27,4 @@ mouse-hide-while-typing=true
 keybind = global:cmd+`=toggle_quick_terminal
 
 bold-is-bright = true
+maximize = true

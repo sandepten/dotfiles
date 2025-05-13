@@ -35,7 +35,7 @@ return {
         },
       },
       ui = {
-        enable = true, -- Use bullet marks for non-checkbox lists.
+        enable = false, -- Use bullet marks for non-checkbox lists.
         bullets = { char = "•", hl_group = "ObsidianBullet" },
         external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
         -- Replace the above with this if you don't have a patched font:

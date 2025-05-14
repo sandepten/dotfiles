@@ -3,9 +3,6 @@
 # Zinit
 source ~/.zsh/zinit.zsh
 
-# bob
-export PATH=$PATH:~/.local/share/bob/nvim-bin/nvim
-
 source ~/.zsh/alias.zsh
 source ~/.zsh/path.zsh
 

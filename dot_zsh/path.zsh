@@ -3,7 +3,7 @@
 # Go
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/sandepten/.local/bin
+export PATH="$PATH:~/.local/bin"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

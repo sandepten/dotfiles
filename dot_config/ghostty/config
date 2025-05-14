@@ -1,30 +1,25 @@
-# font-family = "JetBrains Mono Nerd Font"
-# font-family = "FiraCode Nerd Font Mono"
+# Font
 # font-family = "MonaspiceNe Nerd Font"
 # font-family = "MonoLisa Nerd Font Mono"
 font-family = "TX-02"
-# font-family = "CaskaydiaCove Nerd Font Mono"
-font-style="Bold"
-font-size=16
-theme="tokyonight_night"
-# theme="catppuccin-mocha"
-# font-feature="calt liga ss01 ss02 ss03 ss04 ss05 ss06 ss07 ss08 ss09"
+font-style="SemiBold"
+font-size=18
 font-feature="-liga"
-font-thicken=true
-adjust-cell-height=10%
+# font-thicken=true
+bold-is-bright = true
 
-macos-titlebar-style = tabs
-macos-titlebar-proxy-icon = hidden
-macos-option-as-alt = true
+# Theme
+# theme="tokyonight_night"
+theme="catppuccin-mocha"
 
-background-opacity = 0.95
+# adjust-cell-height=15%
+background-opacity = 0.98
 # background-blur-radius = 40
 
 cursor-style="bar"
 mouse-hide-while-typing=true
 
-# Keymaps
-keybind = global:cmd+`=toggle_quick_terminal
-
-bold-is-bright = true
-maximize = true
+# MacOS
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true

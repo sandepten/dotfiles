@@ -8,6 +8,9 @@
 [init]
 	defaultBranch = main
 [core]
+  compression = 9
+  whitespace = error
+  preloadindex = true
   pager = delta
 	longpaths = true
 	editor = nvim
@@ -16,6 +19,9 @@
 [push]
   autoSetupRemote = true
   default = current
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
 [rerere]
 	enabled = true
 [delta]

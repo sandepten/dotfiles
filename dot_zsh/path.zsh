@@ -35,3 +35,6 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh)"
 eval $(thefuck --alias)
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+# theo video node cache speed up
+export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache

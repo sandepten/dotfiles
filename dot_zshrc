@@ -30,3 +30,6 @@ bindkey '^j' autosuggest-accept
 
 # color of zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
+
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8

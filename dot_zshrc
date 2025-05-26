@@ -26,10 +26,10 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # bind zsh zsh-autosuggestions accept to same as my neovim copilot
-bindkey '^j' autosuggest-accept
+bindkey '^f' autosuggest-accept
 
 # color of zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8

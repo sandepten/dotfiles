@@ -5,6 +5,7 @@ source ~/.zsh/zinit.zsh
 
 source ~/.zsh/alias.zsh
 source ~/.zsh/path.zsh
+source ~/.zsh/tmux.zsh
 
 # History
 HISTFILE=~/.zsh_history

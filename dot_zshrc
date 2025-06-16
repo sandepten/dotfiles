@@ -34,3 +34,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# if whoami is sandeep450.kumar then export node unsafe environment variables as on work laptop zcaler hinders npm install
+if [[ "$(whoami)" == "sandeep450.kumar" ]]; then
+  # disable TLS certificate validation for Node.js
+  export NODE_TLS_REJECT_UNAUTHORIZED=0
+
+  # disable strict SSL checks in npm
+  npm config set strict-ssl false >/dev/null 2>&1
+fi

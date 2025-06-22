@@ -22,4 +22,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - <leader>sr Search and Replace
 - <leader>, Buffers
 - gsa Add Surrounding
-- <leader>p list projects
+- gv Reselect Last Selection

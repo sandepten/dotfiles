@@ -2,10 +2,10 @@
 # font-family = "MonaspiceNe Nerd Font"
 # font-family = "MonoLisa Nerd Font Mono"
 font-family = "TX-02"
-font-style="SemiBold"
+font-style="Bold"
 font-size=18
 font-feature="-liga"
-# font-thicken=true
+font-thicken=true
 bold-is-bright = true
 
 # Theme
@@ -13,11 +13,13 @@ bold-is-bright = true
 theme="catppuccin-mocha"
 
 # adjust-cell-height=15%
-background-opacity = 0.98
-# background-blur-radius = 40
+background-opacity = 0.92
+background-blur-radius = 20
 
 cursor-style="bar"
 mouse-hide-while-typing=true
+window-padding-x = 0 
+window-padding-y = 0
 
 # MacOS
 macos-titlebar-style = tabs

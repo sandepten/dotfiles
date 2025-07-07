@@ -25,3 +25,10 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "J", "mzJ`z") -- keep cursor in the middle when joining lines
+
+-- tmux-sessionizer
+map("n", "<C-p>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
+map("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
+map("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
+map("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")

@@ -21,8 +21,8 @@ mouse-hide-while-typing=true
 window-padding-x = 0 
 window-padding-y = 0
 
-# MacOS
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
 window-decoration = none
+confirm-close-surface = none

@@ -7,6 +7,11 @@ source ~/.zsh/alias.zsh
 source ~/.zsh/path.zsh
 source ~/.zsh/tmux.zsh
 
+# only source arch if the system is arch linux
+if [[ -f ~/.zsh/arch.zsh && -d /etc/arch-release ]]; then
+  source ~/.zsh/arch.zsh
+fi
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=5000

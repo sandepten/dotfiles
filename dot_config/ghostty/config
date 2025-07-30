@@ -1,9 +1,9 @@
 # Font
 # font-family = "MonaspiceNe Nerd Font"
-# font-family = "MonoLisa Nerd Font Mono"
+# font-family = "CaskaydiaCove Nerd Font Mono"
 font-family = "TX-02"
 font-style="Bold"
-font-size=18
+font-size= 16
 font-feature="-liga"
 font-thicken=true
 bold-is-bright = true
@@ -13,7 +13,7 @@ bold-is-bright = true
 theme="catppuccin-mocha"
 
 # adjust-cell-height=15%
-background-opacity = 0.92
+background-opacity = 0.85
 background-blur-radius = 20
 
 cursor-style="bar"
@@ -21,8 +21,8 @@ mouse-hide-while-typing=true
 window-padding-x = 0 
 window-padding-y = 0
 
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
 window-decoration = none
-confirm-close-surface = none
+confirm-close-surface = false

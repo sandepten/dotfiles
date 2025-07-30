@@ -27,6 +27,8 @@ nah() { # git full nuke
     git rebase --abort
   fi
 }
+# cherry-pick -x
+alias gcp='git cherry-pick -x'
 
 # Dirs
 alias ..="cd .."

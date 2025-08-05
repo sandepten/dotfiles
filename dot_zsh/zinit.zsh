@@ -14,11 +14,22 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit snippet ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # Load plugins
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
 zinit load atuinsh/atuin
 zinit light Aloxaf/fzf-tab
+
+# starship
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
 # Add in snippets
 zinit snippet OMZP::git

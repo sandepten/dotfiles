@@ -22,7 +22,6 @@ export PATH
 if [ "$(uname)" = "Darwin" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-eval "$(starship init zsh)"
 
 ## nvim as default editor
 if [ -x "$(command -v nvim)" ]; then

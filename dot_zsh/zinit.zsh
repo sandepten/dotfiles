@@ -23,7 +23,14 @@ zinit wait lucid for \
     zsh-users/zsh-autosuggestions
 
 zinit load atuinsh/atuin
-zinit light Aloxaf/fzf-tab
+
+# zsh vi mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+# zinit light Aloxaf/fzf-tab
+zi ice from"gh-r" as"program"
+zi light junegunn/fzf
 
 # starship
 zinit ice as"command" from"gh-r" \

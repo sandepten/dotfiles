@@ -1,45 +1,18 @@
 # zmodload zsh/zprof
 
-autoload -Uz compinit
-
-local zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-
-# Get the current day of the year
-# Using `date +%j` is standard and works on macOS.
-local current_day_of_year=$(date "+%j")
-
-local dump_day_of_year="" # Initialize to empty
-
-if [[ -f "$zcompdump" ]]; then
-    # Get the modification time of the dump file in YYYY-MM-DD format
-    # Ensure all output, including newlines, is captured and trimmed.
-    # The 'head -n 1' and 'tr -d '\n'' are defensive against unexpected output.
-    local dump_mod_date_str=$(stat -f "%Sm" -t "%Y-%m-%d" "$zcompdump" 2>/dev/null | head -n 1 | tr -d '\n')
-
-    # If we successfully got a date string, then try to format it.
-    if [[ -n "$dump_mod_date_str" ]]; then
-        # This part should work given your manual tests.
-        # Adding 2>/dev/null again for robustness in case of weird stat output.
-        dump_day_of_year=$(date -j -f "%Y-%m-%d" "$dump_mod_date_str" "+%j" 2>/dev/null | head -n 1 | tr -d '\n')
-    fi
-fi
-
-# Compare current day with dump file's day
-# Use explicit string comparison operators `==` or `=` for clarity in [[...]]
-if [[ -f "$zcompdump" && "$dump_day_of_year" == "$current_day_of_year" ]]; then
-    compinit -C -d "$zcompdump"
-else
-    # If dump file is missing, or not from today, or if any error occurred
-    # during date parsing (leading to empty dump_day_of_year), regenerate it.
-    compinit -d "$zcompdump"
-fi
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#6C7086,label:#CDD6F4"
 
 # Zinit
 source ~/.zsh/zinit.zsh
 
+source ~/.zsh/tmux.zsh
 source ~/.zsh/alias.zsh
 source ~/.zsh/path.zsh
-source ~/.zsh/tmux.zsh
 
 # only source arch if the system is arch linux
 if [[ -f ~/.zsh/arch.zsh && -d /etc/arch-release ]]; then
@@ -59,11 +32,14 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # bind zsh zsh-autosuggestions accept to same as my neovim copilot
 bindkey '^f' autosuggest-accept

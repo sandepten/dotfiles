@@ -1,50 +1,46 @@
-#? Zinit
-# Directory to store zinit and plugins
+#— Define where Zinit lives
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
-
-# Download Zinit, if not already present
-if [[ ! -d $ZINIT_HOME ]]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# Load Zinit
+[[ ! -d $ZINIT_HOME ]] && mkdir -p "$(dirname $ZINIT_HOME)" \
+  && git clone https://github.com/zinit-zsh/zinit.git "$ZINIT_HOME"
 source "$ZINIT_HOME/zinit.zsh"
 
-zinit snippet ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+#— Initialize completions
+autoload -U compinit && compinit
+zinit cdreplay -q
 
-# Load plugins
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
-
-zinit load atuinsh/atuin
-
-# zsh vi mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-
-# zinit light Aloxaf/fzf-tab
-zi ice from"gh-r" as"program"
-zi light junegunn/fzf
-
-# starship
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
-
-# Add in snippets
+#— Turbo-load lightweight snippets
+zinit ice turbo depth=1 lucid
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::vscode
 
-# Load completions
-autoload -U compinit && compinit
+#— Fast syntax highlighting & autosuggestions
+zinit ice atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay'
+zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit cdreplay -q
+zinit ice atload"!_zsh_autosuggest_start" lucid
+zinit light zsh-users/zsh-autosuggestions
+
+#— zsh-completions, loaded after compinit
+zinit light zsh-users/zsh-completions
+
+#— fzf & fzf-tab
+zinit ice from"gh-r" as"program" atclone"./install --bin"
+zinit light junegunn/fzf
+
+zinit ice depth=1
+zinit light Aloxaf/fzf-tab
+
+#— Atuín history tracker
+zinit load atuinsh/atuin
+
+#— zsh-vi-mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+#— Starship prompt
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship

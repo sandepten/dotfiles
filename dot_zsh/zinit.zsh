@@ -8,10 +8,10 @@ if [[ ! -d $ZINIT_HOME ]]; then
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-
 # Load Zinit
 source "$ZINIT_HOME/zinit.zsh"
+
+zinit snippet ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # Load plugins
 zinit light zsh-users/zsh-autosuggestions

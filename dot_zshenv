@@ -1,1 +1,41 @@
 . "$HOME/.cargo/env"
+
+# fzf catppuccin
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#6C7086,label:#CDD6F4"
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# antfu ni (choose the right shell)
+export NI_DEFAULT_AGENT="pnpm"
+export NI_GLOBAL_AGENT="npm"
+
+# Go
+export PATH=$PATH:~/go/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:~/.local/bin"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+if [ "$(uname)" = "Darwin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+## nvim as default editor
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR=nvim
+fi
+
+# theo video node cache speed up
+export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache

@@ -3,7 +3,7 @@
 # font-family = "CaskaydiaCove Nerd Font Mono"
 font-family = "TX-02"
 font-style="ExtraBold"
-font-size= 17
+font-size= 16
 font-feature="-liga"
 font-thicken=true
 bold-is-bright = true

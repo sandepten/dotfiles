@@ -1,18 +1,17 @@
 # zmodload zsh/zprof
 
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#6C7086,label:#CDD6F4"
-
 # Zinit
 source ~/.zsh/zinit.zsh
 
 source ~/.zsh/tmux.zsh
 source ~/.zsh/alias.zsh
-source ~/.zsh/path.zsh
+
+# Shell integrations
+# source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(atuin init zsh)"
+eval $(thefuck --alias)
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # only source arch if the system is arch linux
 if [[ -f ~/.zsh/arch.zsh && -d /etc/arch-release ]]; then
@@ -46,9 +45,6 @@ bindkey '^f' autosuggest-accept
 
 # color of zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 # if whoami is sandeep450.kumar then export node unsafe environment variables as on work laptop zcaler hinders npm install
 if [[ "$(whoami)" == "sandeep450.kumar" ]]; then

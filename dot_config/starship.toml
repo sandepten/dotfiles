@@ -15,7 +15,7 @@ $cmd_duration 󰜥 $directory $git_branch
 $character"""
 
 # Replace the "❯" symbol in the prompt with "➜"
-[character]                            # The name of the module we are configuring is "character"
+[character] # The name of the module we are configuring is "character"
 success_symbol = "[   ](bold fg:blue)"
 error_symbol = "[   ](bold fg:red)"
 
@@ -52,7 +52,7 @@ deleted = " 🗑 "
 
 [hostname]
 ssh_only = false
-format =  "[•$hostname](bg:cyan bold fg:black)[](bold fg:cyan)"
+format = "[•$hostname](bg:cyan bold fg:black)[](bold fg:cyan)"
 trim_at = ".companyname.com"
 disabled = false
 

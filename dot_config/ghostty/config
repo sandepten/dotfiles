@@ -2,8 +2,8 @@
 # font-family = "MonaspiceNe Nerd Font"
 # font-family = "CaskaydiaCove Nerd Font Mono"
 font-family = "TX-02"
-font-style="Bold"
-font-size= 16
+font-style="ExtraBold"
+font-size= 17
 font-feature="-liga"
 font-thicken=true
 bold-is-bright = true
@@ -13,8 +13,8 @@ bold-is-bright = true
 theme="catppuccin-mocha"
 
 # adjust-cell-height=15%
-background-opacity = 0.85
-background-blur-radius = 20
+background-opacity = 0.92
+background-blur-radius = 0
 
 cursor-style="bar"
 mouse-hide-while-typing=true

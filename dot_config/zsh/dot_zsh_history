@@ -1,0 +1,2650 @@
+docker run --name prometheus -d -p 9090:9090 prom/prometheus
+yarn --cwd packages/app add @roadiehq/backstage-plugin-prometheus
+curl "http://localhost:9090/query?g0.expr=rate%28prometheus_tsdb_head_chunks_created_total%5B1m%5D%29&g0.show_tree=0&g0.tab=table&g0.range_input=1h&g0.res_type=auto&g0.res_density=medium&g0.display_mode=lines&g0.show_exemplars=0"
+docker run -p 8089:8089 -v $PWD:/mnt/locust locustio/locust -f /mnt/locust/locustfile.py
+cd api-gateway/OpenAPISpecs/
+cat HCMP-mock-latest.yaml
+curl http://asciiart.artillery.io:8080/dino
+docker run -d -p 8089:8089 -v $PWD:/mnt/locust locustio/locust -f /mnt/locust/locustfile.py
+curl http://localhost:8080/hello
+curl http://localhost:8080/health
+nv .editorconfig
+cat .editorconfig
+lsof -i tcp:3000
+netstat -vanp tcp | grep 3000\
+
+cd locust8149
+git remote add origin http://10.157.236.217:32080/git/devops/locust-containerizer.git\
+git push -u origin main
+mkdir advent
+wget https://adventofcode.com/2023/day/1/input > first.in
+go run ./otherfirst.go
+curl https://adventofcode.com/2023/day/1/input --cookie "session=53616c7465645f5f5895dfb144d03628de54e085920114e9d9e8b301f2ae58be4d9c5e2e01e82ee6038ec38f9e5a3b068851967c7b6fb8b94476535948e2afbc" > firstcurl
+go run ./first
+cd others/locust
+curl http://localhost:8080/containers | bat
+curl http://localhost:8080/containers
+mkdir 2023
+rm -rf firstcurl
+mv first first.go 2023
+mkdir 2024
+cd 202
+mkdir first.go
+rm -rf first.go
+touch first.go
+cd ../202
+cd 2023
+nv first.go
+go run ./first/first.go
+cd first
+go run ./first.go
+git remote add origin https://github.com/sandepten/advent-of-code-2024.git\
+git branch -M main\
+git push -u origin main
+cd second
+go run ./second.go
+nv .wezterm.lua
+cd others/l
+nv locustfile.py
+git rm -r --cached test.db
+mkdir third
+cd third
+go run ./third.go
+brew services restart jenkins-lts
+curl --request POST \\
+  --url http://localhost:3006/draas-build/build/v1.0/updateOrderStatus \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+yarn add --cwd packages/backend @enfuse/plugin-chatgpt-backend
+yarn --cwd packages/backend add @enfuse/plugin-chatgpt-backend
+yarn --cwd packages/app add @enfuse/chatgpt-plugin-frontend
+git clone https://github.com/benwilcock/backstagecon-2023.git
+git clone https://github.com/benwilcock/backstagecon-2023.git --depth 1
+yarn --cwd packages/app add @benbravo73/backstage-plugin-backchat
+cat ~/.wezterm.lua --plain
+git switch -c mac-dot
+chezmoi add ~/.wezterm.lua
+go 
+brew tap homebrew/cask-fonts\
+brew install font-monaspace
+brew install --cask font-monaspace-nerd-font
+cd forth
+cd clear
+docker pull lscr.io/linuxserver/code-server:latest
+docker pull code-server:latest
+docker run --name code6736 -d -p 6736:8443 -v /tmp/idp/Sandeep450/code:/ linuxserver/code-server:latest
+yarn --cwd packages/app add zustand
+go run ./forth.go
+cd Sandeep450/code
+mkdir fifth
+cd fifth
+go run ./fifth.go
+cd sixth
+go run ./sixth.go
+docker restart grafana-2
+docker restart prometheus
+cd ai
+cd cd ..
+docker compose up --build
+brew install openssl
+brew reinstall openssl@3
+brew info ca-certificates\
+
+brew reinstall --build-from-source openssl@1.1
+curl https://api.openai.com/v1/completions\
+\
+
+docker compose up
+git clone https://github.com/ztjhz/BetterChatGPT --depth 1
+brew install ca-certificates
+brew reinstall ca-certificates
+sudo update-ca-certificates --fresh
+pkill -x Zscaler
+ps -e | grep -i zscaler
+sudo killall "Zscaler"
+DOCKER_BUILDKIT=0 docker build
+export http_proxy=http://lwproxy.jio.com:8080;export https_proxy=http://lwproxy.jio.com:8080;
+cd backstagecon-2023
+docker build
+docker compose build
+cat locustfile.py
+cat locustfile.py --plain
+nv real.py
+curl http://localhost:8085/test
+docker run -d \\
+  --name prometheus-service \\
+  --restart always \\
+  --add-host=host.docker.internal:host-gateway \\
+  -v "$(pwd)/docker/prometheus.yml:/etc/prometheus/prometheus.yml" \\
+  -p 9090:9090 \\
+  prom/prometheus \\
+  --config.file=/etc/prometheus/prometheus.yml
+mv
+cd seventh
+go run ./seventh.go
+brew install --cask mockoon
+brew install minikube\
+
+minikube start\
+
+kubectl get po -A\
+
+cat ~/.kube/config
+cat ~/.kube/config --plain
+kubectl --kubeconfig kubeconfig.txt cluster-info
+kubectl --kubeconfig ./kubeconfig.txt cluster-info
+kubectl describe pod code30637-deployment-6fb5585cff-5n9ls
+kubectl delete pod code30637-deployment-6fb5585cff-5n9ls
+minikube image load linuxserver/code-server:latest
+minikube image load linuxserver/code-server:latest --pull
+minikube image pull -v linuxserver/code-server:latest
+minikube image pull --v linuxserver/code-server:latest
+minikube image -v pull linuxserver/code-server:latest
+minikube image pull linuxserver/code-server:latest --v
+minikube image pull linuxserver/code-server:latest
+minikube --v image push linuxserver/code-server:latest
+minikube image push linuxserver/code-server:latest
+kubectl describe pod code30637-deployment-6fb5585cff-t66sj
+ssh terminal.shop
+yarn new --select backend-plugin
+cd packages
+;
+cd backend
+docker info
+cat real.py --plain
+cd tmp
+kubectl delete deployment code30637-deployment
+cd Sandeep450/
+cd data
+cd deployment30931
+cat deployment.yaml
+rm -rf ide
+kubectl get po -A
+kubectl get deployments
+kubectl delete deployments code
+kubectl get po
+kubectl describe pod code30534-deployment-69bd548fc5-wdfrc
+docker pull linuxserver/code-server:latest\
+
+minikube image load linuxserver/code-server:latest\
+\
+
+minikube image ls
+kubectl describe pod code31703-deployment-6fdc7df7cd-4gs48
+kubectl get services
+minikube service --url code31703-service
+git switch master
+kubectl get pods
+yarn --cwd plugins/performance-test add shiki
+yarn --cwd plugins/performance-test add @uiw/react-codemirror
+yarn --cwd plugins/performance-test add @codemirror/lang-python
+yarn --cwd plugins/performance-test add @uiw/codemirror-theme-material
+cd packages/backend/tmp
+cd ide
+cd Sandeep450
+curl --request POST \\
+  --url http://10.167.166.101:30669/rest/DRAAS+Business+Layer/1.0.0/updateOrderStatus \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl http://10.169.88.4:30577
+cd ~/Downloads
+docker run -d --mount type=bind,source=/Users/sandeep450.kumar/Downloads/mockoon1.json,target=/data,readonly -p 3011:3000 mockoon/cli:latest --data data --port 3011
+curl --request POST \\
+  --url http://10.169.88.4:30577/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl --request POST \\
+  --url http://10.167.166.201:3000/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+docker image ps
+docker image ls
+docker run --mount type=bind,source=/Users/sandeep450.kumar/Downloads/mockoon1.json,target=/data,readonly -p 3011:3000 mockoon/cli:latest --data data --port 3011
+curl --request POST \\
+  --url http://localhost:3011/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+docker run --mount type=bind,source=/Users/sandeep450.kumar/Downloads/mockoon1.json,target=/data,readonly -p 3011:3000 mockoon/cli:latest --data data --port 3000
+docker run --mount type=bind,source=/Users/sandeep450.kumar/Downloads/mockoon1.json,target=/data,readonly -p 3015:3015 mockoon/cli:latest --data data --port 3015
+docker tag mockoon/cli:latest devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/mockoon-cli:latest
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/mockoon-cli:latest
+mkdir mockoon
+mockoon-cli dockerize --data ./dr-mock-final.json ./mockoon1.json --port 30577 30578 --output ./mockoon/Dockerfile
+docker build -t mockoon-draas-image .\
+\
+
+docker tag mockoon-draas-image devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/mockoon-draas-image:latest
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/mockoon-draas-image:latest
+docker buildx --platform linux/amd64 pull node:18-alpine
+docker buildx create --use
+docker buildx --platform linux/amd64 create --use
+docker pull amd64/node:18-alpine
+docker pull node:18-alpine
+docker rm node:18-alpine
+docker rm image node:18-alpine
+docker pull node:18-alpine --platform linux/amd64
+docker buildx build --platform linux/amd64 -f Dockerfile -t mockoon-draas-image .
+cat dr-mock-final.json
+docker build -t mockoon-draas-image .
+docker run -d -p 30577:30577 -p 30578:30578 mockoon-draas-image
+curl --request POST \\
+  --url http://localhost:30578/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl http://localhost:30578/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute
+curl --request POST \\
+  --url http://10.169.88.4:32620/core/api/v1/sequences/45231455-d10e-4880-bd54-a7c606bb36f9/async/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl --request POST \\
+  --url http://10.169.88.4:32183/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl --request POST \\
+  --url http://10.169.88.4:32620/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl --request POST \\
+  --url http://10.169.88.4:32183/core/api/v1/sequences/45231455-d10e-4880-bd54-a7c606bb36f9/async/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+curl --request POST \\
+  --url http://localhost:3015/v1/customer/636/solution/mongo_az_hci_start_vm_replication/execute \\
+  --header 'Accept: application/json' \\
+  --header 'Content-Type: application/json' \\
+  --data '{}'
+cat locust/real.py --plain
+nv alias.zsh
+docker pull devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/node:20-bookworm-slim
+docker build -t idp-image .
+cd gitea
+cat index.js
+mkdir ../archive
+mv ldap-test ../archive
+cd kubeconfig
+cat kubeconfig.yaml
+rm -rf kubeconfig
+cd backstage-groups
+cat admin.yml
+cd test
+cat kubeconfig.txt
+docker build -t kubectl-ubuntu-image .
+npm i -g @mockoon/cli@latest
+mkdir mockoonSIT
+mockoon-cli dockerize --data ./Mongo_Postgres_mock.json ./Mock\ API\ Draas\ Mongo\ \(5\).json --port 30577 30578 --output ./mockoonSIT/Dockerfile
+cd mockoonSIT
+nlx @next/codemod@latest upgrade latest
+git remote set-url origin https://github.com/teammyum/myum-mobile.git
+curl 'https://api.msg91.com/api/v5/widget/sendOtp' \\\
+  -H 'authority: api.msg91.com' \\\
+  -H 'accept: application/json' \\\
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \\\
+  -H 'content-type: application/json' \\\
+  -H 'origin: https://control.msg91.com' \\\
+  -H 'referer: https://control.msg91.com/' \\\
+  -H 'sec-ch-ua: "Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"' \\\
+  -H 'sec-ch-ua-mobile: ?0' \\\
+  -H 'sec-ch-ua-platform: "Linux"' \\\
+  -H 'sec-fetch-dest: empty' \\\
+  -H 'sec-fetch-mode: cors' \\\
+  -H 'sec-fetch-site: same-site' \\\
+  -H 'tokenauth: 411679TNoFYn64l65781eb1P1' \\\
+  -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' \\\
+  --data-raw '{"tokenAuth":"411679TNoFYn64l65781eb1P1","widgetId":"336c6c6e7367313232363337","identifier":"917988209856"}' \\\
+  --compressed
+docker pull  locustio/locust:latest --platform linux/amd64
+docker pull  locustio/locust --platform linux/amd64
+docker tag locustio/locust:latest devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/locust:latest
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/locust:latest
+cd git
+cd myum-t3-upgrade
+ni @cashfreepayments/cashfree-js
+ni cashfree-pg axios
+ni zebra-browser-print-wrapper
+ni zustand@latest
+nlx shadcn@latest add accordion alert-dialog button calendar card checkbox data-table dialog drawer form input-otp input label popover radio-group scroll-area select sheet table tabs textarea toast
+nlx shadcn@latest add accordion alert-dialog button calendar card checkbox dialog drawer form input-otp input label popover radio-group scroll-area select sheet table tabs textarea toast
+ni @tanstack/react-table\
+
+ni next-pwa
+ni next-pwa@latest
+brew remove bruno
+brew remove devutils
+brew remove gitbutler
+brew remove chromium
+cd Backstage/backstage
+yazi
+cd others/myum-t3-upgrade
+ni -D @types/next-pwa@latest
+cat src/lib/utils.ts
+nlx prettier --write .
+docker build -t backstage-test .
+git checkout master
+docker pull node:20-bookworm-slim --platform linux/amd64
+docker pull node:20-bookworm-slim
+docker buildx build --platform linux/amd64 -f Dockerfile -t backstage:latest --load .
+git checkout main
+cd mobile-app
+rm -rf mobile-app
+git clone https://github.com/teammyum/myum-mobile.git
+git merge refactor
+git fetch
+git merge origin/refactor 
+npx update-browserslist-db@latest
+rm -rf myum-t3-upgrade
+mkdir open-telemetry-learning
+cd open-telemetry-learning
+go mod init dice\
+
+brew install httpie
+http :8080/rolldice
+go get "go.opentelemetry.io/otel" \\
+  "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric" \\
+  "go.opentelemetry.io/otel/exporters/stdout/stdouttrace" \\
+  "go.opentelemetry.io/otel/exporters/stdout/stdoutlog" \\
+  "go.opentelemetry.io/otel/sdk/log" \\
+  "go.opentelemetry.io/otel/log/global" \\
+  "go.opentelemetry.io/otel/propagation" \\
+  "go.opentelemetry.io/otel/sdk/metric" \\
+  "go.opentelemetry.io/otel/sdk/resource" \\
+  "go.opentelemetry.io/otel/sdk/trace" \\
+  "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"\\
+  "go.opentelemetry.io/contrib/bridges/otelslog"\
+
+go mod tidy
+export OTEL_RESOURCE_ATTRIBUTES="service.name=dice,service.version=0.1.0"\
+
+curl https://api.openai.com/v1/completions
+cat api-openai-com.pen
+cat api-openai-com.pem
+openssl x509 -outform der -in api-openai-com.pem -out openai.crt
+cat openai.crt
+find . -name 'cacert.pem'
+git remote set-url origin https://github.com/sandepten/open-telemetry-learning.git
+git remote add origin https://github.com/sandepten/open-telemetry-learning.git
+git branch -M main\
+git push -u origin main
+starship preset jetpack -o ~/.config/starship.toml
+cat internal/server/locust.go
+chezmoi apply dot_config/starship.toml
+cat dot_config/starship.toml
+nv dot_config/starship.toml
+cat locust/real.py
+npx @backstage/create-app@latest
+cd backstage-test
+rm -rf backstage-test
+cat locust/locustfile.py
+mv Renewed\ DevOps\ Artifact.crt ado.crt
+mv RILSUBCA01\ Base64\ Certificate.cer subado.cer
+mv Root\ CA\ Base64\ Certificate.cer rootado.cer
+mv ado.crt subado.cer rootado.cer ~/code/projects/jio/idp/Backstage/backstage
+cat ado.crt subado.cer rootado.cer > combinedado.pem
+NODE_EXTRA_CA_CERTS=../../combinedado.pem nr dev
+cat combinedado.pem
+NODE_EXTRA_CA_CERTS=../combinedado.pem nr dev
+NODE_EXTRA_CA_CERTS=combinedado.pem nr dev
+NODE_EXTRA_CA_CERTS=./combinedado.pem nr dev
+openssl x509 -in ado.crt -out ado.pem -outform PEM
+cp ado.pem packages/backend packages/app
+cp ado.pem packages/backend
+cp ado.pem packages/app
+NODE_EXTRA_CA_CERTS=./ado.pem nr dev
+echo OPENSSL_CONF
+export NODE_EXTRA_CA_CERTS=./ado.pem
+openssl version -a
+NODE_EXTRA_CA_CERTS=./ado.pem OPENSSL_CONF=./openssl.cnf nr dev
+cat ado.pem
+cat ado.crt
+openssl x509 -in ado.crt -out adotest.pem -outform PEM
+cat adotest.pem
+npm config set strict-ssl=false
+export NODE_OPTIONS="--openssl-legacy-provider"
+echo $OPENSSL_CONF
+export OPENSSL_CONF=./openssl.cnf
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/Backstage
+curl -v --cert combinedado.pem https://devops.jio.com
+curl -v --cert rootado.cer https://devops.jio.com
+curl -v --cert ado.crt https://devops.jio.com
+curl -v --cert ado.pem https://devops.jio.com
+curl -v https://devops.jio.com
+git pull linuxserver/code-server:latest
+docker pull linuxserver/code-server:latest
+docker pull locustio/locust
+pfetch
+rm -rf public/sw.js public/workbox-e9849328.js
+cat others/kubectl-ubuntu-image/Dockerfile
+mv ~/.config/nvim{,.bak}\
+
+git commit -m "first commit"
+git remote add origin https://github.com/sandepten/LazyVim.git
+git branch -M main\
+git push -u origin main\
+
+cd ~/.config/nvim.bak/lua/plugins
+cat obsidian.lua
+cat obsidian.lua --plain
+cat nvim.bak/lua/plugins/obsidian.lua --plain
+nv .markdownlint-cli2.yaml
+mkdir go-exercism
+brew install exercism
+exercism configure --token=702af24d-f566-401b-b767-0c426e7c6134
+exercism download --track=go --exercise=hello-world
+cd Exercism/go
+exercism submit hello_world.go
+exercism download --track=go --exercise=lasagna
+go test
+exercism submit lasagna.go
+mv ~/Downloads/Group\ 147786.svg ./packages/app/public/home-banner-image.svg
+git pull origin sit
+brew install koekeishiya/formulae/yabai
+yabai --start-service
+touch ~/.yabairc\
+
+chmod +x ~/.yabairc\
+
+yabai -m config layout bsp
+yabai -m config layout managed
+yabai -m config top_padding    20\
+yabai -m config bottom_padding 20\
+yabai -m config left_padding   20\
+yabai -m config right_padding  20\
+yabai -m config window_gap     20
+yabai -m config top_padding    4\
+yabai -m config bottom_padding 4\
+yabai -m config left_padding   4\
+yabai -m config right_padding  4\
+yabai -m config window_gap     4
+yabai -m config focus_follows_mouse autoraise\
+
+yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_modifier ctrl\
+
+git clone https://github.com/AdamWagner/stackline.git ~/.hammerspoon/stackline\
+
+cd ~/.hammerspoon
+echo 'stackline = require "stackline"' >> init.lua\
+
+echo 'stackline:init()' >> init.lua\
+
+hs.ipc.cliInstall()\
+\
+\
+
+brew install --cask hammerspoon
+which hs
+yabai -m config mouse_drop_action stack\
+
+rm -rf .hammerspoon
+brew remove hammerspoon
+yabai --stop-service\
+
+brew remove yabai
+https https://api.fieldassist.in/api/timeline/list?erpId=50111&date=2024-12-24
+https api.fieldassist.in/api/timeline/list?erpId=50111&date=2024-12-24
+http api.fieldassist.in/api/timeline/list?erpId=50111&date=2024-12-24
+cd code/projects/personel/attendance
+brew install ghostty
+mkdir ghostty
+cd ghostty
+nv ~/.wezterm.lua
+ghostty --font-family="JetBrainsMono Nerd Font"
+ghostty +show-config
+nv attendance
+brew install --cask font-fira-code-nerd-font
+brew upgrade --greedy
+yarn backstage-cli new
+git config user.name "teammyum" && git config user.email "teammyum@gmail.com"
+git switch -c fixes
+brew remove spotify
+brew install --cask spotify
+git merge fixes
+git switch fixes
+nv main.go
+go run ./main.go
+chezmoi add ~/.config/ghostty/config
+atuin stats -c 20
+cd ~/.config/
+cat starship.toml --plain
+na create-payload-app@latest
+nlx create-payload-app@latest
+cd payload-test
+rm -rf payload-test
+nv ~/.zsh
+tree
+ni three@1.171.0
+ni three@0.171.0
+ni @react-three/postprocessing
+ni postprocessing
+cd others/blackhole
+cat .viminfo
+gla
+lh
+lt
+git clone https://github.com/sandepten/sandepten.git
+cd sandepten
+cd ji
+cd DraasSIT
+cd myu
+yarn --cwd plugins/sso-auth-backend-module-sso-auth add jose
+brew install --cask orbstack
+brew remove keyecho
+brew remove KeyEcho
+orb ps
+which docker
+sudo ln -s ~/.orbstack/run/docker.sock ~/.docker/run/docker.sock
+cat ~/.wezterm.lua
+yarn plugin import https://versions.backstage.io/v1/tags/main/yarn-plugin
+yarn backstage-cli versions:bump --pattern '*'
+yarn add passport-provider-a\
+yarn add @types/passport-provider-a\
+\
+
+telnet 80.65.208.77:5432
+curl -v 80.65.208.77:5432
+Dx87k12345678
+ssh root@80.65.208.77
+git switch -c sso
+yarn install jsonwebtoken
+cd backstage/plugins/auth-backend-backend-module-sso-provider
+yarn add jsonwebtoken
+yarn add @backstage/errors
+yarn add @backstage/types
+yarn add @backstage/catalog-client
+curl -i localhost:7007/api/auth/sso-provider/start
+curl -i localhost:7007/api/auth/auth-backend/start
+curl -i localhost:7007/api/auth/providerA/start
+curl -i localhost:7007/api/auth/sso/start
+touch default
+nv default
+mv default nginx.conf
+nv nginx.conf
+mkdir vik
+git clone https://github.com/it-automation-123/sim-frontend.git
+git clone https://github.com/it-automation-123/sim-backend.git
+git clone https://github.com/it-automation-123/auth-backend.git
+cat nginx.conf
+which node
+node version
+cat vite.config.js
+cd sim
+cat serial-number-server.js
+cat app/routes/routes.js
+git reset --hard HEAD~1
+which pg_dump
+brew install --cask plex-htpc
+curl 'http://demoapp.itautomation.tech/v1/api/mhere/login' -X POST -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br, zstd' -H 'Content-Type: application/json' -H 'Origin: https://demoapp.itautomation.tech' -H 'Sec-GPC: 1' -H 'Referer: https://demoapp.itautomation.tech/sim/auth/login' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' -H 'DNT: 1' -H 'Priority: u=0' --data-raw '{"username":"10001","password":"sandeep123"}'
+curl 'https://demoapp.itautomation.tech/v1/api/mhere/login' -X POST -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br, zstd' -H 'Content-Type: application/json' -H 'Origin: https://demoapp.itautomation.tech' -H 'Sec-GPC: 1' -H 'Referer: https://demoapp.itautomation.tech/sim/auth/login' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' -H 'DNT: 1' -H 'Priority: u=0' --data-raw '{"username":"10001","password":"sandeep123"}'
+cd projects/personel
+brew remove plex-htpc
+brew remove plex
+cd ...
+cd templates/go-backstage-template
+cp real.py demo.py
+docker pull linuxserver/code-server:latest --platform linux/amd64
+docker tag linuxserver/code-server:latest devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/code-server:latest
+bat cache --build
+cat main.go
+cat content/main.go
+touch heavy.go
+nv heavy.go
+cd go-final-test
+cd utils
+cd LoadTest-Locust/ls
+cd LoadTest-Locust
+cat prometheus.yml
+cd prometheus.yml
+git clone http://10.157.236.217:32080/git/idp/demotest2.git
+go mod vendor && go mod tidy
+go mod tidy\
+go mod vendor\
+
+cd chatgpt-idp
+cd docker
+cat cmd/api/main.go
+make start
+cd demotest2
+nv demo.py
+cp vendor ../../templates/go-backstage-template/content
+cp -r vendor ../../templates/go-backstage-template/content
+git clone http://10.157.236.217:32080/git/idp/go-demo.git && cd go-demo && go mod vendor && go mod tidy && git add . && git commit -m "first commit" && git push
+brew install --cask font-inconsolata-nerd-font
+cd projects/personel/others
+mkdir zig-exercism
+cd zig-exercism
+brew install zig\
+
+zig version
+cd exercism
+cd others/zig-exercism
+exercism download --track=zig --exercise=hello-world
+.....
+cd Exercism
+git remote set-url origin https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/IDP
+cd hello-world
+exercism submit hello_world.zig
+rm -rf zig-exercism
+mkdir zig
+cd zig
+zig run hello.zig
+cat .pnp.cjs
+rm -rf packages
+cd .yarn/
+rm -rf .yarn
+fnm use 20
+ni --force
+cd Backstage
+rm -rf Backstage
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/IDP
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/IDP --depth `
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/IDP --depth 1
+cd .yarn
+cd releases
+mv backstage/* .
+mv * ..
+mv backstage/.* backstage/* .
+mv backstage/.* .
+corepack enable
+yarn set version stable
+yarn install
+nv .gitignore
+nano app-config.local.yaml
+git clone https://github.com/ztjhz/BetterChatGPT.git --depth 1
+cd BetterChatGPT
+xit
+docker -v ps
+rm -rf BetterChatGPT
+cat chatgpt-idp/docker-compose.yaml
+nv chatgpt-idp/docker-compose.yaml
+cd locust-containerizer
+cd docker/prometheus.yml
+rm -rf locust-containerizer
+cd go-locust-code-containerizer
+mv go-locust-code-containerizer ../archive
+mv catalog-files-layout ../archive
+docker pull --platform linux/amd64 docker.io/gitea/runner-images:ubuntu-22.04
+docker image save gitea/runner-images:ubuntu-22.04 -o runner-image-proxy.tar
+git commit -m "add: ubuntu image with proxy"
+softwareupdate --list
+sudo softwareupdate -i -a
+sudo su -
+softwareupdate -i -a
+git pull origin main --rebase
+cp ~/.config/starship.toml ~/.config/starship.toml.bkp
+s
+sleep 10
+nv myum
+cd myum | nv
+wezterm --help
+brew remove wezterm
+fnm --version
+p update --latest
+nv t3-test
+ni uploadthing @uploadthing/react
+cat real.py
+go get github.com/prometheus/client_golang/prometheus\
+go get github.com/prometheus/client_golang/prometheus/promauto\
+go get github.com/prometheus/client_golang/prometheus/promhttp
+cat go.mod
+cd demo
+nv go.mod
+docker images
+docker tag gitea/runner-images:ubuntu-22.04 devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/kubectl-gitea-image:latest
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/kubectl-gitea-image:latest
+cd action-prebuilt
+docker build -t gitea/runner-images:ubuntu-22.04 .
+echo 
+nv content/.gitea/workflows
+nv content/Dockerfile
+brew remove kitty
+mkdir gitpod-vscode
+cd gitpod-vscode
+docker run -it --init -p 3000:3000 -v "$(pwd):/home/workspace:cached" gitpod/openvscode-server
+nr dev | fzf
+fg
+bg
+fuser -v -n tcp 3000
+fuser tcp 3000
+fuser -n tcp 3000
+netstat -vanp tcp | grep 3000
+lsof -i tcp:3000\
+
+sudo lsof -i :3000\
+
+lsof -i :3000
+kill -9 39688
+cd ../../archive/ldap-test
+corepack install -g pnpm@9.15.4
+mv app-config.local.yaml app-config.local.txt
+cp app-config.local.txt app-config.local.yaml
+ls -la
+cd idp-admin-example
+cd catalog-files-layout
+curl https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/test?path=%2Fcatalog-info.yaml&version=GBankur
+curl -v "https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/test?path=%2Fcatalog-info.yaml&version=GBankur"
+NODE_EXTRA_CA_CERTS=devopsartifact.jio.com.pfx nr dev
+openssl pkcs12 -in devopsartifact.jio.com.pfx -out cert.pem -nodes -clcerts
+cat Renewed\ DevOps\ Artifact.crt
+cp Renewed\ DevOps\ Artifact.crt ./packages/backend
+cp Renewed\ DevOps\ Artifact.crt ./packages/app
+cd packages/backend
+yarn --cwd packages/backend add @backstage/plugin-catalog-backend-module-azure
+NODE_EXTRA_CA_CERTS=Renewed\ DevOps\ Artifact.crt LOG_LEVEL=debug nr dev
+yarn --cwd packages/backend add @backstage-community/plugin-azure-devops-backend
+NODE_EXTRA_CA_CERTS=Renewed\ DevOps\ Artifact.crt nr dev
+git --version
+sudo c[200~echo | openssl s_client -showcerts -servername gnupg.org -connect gnupg.org:443 2>/dev/null | openssl x509 -inform pem -noout -text
+echo | openssl s_client -showcerts -servername dev.azure.com -connect dev.azure.com:443 2>/dev/null | openssl x509 -inform pem -noout -text\
+
+cat dev.azure.crt
+prisma studio
+git switch main && git pull && git merge fixes && git push && git switch fixes
+openssl x509 -in dev.azure.crt -out dev.azure.pem -outform PEM\
+
+rm -rf dev.azure.pem
+cp dev.azure.crt dev.azure.pem
+cat dev.azure.pem
+nv dev.azure.pem
+git clone https://dev.azure.com/JIoPMT/TOPS/_git/test
+brew install --cask vivaldi
+cat src/pages/login/index.tsx
+rg ldap .
+rg ldap app-config
+rg ldap app-config.yaml
+alias npm=pnpm
+rm -rf chat-archiver
+go-blueprint create --advanced
+ni tailwindcss@next @tailwindcss/vite@next
+ni tailwindcss@next @tailwindcss/postcss@next
+pnpm dlx shadcn@latest init -d\
+
+rm -rf t3-test
+cd nexttest
+ni -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+npx tailwindcss init -p
+nlx shadcn@latest add button
+git remote add origin https://github.com/sandepten/chat-archiver.git\
+git branch -M main\
+git push -u origin main
+docker pull --platform linux/amd64 gitpod/openvscode-server
+docker tag gitpod/openvscode-server:latest devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/code-server:latest
+curl -L -s https://dl.k8s.io/release/stable.txt
+docker buildx build --platform linux/amd64 -f Dockerfile -t gitea/runner-images:ubuntu-22.04 --load .
+nlx shadcn@latest add input card dropdown
+nlx shadcn@latest add input card dropdown-menu
+nlx shadcn@latest add scroll-area
+nlx shadcn@latest add avatar
+nlx shadcn@latest add badge
+p build
+git clone http://10.157.236.217:32080/git/idp/sb01.git
+rm -rf sb01
+nv content/.gitea/workflows/deploy.yml
+git clone http://10.157.236.217:32080/git/idp/demotest4
+cd demotest4
+nv Dockerfile
+make build
+docker build -t demotest:latest .
+cat .gitea/workflows/deploy.yml
+brew install --cask intune-company-portal
+cp go.sum ~/code/projects/jio/idp/templates/go-backstage-template/content
+brew remove intune-company-portal
+cat go.sum
+cat content/go.sum
+sudo jamf policy
+sudo jamf manage
+sudo jamf recon
+cd oth
+git clone http://10.157.236.217:32080/git/idp/springboot-test-2
+cd springboot-test-2
+docker build -t demotestspring:latest .
+curl -v http://devopsartifact.jio.com/artifactory/mvn_virtual
+yarn add --cwd packages/backend @parfuemerie-douglas/scaffolder-backend-module-azure-pipelines\
+
+yarn --cwd packages/backend add @parfuemerie-douglas/scaffolder-backend-module-azure-pipelines
+cp -r go-backstage-template go-backstage-template-azure
+git remote set-url origin http://10.157.236.217:32080/git/devops/go-template-azure.git\
+
+yarn --cwd packages/backend add @backstage/plugin-scaffolder-backend-module-azure
+git clone https://JIoPMT@dev.azure.com/JIoPMT/TOPS/_git/test
+touch deploy.yaml
+nv deploy.yaml
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/code-server:latest
+cd go-back
+cat content/Dockerfile
+nv chat-archiver
+go get -u gorm.io/gorm\
+go get -u gorm.io/driver/sqlite\
+
+cd archive
+cd frontend
+pnpm add @tanstack/react-query
+cd chat-archiver-t3
+rm -rf chat-archiver-t3
+mv chat-archiver chat-archiver-go
+docker ps --all
+pnpm add @clerk/nextjs
+nlx shadcn@latest add button avatar badge card dialog alert-dialog input scroll-area
+git clone https://JPL-TOPS@dev.azure.com/JPL-TOPS/Jio%20Cloud%20Management%20Platform/_git/idp-test
+cd chat-archiver-go
+git remote set-url origin https://github.com/sandepten/chat-archiver.git
+git remote add origin https://github.com/sandepten/chat-archiver.git
+cp -r ../chat-archiver-go/.git .
+cd go-templ
+rm -rf content
+cd spring
+cp -r ../springboot-backstage-template/content .
+cat content/kubeconfig.txt
+cd nvinn
+cd myum
+nlx shadcn@latest add form label
+ni react-colorful
+pnpm add drizzle-cuid2
+brew install jesseduffield/lazydocker/lazydocker
+cat demo.py
+lazydocker
+yarn tsx
+cat ~/.editorconfig
+touch vtl.tx
+mv vtl.tx vtl.txt
+nv vtl.txt
+mkdir janus
+cd janus
+pip3 install -e .
+python3.13 -m pip install --upgrade pip
+brew install pipx
+rm -rf janus
+git clone https://github.com/deepseek-ai/Janus.git
+which pipx
+pipx --version
+brew install sentencepiece
+brew install sentencepiece cmake
+brew install pkg-config gperftools protobuf
+pipx  install -e .
+pipx  install -e . --include-deps
+pipx install gradio
+pipx uninstall torch torchvision torchaudio -y
+python3 -m pip install --upgrade setuptools\
+
+python3 -m pip install --upgrade pip\
+
+which python3
+which pip3
+pip install gradio\
+
+pip uninstall torch torchvision torchaudio -y
+brew install conda
+brew install --cask anaconda
+brew install --cask conda
+brew install --cask miniconda
+conda init "$(basename "${SHELL}")"
+cat .condarc
+cat ~/.condarc
+touch ~/.condarc
+nv ~/.condarc
+which conda
+conda config --set ssl_verify no\
+
+conda install pytorch::pytorch torchvision torchaudio -c pytorch
+pip install pytorch::pytorch torchvision torchaudio -c pytorch
+pip install torch torchvision torchaudio -y
+git clone https://github.com/deepseek-ai/Janus.git --depth 1
+pip install -r requirements.txt
+nv requirements.txt
+git clone https://github.com/takahirosir/Janus.git --depth 1
+cd Janus
+python3 -m venv venv
+pip install --upgrade pip wheel
+pip install -e .
+pip install gradio
+python demo/app_januspro.py
+nv demo/app_januspro.py
+lf
+cd content
+brew remove hiddenbar
+brew install jordanbaird-ice
+cd go
+\:wq
+git revert 4b54b63
+rm -rf ./*.rdp
+pip --version
+pip3 --version
+cd node-backstage-template
+cd react-backstage-template
+cd java-template
+rm -rf java-template
+find . -name '.git' -type d -prune -exec rm -rf '{}' +
+cd springboot-backstage-template
+cat ~/.git-credentials
+git remote add origin http://10.157.236.217:32080/git/devops/idp-templates.git\
+git push -u origin main
+cd go-backstage-template
+cat content/.gitea/workflows/deploy.yml
+cd ldap-test
+yarn --cwd packages/backend add @backstage/plugin-catalog-backend-module-incremental-ingestion
+git clone https://github.com/immobiliare/backstage-plugin-ldap-auth.git
+cp backstage-plugin-ldap-auth/packages/ldap-auth-backend IDP/plugins
+cp -r backstage-plugin-ldap-auth/packages/ldap-auth-backend IDP/plugins
+cd /tmp
+cd ldap/users
+cat Sandeep450.Kumar.yaml
+cd ld
+node index.js
+cat Sandeep450.yaml
+cat credentials.txt
+prisma db pull
+docker compose down && docker compose up --build -d
+yarn build:all
+touch main.java
+nv main.java
+cat Strings/src/App.java
+java main.java
+nv test
+rm -rf heavy.go
+rm -rf demotest2
+rm -rf gitpod-vscode
+cd locust
+rm -rf Janus
+git clone https://github.com/immobiliare/backstage-plugin-ldap-auth.git --depth 1
+mv ../backstage-plugin-ldap-auth/packages/ldap-auth ./plugins
+yarn add framer-motion
+cd vik
+cd auth-backend
+cat package.json
+cd sim-backend
+nv schema.prisma_serial_inventory
+cat schema.prisma_serial_number_db
+nv schema.prisma_serial_number_db
+cd sim-frontend
+cd chat-archiver
+nr db:studio
+nlx shadcn@latest add form tooltip
+nlx shadcn@latest add tooltip
+cd go-backstage-template-azure
+cat idp.yaml
+docker pull tps-jio_cloud_management_platform__dev__dcr/idp-test-12
+docker pull devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/idp-test-12
+docker pull devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/idp-test-12:4967
+cd kubectl-ubuntu-image
+cat Dockerfile
+docker pull 10.167.166.201:8099/idp/idp-test-12:latest
+cd azure
+nv template.yaml
+curl -v https://dev.azure.com/JPL-TOPS/Jio%20Cloud%20Management%20Platform/_build/results?buildId=4989&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=12f1170f-54f2-53f3-20dd-22fc7dff55f9
+curl -v "https://dev.azure.com/JPL-TOPS/Jio%20Cloud%20Management%20Platform/_build/results?buildId=4989&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=12f1170f-54f2-53f3-20dd-22fc7dff55f9"
+nv test.js
+node test.js
+cd obsidian
+mv dev-azure-com-chain.pem ../code/projects/jio/idp/IDP
+nvim ~/.zshrc
+brew disable jenkins-lts
+brew services disable jenkins-lts
+brew services stop jenkins-lts
+rm -rf backstage-plugin-ldap-auth
+brew install --cask aptakube
+cp kubeconfig.txt ~/Downloads
+yarn --cwd packages/backend add undici global-agent
+git clone https://github.com/backstage/backstage.git --depth 1 backstage-github
+cp -r ~/Downloads/backstage-master/plugins/scaffolder-backend-module-azure ./plugins
+yarn --cwd plugins/scaffolder-backend-module-azure add @backstage/backend-plugin-api @backstage/config @backstage/integration @backstage/plugin-scaffolder-node 
+yarn --cwd plugins/scaffolder-backend-module-azure add @backstage/backend-plugin-api @backstage/config @backstage/integration @backstage/plugin-scaffolder-node @backstage/cli @backstage/plugin-scaffolder-node-test-utils
+cd backstage-master
+cp -r plugins/scaffolder-node ../../code/projects/jio/idp/IDP/plugins
+yarn --cwd plugins/scaffolder-node add @backstage/catalog-model @backstage/plugin-scaffolder-common @backstage/types @backstage/backend-test-utils
+yarn --cwd plugins/scaffolder-node add https-proxy-agent
+cd PriorityQueue
+git switch Dev
+git swithc devlop
+git switch devlop
+git remote prune orgin
+git remote prune origin
+nr start:backend
+nr backend:start
+nr start-backend
+mkdi test
+brew remove conda
+brew remove anaconda
+na create vite@latest
+cd vim-shooter
+corepack update -g pnpm@10.3.0
+corepack install -g pnpm@10.3.0
+ni tailwindcss @tailwindcss/vite
+ni three @types/three @react-three/fiber
+ni @types/three
+ni @react-three/drei
+ni @react-three/fiber@alpha
+ni @react-three/rapier zustand @tweenjs/tween.js\
+\
+
+ni @react-three/rapier zustand @tweenjs/tween.js
+ni @react-three/drei@alpha
+ni @react-three/rapier@alpha
+na update --latest
+git pull kareka/dev
+git pull origin kareka/dev
+git checkout origin kareka/dev
+git fetch origin 
+git checkout kareka/dev
+git checkout -b karthik kareka/dev
+git fetch --unshallow
+git switch kareka/dev
+git pull --reapply-cherry-picks
+git --reapply-cherry-picks pull
+git switch origin/kareka/dev
+git switch origin kareka/dev
+git remote -r
+git fetch origin
+git branch -r
+git fetch origin kareka/dev
+git checkout -b karthik origin/kareka/dev
+git checkout origin/kareka/dev
+ni ioredis
+yarn --cwd plugins/ldap-auth-backend add ioredis
+cd Strings
+sudo java App[C
+javac Palindrome.java && java Palindrome
+cd src
+java Palindrome.java
+brew install btop
+cd group-backstage-template
+find -name "*.txt"
+find --name "*.txt"
+find --help
+find -help
+npm i -g nx
+nx run-many --parallel --maxParallel=10 --target=serve --projects=hcmp-operations,hcmp-admin-operations
+KUBECONFIG="/Users/sandeep450.kumar/code/projects/jio/idp/IDP/kubeconfig.txt" kubectl exec backstage-6cd46464cc-7cw2g --context "SIHCMP-context" -n backstage --stdin --tty -c backstage -- sh -c "clear; /bin/echo -e '\033[1;4;32mSIHCMP-context\033[0m ðƒ¿ƒ±ƒ© Connected to container \033[1;4;36mbackstage\033[0m on pod \033[1;4;36mbackstage\033[0m / \033[1;4;36mbackstage-6cd46464cc-7cw2g\033[0m\n'; (bash || ash || sh)"
+whichport 9000
+j
+cd mockoon
+cd myum-mobile
+git switch main
+rm -rf myum-mobile chat-archiver-go
+cp -r .git ../vtl-formatter-next
+git remote add origin https://github.com/sandepten/vtl-formatter.git\
+git branch -M main\
+git push -u origin main
+ni @vercel/analytics
+brew install --cask android-studio
+yarn new --select plugin
+ls | column
+brew search android
+brew search android | column
+nv README.md
+KUBECONFIG="/Users/sandeep450.kumar/code/projects/jio/idp/IDP/kubeconfig.txt" kubectl exec backstage-5c6ff9d776-5bzgg --context "SIHCMP-context" -n backstage --stdin --tty -c backstage -- sh -c "clear; /bin/echo -e '\033[1;4;32mSIHCMP-context\033[0m ðƒ¿ƒ±ƒ© Connected to container \033[1;4;36mbackstage\033[0m on pod \033[1;4;36mbackstage\033[0m / \033[1;4;36mbackstage-5c6ff9d776-5bzgg\033[0m\n'; (bash || ash || sh)"
+brew upgrade
+ni eslint-plugin-jest
+yarn --cwd plugins/catalog-manager-backend add @backstage/catalog-model
+yarn --cwd plugins/catalog-manager-backend add yaml
+cat test-role.yaml
+nv test-role.yaml
+LOG_LEVEL=debug nr dev
+brew remove ticktick
+brew install --cask todoist
+pnpm dlx create-turbo@latest
+pnpm dlx turbo login
+cd velocity
+git history
+delta
+brew install git-delta
+rm -rf vtl-formatter
+pnpm dlx shadcn@latest init\
+
+nlx shadcn@latest add button scroll-area input text-area
+nlx shadcn@latest add button scroll-area input textarea
+ni -D tailwind-animate
+ni -D tailwind-scrollbar
+cat README.md
+cp IDP/Dockerfile IDP/app-config.local.yaml IDP/app-config.yaml IDP/app-config.production.yaml IDP/backstage.json IDP/backstage.yaml IDP/ca.crt IDP/docker-compose.yml IDP/kubeconfig.txt idp-turbo
+cd idp-turbo
+cp -r IDP/packages/* idp-turbo/apps
+cp -r IDP/plugins/* idp-turbo/packages
+cp IDP/.dockerignore IDP/.env IDP/.eslintignore IDP/.gitignore IDP/.prettierignore idp-turbo
+cleanmodules
+rm -rf idp-turbo
+yarn --cwd packages/backend add @spotify/backstage-plugin-rbac-backend @spotify/backstage-plugin-permission-backend-module-rbac
+yarn --cwd packages/app add @spotify/backstage-plugin-rbac
+cd vtl-formatter-next
+cd /tmp/ldap
+cd groups
+cat dev-group.yaml
+KUBECONFIG="/Users/sandeep450.kumar/code/projects/jio/idp/IDP/kubeconfig.txt" kubectl exec backstage-6b999b46bf-hd6wh --context "SIHCMP-context" -n backstage --stdin --tty -c backstage -- sh -c "clear; /bin/echo -e '\033[1;4;32mSIHCMP-context\033[0m ðƒ¿ƒ±ƒ© Connected to container \033[1;4;36mbackstage\033[0m on pod \033[1;4;36mbackstage\033[0m / \033[1;4;36mbackstage-6b999b46bf-hd6wh\033[0m\n'; (bash || ash || sh)"
+yarn --cwd packages/backend add @backstage-community/plugin-rbac-backend
+yarn --cwd packages/app add @janus-idp/backstage-plugin-rbac
+yarn --cwd packages/app @backstage-community/plugin-rbacdd 
+yarn --cwd packages/app @backstage-community/plugin-rbac
+yarn --cwd packages/app add @backstage-community/plugin-rbac
+yarn new
+ brew install derailed/k9s/k9s
+k9s --context ~/code/projects/jio/idp/IDP/kubeconfig.txt
+yarn --cwd plugins/containerizer-backend add @backstage/plugin-catalog-node
+nr build:all
+eit
+ln -s /tmp /idp
+sudo ln -s /tmp /idp
+git clone https://github.com/sandepten/backstage.git
+git clone https://github.com/sandepten/backstage.git --depth 1
+which neovim
+npx degit https://github.com/tanstack/router/examples/react/start-basic-react-query idp-controller
+rm -rf idp-controller
+pnpm self-update
+npm install --global corepack@latest
+corepack install -g pnpm@10.5.2
+nlx shadcn@latest add card scroll-area avatar tabs badge accordion sidebar
+ni recharts
+ni next-themes
+vc
+cd temJ
+chezmoi add ~/.zsh/zinit.zsh
+nv ~/.zsh/alias.zsh
+chezmoi add ~/.config/nvim
+chezmoi c
+chezmoi add ~/.markdownlint-cli2.yaml
+chezmoi add ~/.editorconfig
+pnpm create rspeedy@latest
+\
+    brew install dust\
+
+rm -rf .cache/huggingface
+rm -rf action-prebuilt
+git clone http://10.157.236.217:32080/git/devops/action-prebuilt.git
+rm -rf kubectl-ubuntu-image
+cd lynx-trying
+rm -rf lynx-trying
+nv App.java
+nv Linked_List
+brew install kind
+cat <<EOF | kind create cluster --name=kubeflow --config=-\
+kind: Cluster\
+apiVersion: kind.x-k8s.io/v1alpha4\
+nodes:\
+- role: control-plane\
+  image: kindest/node:v1.32.0@sha256:c48c62eac5da28cdadcf560d1d8616cfa6783b58f0d94cf63ad1bf49600cb027\
+  kubeadmConfigPatches:\
+  - |\
+    kind: ClusterConfiguration\
+    apiServer:\
+      extraArgs:\
+        "service-account-issuer": "https://kubernetes.default.svc"\
+        "service-account-signing-key-file": "/etc/kubernetes/pki/sa.key"\
+EOF
+kind get kubeconfig --name kubeflow > /tmp/kubeflow-config\
+export KUBECONFIG=/tmp/kubeflow-config
+cat .orbstack/config/docker.json
+cat .docker/config.json
+docker login\
+\
+kubectl create secret generic regcred \\
+    --from-file=.dockerconfigjson=$HOME/.docker/config.json \\
+    --type=kubernetes.io/dockerconfigjson
+brew install kustomize
+cd code/
+cd projects/jio/others
+git clone https://github.com/kubeflow/manifests.git
+git clone https://github.com/kubeflow/manifests.git --depth 1
+cd manifests
+while ! kustomize build example | kubectl apply --server-side --force-conflicts -f -; do echo "Retrying to apply resources"; sleep 20; done
+docker login
+yarn changeset
+zi
+cd projects/personel/backstage
+nr test:all
+cd plugins/scaffolder-react
+nr test
+gs
+git status -sb
+yarn tsc
+nr prettier:check
+fc
+which fc
+git clone https://github.com/Preet025/NEST-Project.git
+cd NEST-Project
+git clone https://github.com/sandepten/microtek-repositories.git
+cd microtek-repositories
+cd microtek-dev/darpan-api
+ni @nestjs/mapped-types
+na tsc
+ni -D @types/argon2
+ni argon2@latest
+.
+git rebase HEAD~7 --signoff
+git config --global commit.gpgsign true
+cd idp-controller
+git config --global user.signingkey 35F5FFB2
+git config --global gpg.program gpg2
+nv ~/.gitconfig
+brew install pinentry-mac
+gpg --version
+echo "pinentry-program $(which pinentry-mac)" >> ~/.gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
+gpg --full-generate-key
+git commit -m "add: 2025 mar 11 journal"
+cd jav
+git clone https://git.codecrafters.io/845d92926e819f9d codecrafters-redis-go
+git commit --allow-empty -m 'test'
+git push origin master
+go build
+go build ./app/main.go redis-cli
+go build -o ./redis-cli app/*.go
+./redis-cli "PING\nPING"
+./redis-cli
+nc 0.0.0.0 6379\
+PING\
+
+nc 0.0.0.0 6379\
+PING
+rm -rf redis-cli
+brew install redis
+redis-cli -h 0.0.0.0 -p 6379 PING
+redis-cli -h 0.0.0.0 -p 6379 PING PING
+go run ./app/main.go
+go test ./internal/test_ping_pong.go
+go run ./internal/test_ping_pong.go
+rm -rf redis-tester
+git clone https://github.com/codecrafters-io/redis-tester.git
+cd redis-tester
+go install github.com/melkeydev/go-blueprint@latest
+go-blueprint create
+docker pull  devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/backstage:732148
+cd packages/backend/node_modules
+cd .bin
+cd app/
+cd node_modules
+cd @backstage
+dust plugin-scaffolder-backend-module-gitea
+cd @bestsellerit
+dust backstage-plugin-harbor
+make dev
+go install github.com/air-verse/air@latest
+which http
+http POST localhost:8080/hello
+http POST localhost:8080/health
+http POST http://localhost:8080/
+http localhost:8080
+http localhost:8080/health
+k9s --context ~/code/projects/jio/idp/IDP/kubeconfig.txt -n backstage
+cd ../idp-controller
+go get -u gorm.io/gorm\
+go get -u gorm.io/driver/postgres
+go get -u gorm.io/gorm@latest\
+go get -u gorm.io/driver/postgres@latest
+http POST localhost:8080/create-idp
+go version
+http POST localhost:8080/create-idp customer_id="123456789" customer_name="Sandeep Kumar"
+cd codecrafters-redis-go
+brew install codecrafters-io/tap/codecrafters
+codecrafters test
+./your_program.sh\
+
+redis-cli PING && redis-cli PING
+redis-cli PING redis-cli PING
+./your_program.sh
+air -c .air.toml
+air --build.cmd "go build -o /tmp/codecrafters-build-redis-go app/*.go" --build.bin "/tmp/codecrafters-build-redis-go"\
+
+echo -e "PING\nPING" | redis-cli
+re
+redis-cli PING
+go test ./app/echo_test.go
+go test ./app
+air --build.cmd "go build -o /tmp/codecrafters-build-redis-go app/*.go" --build.bin "/tmp/codecrafters-build-redis-go"
+redis-cli SET foo bar\
+
+redis-cli GET foo\
+
+redis-cli SET sandeep 13
+redis-cli ECHO hey
+redis-cli ECHO fuckyou
+redis-cli SET san deep px 1000
+redis-cli SET sandeep developer px 1000
+redis-cli SET sandeep developer px 10000
+cp -r codecrafters-redis-go ./redis-go
+cp -r ../codecrafters-redis-go/app/* ../codecrafters-redis-go/.gitignore ../codecrafters-redis-go/.git/ .
+rm -rf redis-go
+mkdir redis-go
+go mod init github.com/sandepten/sandis
+cp -r ../codecrafters-redis-go/.git 
+cp -r ../codecrafters-redis-go/.git .git
+cp -r ../codecrafters-redis-go/app/* .
+git remote set-url origin https://github.com/sandepten/sandis.git
+make watch
+ air --build.cmd "go build -o /tmp/sandis-redis *.go" --build.bin "/tmp/sandis-redis"
+redis-cli SET sandeep developer
+redis-cli GET san
+redis-cli GET sandeep
+rm -rf codecrafters-redis-go
+cat .git/config
+cd S
+n
+ghostty +list-themes
+cd personal
+cd perso
+air --build.cmd "go build -o /tmp/redis-go *.go" --build.bin "/tmp/redis-go"
+go get -u github.com/joho/godotenv/autoload
+redis-cli CONFIG GET dir
+cargo new --bin roguelike
+cat ~/.local/state/nvim/lsp.log
+nv ~/.local/state/nvim/lsp.log
+rustup component add rust-analyzer
+rustup component list
+\
+\
+cargo run --release\
+\
+
+./target/release/roguelike
+mv ~/Downloads/arial10x10.png .
+git remote add origin https://github.com/sandepten/roguelike.git\
+git branch -M main\
+git push -u origin main
+cd vtl-formatter
+clang --version
+java
+cd roguelike
+cargo run --release
+touch harbor.py
+nv harbor.py
+brew install uv
+uv harbor.py
+mkdir harbor-test
+mv harbor harbor-test
+mv harbor.py harbor-test
+cd harbor-test
+uv add requests
+uv run harbor.py
+cd go-exercism
+rm -rf go-exercism
+cd leetcode
+cat main.java
+rm -rf leetcode
+cd advent
+cd 2024
+cd blackhole
+git remote add origin https://github.com/sandepten/blackhole.git\
+git branch -M main\
+git push -u origin main
+cd plugins
+dust plugins/containerizer-backend
+dust plugins/ide
+dust plugins/ldap-auth-backend
+mv ~/Downloads/scripts.zip .
+cd scripts
+rm -rf __MACOSX
+mv scripts ../scripts-rpa
+uv
+uv init
+uv sync
+rm -rf scripts-rpa
+extract scripts.zip
+mv scripts/scripts ./script-rpa
+rm -rf scripts
+mv script-rpa scripts-rpa
+source venv/bin/activate
+rm -rf venv
+uv venv
+go get -u github.com/swaggo/gin-swagger\
+go get -u github.com/swaggo/files\
+go get -u github.com/swaggo/swag
+go install github.com/swaggo/swag/cmd/swag@latest
+go get -u github.com/swaggo/swag/cmd/swag\
+go get -u github.com/swaggo/gin-swagger\
+go get -u github.com/swaggo/files
+gpg --list-secret-keys --keyid-format LONG to
+gpg --list-keys
+gpg --armor --export
+gpg --armor --export 8EA2FF4D26905B00
+git rebase HEAD~1 --signoff
+git push --force-with-lease origin sandeep/bug-25989
+git push --force
+swag init -g cmd/api/main.go
+swag fmt
+git clone https://github.com/sandepten/text-fixes
+cd text-fixes
+corepack use pnpm@10.6.5
+ni prop-types
+ni update --latest
+nu --latest
+rm -rf text-fixes
+git clone https://github.com/sandepten/news-project-reactclass
+cd news-project-reactclass
+rm -rf news-project-reactclass
+git clone https://github.com/sandepten/blog-next-project
+cd blog-next-project
+pnpm approve-builds --all
+pnpm help approve-builds
+rm -rf blog-next-project
+git clone https://github.com/sandepten/metamask-connect
+cd metamask-connect
+rm -rf metamask-connect
+swag init -g cmd/api/main.go && swag fmt
+make run
+ccc
+brew install harlequin
+uv tool install harlequin
+uv tool install 'harlequin[postgres]'
+harlequin
+harlequin --theme catppuccin-mocha
+harlequin --theme catppuccin-mocha postgresql://localhost:5433/postgres
+cat docker-compose.yml
+harlequin --theme catppuccin-mocha -a postgres "postgres://melkey:password1234@localhost:5433/idp"
+cd scripts-rpa
+uv pip sync requirements.txt
+uv pip install -r requirements.txt
+mkdir fonts
+cd fonts
+cp -r ~/Downloads/Berkeley-Mono-TX-02-20250103-FONToMASS.zip *.otf .
+cp -r ~/Downloads/Berkeley-Mono-TX-02-20250103-FONToMASS.zip .
+cp ~/Downloads/*.otf .
+chezmoi add fonts
+cd ../IDP
+cd rpa
+source .venv/bin/activate
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults delete -g ApplePressAndHoldEnabled
+mkdir http-protocol
+go mod init github.com/sandepten/http-protocol
+go
+go run .
+go run . | tee /tmp/tcp.txt
+cat /tmp/tcp.txt
+go run ./cmd/tcplisterner
+go run ./cmd/tcplisterner.go
+printf "Do you have what it takes to be an engineer at TheStartupâƒ¤ƒ‚?" | nc -w 1 127.0.0.1 42069
+nc -v localhost 42069
+sudo go[C
+nc -u -l 42069
+go run ./cmd/udpsender
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/rpa_robo_packs --depth 1
+rm -rf rpa_robo_packs
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/rpa_robo_packs
+/usr/bin/python3 /Users/sandeep450.kumar/.vscode/extensions/ms-python.python-2025.2.0-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/sandeep450.kumar/.vscode/extensions/ms-python.python-2025.2.0-darwin-arm64/python_files/deactivate/zsh/envVars.txt
+git remote add origin https://github.com/sandepten/http-protocol-tcp.git\
+git branch -M main\
+git push -u origin main
+go run ./cmd/tcplistener
+curl http://localhost:42069/coffee
+curl -X POST -H "Content-Type: application/json" -d '{"flavor":"dark mode"}' http://localhost:42069/coffee
+go get -u github.com/stretchr/testify
+go mod tidy\
+go mod vendor
+cd templates
+brew cleanup
+curl -sSfL \\
+  https://raw.githubusercontent.com/cloudnative-pg/artifacts/main/manifests/operator-manifest.yaml
+wget https://raw.githubusercontent.com/cloudnative-pg/artifacts/main/manifests/operator-manifest.yaml
+nv operator-manifest.yaml
+rm -rf operator-manifest.yaml
+cd Strings/src
+java App.java
+cd others/http-protocol
+cd http-protocol
+yarn --cwd packages/backend add @backstage/plugin-scaffolder-common
+exi
+bootdev upgrade
+bootdev login
+bootdev run daf467c5-f17b-4382-a74c-e4bc68f2fc8d
+docker pull ghcr.io/cloudnative-pg/postgresql:16
+docker tag ghcr.io/cloudnative-pg/postgresql:16 devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:latest
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:latest
+echo "Hello world"
+expr 123456 + 7890
+department="engineering"
+team="ops"
+echo I work in $department on $team
+history
+curl -L https://github.com/bootdotdev/worldbanc/archive/refs/heads/main.zip -o worldbanc.zip
+unzip worldbanc.zip
+rm -rf worldbanc.zip
+cd worldbanc-main/
+sudo ls
+docker pull ghcr.io/cloudnative-pg/cloudnative-pg:1.25.1
+docker tag ghcr.io/cloudnative-pg/cloudnative-pg:1.25.1 devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:1.25.1
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:1.25.1
+docker pull --platform linux/amd64 ghcr.io/cloudnative-pg/cloudnative-pg:1.25.1
+docker tag ghcr.io/cloudnative-pg/cloudnative-pg:1.25.1 devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:1.25.2
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:1.25.2
+docker tag devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:latest devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:1.25.1
+docker tag devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-pg:latest devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-postgres-base:1.25.1
+docker pull --platform linux/amd64 ghcr.io/cloudnative-pg/postgresql:16
+docker tag ghcr.io/cloudnative-pg/postgresql:16 devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-postgres-base:1.25.1
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-postgres-base:1.25.1
+docker tag devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-postgres-base:1.25.1 devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-postgres-base:16
+docker push devopsartifact.jio.com/tps-jio_cloud_management_platform__dev__dcr/gitea/cloudnative-postgres-base:16
+cd worldbanc-main
+cd public
+cat pr_ideas.txt
+cd ../private/transactions
+cat 2023.csv
+head -n 6 2023.csv
+tail -n 5 2023.csv
+less 2023.csv
+less -N 2023.csv
+cd public/products/credit_cards
+touch credithistory.txt
+ls --plain
+mkdir investments
+mv credit_cards/tbills.txt ..
+cd iv
+cd credit_cards
+la
+mv ../tbills.txt .
+mv tbills.txt investments
+cd investments
+cat passwords/passwords.txt
+rm -rf passwords
+cd transactions
+cd backups
+cp ../2020.csv .
+....
+cd private/logs
+grep "CRITICAL" 2024-01-10.log
+rg "CRITICAL" 2024-01-10.log
+rg "CRITICAL" .
+grep -r "CRITICAL" .
+rg -r "CRITICAL" .
+cd public/products/accounts
+find . -name '*joint*'
+touch ll.txt
+chmod -R u=rwx,g=,o= private
+cd private
+chmod -x genids.sh
+chmod u+x ./genids.sh
+./genids.sh
+cat genids.sh
+cat emergency.txt
+sudo chown -R root contacts
+cd contacts
+rm -r contacts
+sudo rm -rf contacts
+which sh
+cat bin/genids.sh
+echo $PATH
+man man
+java -v
+curl --help
+top
+rm -rf worldbanc-main
+tig
+cd idp-controller-backend
+cd idp/IDP
+mkdir neetcode-dsa
+nv ~/.editorconfig
+ic
+java stack/ValidParenthesis.java
+git remote add origin https://github.com/sandepten/neetcode-dsa.git\
+git branch -M main\
+git push -u origin main
+git clone https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git --depth 1
+rm -rf HeroicGamesLauncher
+cd hcmp-ui
+cd redis-go
+cd java
+brew install --cask zen-browser@twilight
+brew remove twilight
+brew remove zen-browser@twilight
+touch .gitconfig
+nv .gitconfig
+cd rpa_robo_packs
+cd Cards
+touch "Java Annotations.md"
+touch "Java Optional.md"
+mkdir ecommerce-monorepo
+cd ecommerce-monorepo
+mkdir kitchen
+cd kitchen
+go mod init github.com/sandepten/kitchen
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+brew install protobuf
+protoc --version
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest\
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+make gen
+go get google.golang.org/grpc
+cursor .
+curl -fsSL https://raw.githubusercontent.com/yeongpin/cursor-free-vip/main/scripts/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+mkdir copilot-hackathon
+cd copilot-hackathon
+go mod init github.com/sandepten/hackathon
+go test ./clock_sync_test.go
+git commit -m "First commit"
+go run ./clock_sync.go
+go test ./...
+java sorting/InsertionSort.java
+touch IpamDataModel.java
+nv IpamDataModel.java
+mkdir ipam
+mv IpamDataModel.java ipam
+./start-database.sh
+npm config set strict-ssl false\
+
+nr db:push
+cd others/vikas/auth-backend
+cd Jio%20Cloud%20Management%20Platform
+cat Transaction\ Context\ -\ 33598\ -\ 17_04_2025,\ 11_05_40.json
+rm -rf *.rdp
+rm -rf Trae-darwin-arm64.dmg
+rm -rf backstage-master backstage-master.zip
+rm -rf CursorFreeVIP_1.9.05_mac_arm64
+npm install -g corepack
+corepack use pnpm@10.8.1
+nest new ipam
+nlx prisma
+nlx prisma init
+ni @nestjs/config
+ni @nestjs/config@latest
+nic
+ni @prisma/client@latest
+cd ipam-data-model
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/IPAM
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/IPAM ipam-repo
+rm -rf README.md
+mv ../ipam/* .
+mv .git .gitignore .prettierrc ../ipam-repo
+mv .gitignore .prettierrc ../ipam-repo
+mv .env ../ipam-repo
+rm -rf ipam
+git config user.name "Sandeep450.Kumar" && git config user.email "Sandeep450.Kumar@ril.com"
+nest g module firewall --no-spec
+nest g service firewall --no-spec
+nv ~/code/projects/jio/.gitconfig
+cat ~/.gitconfig
+git config commit.gpgsign false
+nest g module service --no-spec && nest g service nas --no-spec
+nest g module nas --no-spec && nest g service nas --no-spec
+nest g module l3out --no-spec && nest g service l3out --no-spec
+nest g module l3Out --no-spec && nest g service l3Out --no-spec
+node --version
+rm -rf dist
+ni ip
+ni @types/ip
+nest g module cidrCalculation --no-spec && nest g service cidrCalculation --no-spec
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+npm config set strict-ssl false
+brew install --cask httpie
+nr 
+nest g module gateway --no-spec && nest g service gateway --no-spec
+npm i -g pnpm
+rm -rf ipam-data-model IpamDataModel.java
+ni react-admin ra-data-json-server
+ni ra-data-simple-prisma@latest
+na @premieroctet/next-admin-cli@latest init
+nlx @premieroctet/next-admin-cli@latest init
+pnpm add -D next-superjson-plugin superjson
+cd my-app
+ni prisma typescript tsx @types/node --save-dev
+rm -rf my-app
+na create next-app@latest
+ni prisma
+ni tsx
+npx prisma init
+rm -rf prisma
+cp -r ../ipam-repo/prisma ./prisma
+cp ../ipam-repo/.env .
+git init
+ni @prisma/client
+git clone https://github.com/premieroctet/next-admin.git --depth 1
+mv next-admin/apps/example ./ipam-frontend
+rm -rf next-admin
+cat actions/addTag.ts
+rm -rf ipam-frontend
+na create t3-app@latest
+cp prisma/dev.db ../ipam-frontend/prisma
+npx @premieroctet/next-admin-cli@latest init
+mv ipam-repo/.git .
+touch README.md
+rm -rf .git
+ni class-validator class-transformer
+cd ipam-repo
+npm --version
+which npm
+fnm install --lts
+fnm install latest
+curl -v https://binaries.prisma.sh/all_commits/f676762280b54cd07c770017ed3711ddde35f37a/darwin-arm64/libquery_engine.dylib.node.sha256
+fnm install 25
+fnm install 24
+fnm use 23 --default
+fn use 23
+fnm set 23
+fnm --help
+fnm use 23 --corepack-enabled
+fnm default --corepack-enabled 23
+npm i -g prisma
+npm i -g prisma@latest
+nv ~/.zsh/path.zsh
+prisma db generate
+ni @nestjs/swagger
+pnpm dlx shadcn@latest init -d
+pnpm dlx shadcn@latest init
+nlx shadcn@latest add button input form tabs scroll-area separator badge select card
+rm -rf .next
+cp ipam/ipam-backend/prisma/dev.db .
+mv dev.db ipam.db
+rm -rf ipam-frontend-demo
+mkdir ipam-frontend-demo
+cp -r ipam/ipam-frontend/* ./ipam-frontend-demo
+cd ipam-frontend-demo
+cp ../ipam/ipam-frontend/.env .
+cd ipam/ipam-frontend
+cp ../ipam/ipam-frontend/.npmrc .
+prisma c
+cd /Users/sandeep450.kumar/code/projects/jio/ipam/ipam-backend
+touch .env
+prisma db push
+nlx shadcn@latest add sonner
+ni xlsx
+ni xlsx@latest
+npm config get registry
+git clone https://github.com/sandepten/HeroicGamesLauncher.git --recurse-submodules
+git switch sandeep/issue-4464 
+nr download-helper-binaries
+pnpm i18n
+nr lint-translations
+nr i18n
+na i18n
+na i18next
+rm -rf copilot-hackathon
+nv pranit.json
+nlx shadcn@latest add popover avatar
+nlx shadcn@latest add table
+ni @tanstack/react-table
+ni @tanstack/react-table@latest
+nlx shadcn@latest add alert-dialog
+docker build -t ipam-backend .
+npm i -g @nestjs/cli
+nest g module search-release --no-spec && nest g service search-release --no-spec
+nest g controller search-release --no-spec
+ni @tanstack/react-query@latest
+ni react-cookie
+nr de
+nr react-cookie
+pnpm remove react-cookie
+ni js-cookie
+ni @types/js-cookie
+nr start:devc
+node dist/src/main
+nr start:prod
+yarn backstage-cli repo test --maxWorkers=3 --workerIdleMemoryLimit=1300M --since origin/master --successCache --successCacheDir .cache/backstage-cli
+cd idp
+cd IDP
+nest g controller cidr-calculation --no-spec
+p shadcn-ui add card button progress
+nlx shadcn@latest add progress
+nlx shadcn@latest add dropdown-menu
+nlx shadcn@latest add dialog
+ni ipaddr.js
+curl -v https://sit.hcmpadmin.jio.com/ipam-backend/hello
+docker compose up --build -d
+prisma migrate dev --name first_migration --create-only
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/configmap-java
+git checkout dev
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/ui-config
+cd ui-config
+nodde src/utils/decrypt.ts
+node src/utils/decrypt.ts
+ni zustand
+prisma seed
+prisma migrate dev --name first_migration
+prisma migrate dev --name "audit log"
+prisma db push && prisma generate
+pnpm dlx shadcn@latest add calendar
+cd ipam-frontend
+prisma db seed
+brew remove raycast
+brew install --cask raycast
+ni recharts@latest
+lazygit
+nv jio-hcmp-ipam.properties
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/configmap-python
+nv configmap-java
+nv configmap-python
+prisma migrate dev --name "audit log action by column"
+cd configmap-java
+brew remove todoist
+brew install --cask ticktick
+mkdir configs
+mkdir helm
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/Helm
+git clone https://devops.jio.com/TOPS/Jio%20Cloud%20Management%20Platform/_git/helm-deployment
+git switch sit
+cp -r charts/ipam ../helm-ipam
+cd helm-ipam
+cp -r ../helm-ipam charts/ipam
+cp ipam-backend.properties ipam-frontend.properties ../
+git switch Release-1.23.0
+mv ../ipam-backend.properties ../ipam-frontend.properties .
+git commit -sm "fix: react import lint errors"
+git cherry-pick -x 5aa0d90
+git add .
+git commit -sm "fix: react import tsc errors"
+# required\
+mv ~/.config/nvim{,.bak}\
+\
+# optional but recommended\
+mv ~/.local/share/nvim{,.bak}\
+mv ~/.local/state/nvim{,.bak}\
+mv ~/.cache/nvim{,.bak}
+mv ~/.config/nvim{,.bak}
+mv ~/.local/share/nvim{,.bak}\
+mv ~/.local/state/nvim{,.bak}\
+mv ~/.cache/nvim{,.bak}
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+cd nvim.bak
+rm -rf ~/.config/nvim/.git
+mv nvim.bak nvim
+rm -rf lazy-lock.json
+rm -rf ~/.local/share/nvim
+rm -rf nvim
+chezmoi apply nvim
+cat .neoconf.json
+cd lua/plugins
+touch mason-workaround.lua
+nano mason-workaround.lua
+...
+nv ~/.config/ghostty/config
+prisma migrate reset
+prisma migrate dev
+ls ipam-backend/prisma/migrations
+cd ipam-backend/prisma/migrations
+prisma migrate resolve 20250502055257_first_migration
+prisma migrate resolve --applied 20250502055257_first_migration
+prisma migrate deploy --url=postgresql
+chmod u+x ./entrypoint.sh
+export DATABASE_USERNAME=ipamuser\
+export DATABASE_PASSWORD=7ulhVDiPSfpLR0zhgoYJ6TPr4Dk/GUnXvt3nlAqbuKo=\
+export DATABASE_HOST=10.169.88.168\
+export DATABASE_PORT=5432\
+export DATABASE_NAME=ipam\
+export AES_KEY=ipam-database_pg\
+export AES_IV=AesEncryptionVec\
+export AES_SALT=hcmp_encryption\
+
+./entrypoint.sh
+unset DATABASE_USERNAME=ipamuser\
+unset DATABASE_PASSWORD=7ulhVDiPSfpLR0zhgoYJ6TPr4Dk/GUnXvt3nlAqbuKo=\
+unset DATABASE_HOST=10.169.88.168\
+unset DATABASE_PORT=5432\
+unset DATABASE_NAME=ipam\
+unset AES_KEY=ipam-database_pg\
+unset AES_IV=AesEncryptionVec\
+unset AES_SALT=hcmp_encryption
+unset DATABASE_USERNAME\
+unset DATABASE_PASSWORD\
+unset DATABASE_HOST\
+unset DATABASE_PORT\
+unset DATABASE_NAME\
+unset AES_KEY\
+unset AES_IV\
+unset AES_SALT
+curl http://localhost:8080
+cat ipam-frontend.properties
+brew install --cask kitty
+brew update && brew upgrade
+cat ~/.config/ghostty/config
+cat ~/.config/kitty/current-theme.conf
+brew remove jenkins-lts locust redis
+chezmoi apply ~/.config/nvim/lua/plugins/blink.lua
+kitten themes
+nv ~/.config/starship.toml
+chezmoi ce
+chezmoi apply ~/.config/nvim/lua/plugins/cutlass.lua
+nest g service ip-request --no-spec
+atuin stats -c 10
+chezmoi apply ~/.config/nvim/lua/plugins/copilot.lua
+nest g module lookup --no-spec && nest g service lookup --no-spec
+nest g controller lookup --no-spec
+nest g module ip-request --no-spec
+nest g controller ip-request --no-spec
+prisma migrate dev --name "add: sequence to vlan tables for sorting"
+ni @nestjs/schedule
+nvim
+sls
+nano ~/.zshrc
+so
+nv ~/.zshrc
+zinit update
+cargo update
+cargo install-update -a
+curl https://sh.rustup.rs -sSf | sh\
+
+rustup update
+prisma migrate dev --name "add: l3out subnet details"
+prisma migrate deploy
+cat azure-pipelines.yml
+ni -D @types/multer
+ni exceljs
+nr start:dev
+cd ipam-backend
+cd configmap-python
+git cherry-pick -x 0a9a6b60b
+cd helm
+cd Helm
+git log --oneline
+git switch Stg_nic
+git switch -c sandeep450/nic-stg
+git switch -c sandeep450/nic
+git switch nic
+git switch -c sandeep450/nic-new
+git cherry-pick -x 7743f0c031
+git push
+cd ipam
+cat ~/.config/kitty/kitty.conf
+timeshift
+timeshift --create
+sudo timeshift --create
+git clone git clone https://github.com/catppuccin/heroic.git
+git clone https://github.com/catppuccin/heroic.git
+rm -rf .wine/drive_c/Program\ Files\ \(x86\)/DODI-Repacks/Split\ Fiction
+cat ~/.config/atuin/config.toml
+cat ~/.config/hyde/config.toml
+chezmoi add ~/.config/waybar
+man lld
+yay -S plex-htpc
+yay -R plex-htpc
+yay -S plex-desktop
+Plex
+yay -S kitty
+yay -S neofetch
+sudo pacman-key --refresh-keys
+sudo pacman -S cosmic-session
+sudo pacman -R cosmic-session
+git pul
+NODE_OPTIONS=--no-node-snapshot nr start
+yay -S obs-studio
+cd Videos
+ffmpeg -i '2025-05-16 22-08-31.mkv' -c copy '2025-05-16 22-08-31.mp4'
+yay -S obs-studio obsidian
+nv ~/.config/kitty/kitty.conf
+cd Documents
+java --version
+rm -rf .DS_Store
+bash <(curl -L https://zellij.dev/launch)
+yay -S zellij
+zellij
+zellij list
+zellij --help
+zellij list-sessions
+cd code/projects/backstage
+mkdir ~/.config/zellij\
+zellij setup --dump-config > ~/.config/zellij/config.kdl\
+
+nv ~/.config/zellij/config.kdl
+zellij a
+rm -rf ~/.config/zellij
+yay -Rns zellij
+yay -S tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+cat .tmux.conf
+echo $XDG_CONFIG_HOME
+mkdir .config/tmux
+mv .tmux.conf ~/.config/tmux/tmux.conf
+nv ~/.config/tmux/tmux.conf
+yay -S ttf-jetbrains-mono-nerd
+\
+\
+kitty --debug-font-fallback\
+
+tmux -u
+wmctrl -l | grep "kitty"\
+
+wmctrl -l | grep "kitty"
+cd backstage
+chezmoi add ~/.config/tmux/tmux.conf
+chezmoi add ~/.config/kitty/kitty.conf
+source ~/.config/tmux/tmux.conf
+atuin sync
+~/.config/tmux/plugins/tpm/bin/clean_plugins
+tmux --version
+tmux version
+cd ~/.tmux/plugins/
+mkdir -p ~/.config/tmux/plugins/catppuccin\
+git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+tmux --help
+tmux help
+tmux new -s ipam
+tmux list
+tmux attach
+tmux 
+tmux attach -c ipam
+tmux li
+tmux list-sessions
+tmux source ~/.config/tmux/tmux.conf
+cd /home/sandepten/.zen/3d0hvs2n.Default 
+cd /home/sandepten/.zen/
+cd 3d0hvs2n.Default\ \(release\)
+cd chrome
+touch userChrome.css userContent.css zen-logo.svg
+nv userChrome.css
+nv userContent.css
+nv zen-logo.svg
+cd /
+yay -S dust
+sudo dust
+exirt
+systemd
+systemd-analyze
+systemd-analyze blame | head -n10
+extract Undertale-AnkerGames.rar
+extract Celeste-AnkerGames.rar
+cx
+rm -rf attendance
+git clone https://github.com/microtek-dev/attendance.git
+git clone https://github.com/sandepten/java-dsa.git
+yay -S sl
+sl
+cd dow
+cat zen-themes-export.json
+ssh sandepten@katong.usbx.me
+cat /etc/init/docker.override
+sudo systemctl disable docker.service docker.socket
+systemctl list-unit-files | grep -i docker
+git clone https://github.com/sandepten/sandepten-portfolio.git
+cd sandepten-portfolio
+rm -rf yarn.lock
+rm -rf node_modules
+rm -rf package-lock.json
+rm -rf sandepten-portfolio
+git clone https://github.com/sandepten/sandeep-portfolio.git
+cp ~/Downloads/Sandeep-Kumar-20250525.pdf ./public/resume.pdf
+yay -R visual-studio-code-insiders-bin
+sudo pacman -S visual-studio-code-bin
+yay -S visual-studio-code-insiders-bin
+yay -Rns visual-studio-code-insiders-bin
+cd ~/.cache/yay/visual-studio-code-bin
+git status
+rm -rf visual-studio-code-bin
+yay -S visual-studio-code-bin
+cd sandeep-portfolio
+code .
+nr build
+sudo shutdown now
+yay -S gnome-shell-extension-pop-shell
+cd shell
+make local-install
+yay -S gnome-shell-extension-pop-shell-git
+sudo pacman -Syu cachyos-plymouth-bootanimation
+sudo plymouth-set-default-theme -R cachyos-bootanimation
+git clone https://github.com/diegons490/cachyos-grub-theme.git
+cd cachyos-grub-theme
+sudo bash setup.sh
+sudo pacman -S gtk-engine-murrine
+git clone https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git
+cd Catppuccin-GTK-Theme
+cd themes
+./install.sh -t teal -c dark -l
+yay -S papirus-icon-theme-git
+sudo ./tweaks.sh -g
+spicetify update
+yay -S tangram
+yay -Rns tangram
+yay -S rambox-pro-bin 
+yay -Rns ticktick ferdium
+Z
+v
+pacman -Qdtq
+sudo pacman -Qdtq
+cd ob
+yay -Yc
+yay -Syu --devel
+cat WhatsApp\ Chat\ with\ TÃªam\ WRAITH.txt
+cat .p10k.zsh
+cat .user.zsh
+rm -rf .user.zsh
+cat .node_repl_history
+rm -rf .node_repl_history
+cat .bash_history
+rm -rf .bash_history
+cat .bash_logout
+rm -rf .bash_logout
+cat .bash_profile
+rm -rf .bash_profile
+cat .bashrc
+rm -rf .bashrc
+cat .gsd-keyboard.settings-ported
+lsa
+lld
+ld
+lsd
+cd neetcode-dsa
+sensors
+atuin stats
+yay -S steamtinkerlaunch
+rm -Rf ~/.local/share/NexusMods.App
+rm -rf ~/.cache/yay/nexusmods-app-bin
+yay -Rns steamtinkerlaunch
+nexusmods-app-bin
+yay -Rns nexusmods-app-bin
+extract DELTARUNE-AnkerGames.rar
+yay -S heroic-games-launcher
+nproc
+man nproc
+sleep --version
+extract Balatro-AnkerGames.rar
+cd others/WhiteSur-gtk-theme
+./install.sh -t teal -c dark -l --tweaks mac
+kitty --debug-font-fallback
+yay -Rns fish
+yay -Rns cachyos-fish-config fish-autopair fish-pure-prompt fisher fish
+yay -S openrgb
+yay -Rns openrgb
+eza
+yay -S eza
+yay -Rns ghostty
+yay -Rns neofetch
+yay -S fastfetch
+yay -Rnsc octopi
+yay -S bat
+cat .zprofile
+touch .zprofile
+chezmoi add .zprofile
+yay -S sddm
+sudo systemctl disable gdm.service
+        sudo systemctl enable sddm.service
+yay -S qt6 qt6-svg qt6-virtualkeyboard qt6-multimedia
+sudo git clone -b master --depth 1 https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
+sudo cp -r /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+touch /etc/sddm.conf
+sudo touch /etc/sddm.conf
+sudo nano /etc/sddm.conf
+echo "[Theme]\
+Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
+sudo mkdir /etc/sddm.conf.d
+sudo touch /etc/sddm.conf.d/virtualkbd.conf
+echo "[General]\
+InputMethod=qtvirtualkeyboard" | sudo tee /etc/sddm.conf.d/virtualkbd.conf
+sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/sddm-astronaut-theme/
+nv /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
+sudo nv /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
+sudo nano /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
+git clone https://github.com/neuromask/catppuccin-linux-theme.git
+cd catppuccin-linux-theme
+cd dot_files
+cp -r .themes/Catppuccin-GnomeTheme ~/.themes
+rm -rf ~/.config/gtk-4.0 ~/.config/gtk-3.0
+cp -r .themes/Catppuccin-GnomeTheme/gtk-4.0 ~/.config/gtk-4.0
+cp -r .themes/Catppuccin-GnomeTheme/gtk-3.0 ~/.config/gtk-3.0
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --env=GTK_THEME=Catppuccin-GnomeTheme
+mkdir personel
+mv personel projects
+mv projects personel
+mkdir jio
+cd code/dsa
+cd dsa
+cd java-dsa
+yay -S libgtop lm_sensors gnome-icon-theme-symbolic gnome-icon-theme
+brew
+in vlc
+nv --version
+which nv
+which nvim
+cd projects/personel/attendance
+pacman -Rdd linux-firmware
+sudo pacman -Rdd linux-firmware
+pacman -Syu linux-firmware
+sudo pacman -Syu linux-firmware
+yay -S ghostty
+tmux
+git clone https://github.com/sandepten/refine-right.git
+tmux a
+yay -Fy
+fucks
+yay -Rns kitty
+kitty
+neofetch
+git clone https://github.com/kayozxo/GNOME-macOS-Tahoe --depth=1
+cd GNOME-macOS-Tahoe
+./install.sh -d -la 
+./install.sh -d
+cd ./.themes
+rm -rf Orchis*
+rm -rf Catppuccin*
+rm -rf *
+cd .
+cd ./.icons
+cd default
+cd others/GNOME-macOS-Tahoe
+./install.sh -u
+rm -rf GNOME-macOS-Tahoe
+cd WhiteSur-gtk-theme
+./install.sh --dialog
+./install.sh -r
+./tweaks.sh -F -r
+./install.sh -N glassy -l -HD --round --darker
+cd ../WhiteSur-icon-theme
+./install.sh -a -b
+cat monitors.xml
+git clone https://github.com/const-void/DOOM-fire-zig/
+zig --version
+yay -S zig
+cd DOOM-fire-zig
+zig build run
+mkdir eldenringnight
+mv *.rar eldenringnight
+cd eldenringnight
+extract update\ 1.01\ -\ 1.01.1.rar
+extract update\ 1.01.1\ -\ 1.01.2.rar
+extract update\ 1.01.2\ -\ 1.01.3.rar
+extract update\ 1.01.3\ -\ 1.01.4.rar
+echo 419
+whoami
+which $SHELL
+echo $SHELL
+cd code/projects/personel
+mkdir nair
+nr main.js
+node main.js
+yay -S httpie
+yay -S postman-bin
+git clone https://github.com/microtek-dev/sap-sim.git
+pnpm approve-builds
+prisma generate
+cd naq
+vsc
+cd /home/sandepten/code/projects/personel/sap-sim && npx prisma generate
+dust --ignore-directory="game-drive"
+yay -Rns postman-bin
+yay -S httpie-desktop-bin 
+extract Satisfactory-AnkerGames.rar
+mv Satisfactory-AnkerGames Satisfactory
+mv Satisfactory ../game-drive/Games
+yay -S nexusmods-app-bin
+rm -rf .
+rm -rf .p10k.zsh
+cd code/projects
+git switch dev
+cd bin
+cd Heroic
+cd nvim
+cd .local/state
+mkdir backup-hypr
+cd -
+mv backup-hypr ..
+cd 
+cp -r .config .local backup-hypr
+cd .local
+bash <(curl -s "https://end-4.github.io/dots-hyprland-wiki/setup.sh")
+cd starship
+cat starship.toml
+cd hyde
+cd wallbash
+cd theme
+cat code.dcol
+cd always
+..
+rm -rf hyde
+chezmoi add hypr
+yay -S dolphin
+kitty -1 fish -c yazi
+ghostty -1
+yay -S Thunar
+yay -S yazi
+cd gnome-session
+cd saved-session
+gpg --full-generate-key\
+
+gpg --list-secret-keys --keyid-format=long\
+
+gpg --armor --export 0DED0589E481BBAB
+cat /etc/arch-release
+ls -ltr
+nautilus
+cd .local/share
+dust
+cd state
+yay -S yt-dlp
+yt-dlp -F https://www.youtube.com/watch?v=RTd5VahAyQE
+yt-dlp -F https://youtu.be/RTd5VahAyQE?si=gM4hOYcBcAwsKmK6
+yt-dlp https://youtu.be/RTd5VahAyQE?si=gM4hOYcBcAwsKmK6
+yt-dlp https://www.youtube.com/watch?v=RTd5VahAyQE
+yay -S video-downloader
+cat /usr/share/applications/tv.plex.PlexHTPC.desktop
+sudo nv /usr/share/applications/tv.plex.PlexHTPC.desktop
+sudo vim /usr/share/applications/tv.plex.PlexHTPC.desktop
+cp /usr/share/applications/tv.plex.PlexHTPC.desktop ~/.local/share/applications
+hyprctl monitors all
+cat client_secret_583841880017-4106cresbmbt64ipt6ne21qr89pio2oh.apps.googleusercontent.com.json
+nv client_secret_583841880017-4106cresbmbt64ipt6ne21qr89pio2oh.apps.googleusercontent.com.json
+yay -S rclone
+rclone authorize "drive" "eyJjbGllbnRfaWQiOiI1ODM4NDE4ODAwMTctNDEwNmNyZXNibWJ0NjRpcHQ2bmUyMXFyODlwaW8yb2guYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJjbGllbnRfc2VjcmV0IjoiR09DU1BYLUszN08waWJJbEh5ZXNobTUteE9RN3hUcmFiNloiLCJzY29wZSI6ImRyaXZlIn0"
+rm -rf client_secret_583841880017-4106cresbmbt64ipt6ne21qr89pio2oh.apps.googleusercontent.com.json
+yay -S appimagelauncher
+yay -S appimagelauncher-bin
+mkdir others
+yay -G appimagelauncher-bin
+cd appimagelauncher-bin
+nv PKGBUILD
+makepkg -si
+cd Downloads
+cat client_secret_2_583841880017-4106cresbmbt64ipt6ne21qr89pio2oh.apps.googleusercontent.com.json
+nv client_secret_2_583841880017-4106cresbmbt64ipt6ne21qr89pio2oh.apps.googleusercontent.com.json
+rclone authorize "drive" "eyJjbGllbnRfaWQiOiI1ODM4NDE4ODAwMTctNDEwNmNyZXNibWJ0NjRpcHQ2bmUyMXFyODlwaW8yb2guYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJjbGllbnRfc2VjcmV0IjoiR09DU1BYLVlIX2w4THV3MjZSSTBLWUtWdjNvWmpmNGthcE4iLCJzY29wZSI6ImRyaXZlIn0"
+nv client_secret_583841880017-h3bahj89rhstng8hnm0e4qmugaq6676m.apps.googleusercontent.com.json
+rclone authorize "drive" "eyJjbGllbnRfaWQiOiI1ODM4NDE4ODAwMTctaDNiYWhqODlyaHN0bmc4aG5tMGU0cW11Z2FxNjY3Nm0uYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJjbGllbnRfc2VjcmV0IjoiR09DU1BYLVIza1JWNVhsdVJFUDhocTU4azZtRVZEZmp4V2EiLCJzY29wZSI6ImRyaXZlIn0"
+nv client_secret_20266361896-o0v9gkr2rkhquna8fqmb255knvvujd8h.apps.googleusercontent.com.json
+chezmoi apply dot_config/ghostty/config
+chezmoi apply ~/.config/ghostty/config
+cd dots-hyprland
+cd pulse
+rm -rf backup backup-hypr
+cd backup
+cd local_backup
+rm -rf state
+rm -rf share
+cd share
+cd Steam
+cd steamapps
+cd compatdata
+cd 0
+cd pfx/drive_c/users/steamuser/Documents/
+rm compatdata
+sudo rm -rf backup backup-hypr
+git clone --depth 1 https://github.com/balena-io/etcher.git
+cd etcher
+fnm use --latest --default
+fnm use 23
+fnm install --latest
+fnm use 24 --default
+fnm use 24
+pnpm i
+npm
+npm i -g @antfu/ni eslint prettier pnpm yarn typescript neovim
+nr start
+yay -S balena-etcher
+fd .zip
+extract balenaEtcher-linux-x64-2.1.4.zip
+cd balenaEtcher-linux-x64-2.1.4/
+cd balenaEtcher-linux-x64
+./balena-etcher
+shutdown -r now
+tmux-sessionizer
+nv .env
+nv .local/share/nvim/lazy/nui.nvim/lua/nui/utils/init.lua
+nvim --version
+rm -rf .local/share/nvim
+yay -S nvim
+yay -Rns nvim
+yay -Rns neovim
+yay -S neovim
+ni
+QT_QPA_PLATFORM=xcb QT_QUICK_CONTROLS_STYLE=Material Plex
+fd dots-hyprland
+rg dots-hyprland
+git pull
+git pull origin main
+./install.sh
+sudo shutdown -r now
+chezmoi add ~/.config/hypr
+cd .cache/dots-hyprland
+cd Extras
+cat swaylock/config
+y
+yay -Qdtq
+gamescope
+yay -S gamescope
+ENABLE_HDR_WSI=1 gamescope --fullscreen -w 2560 -h 1440 --hdr-enabled --hdr-debug-force-output --hdr-sdr-content-nits 600 --mangoapp -- env ENABLE_GAMESCOPE_WSI=1 DXVK_HDR=1 DISABLE_HDR_WSI=1 -- steam -bigpicture
+exiyt
+cat ~/.zsh/alias.zsh
+sudo umount ~/game-drive
+./.config/hypr/custom/scripts/toggle_second_monitor.sh
+chmod +x hyprland/scripts/toggle_second_monitor.sh
+chmod +x custom/scripts/toggle_second_monitor.sh
+chezmoi apply
+source ~/.zshrc
+yay -S illogical-impulse-agsv1 illogical-impulse-gnome illogical-impulse-gtk
+fd .php
+nv cron.php
+cat game-drive/Games/Call\ of\ Duty\ Black\ Ops\ 6
+cd game-drive/Games/Call\ of\ Duty\ Black\ Ops\ 6
+fd .md
+fd .txt
+cd game-drive/Game
+cd game-drive
+cd Games
+rm -rf Call\ of\ Duty\ Black\ Ops\ 6
+yay -S proton-pass
+nv 
+whichport 8080
+echo whichport
+which whichport
+which extract
+xz --version
+cd hypr
+cd .config
+cd torrents
+cd Black\ Mirror\ \(2011\)\ Season\ 1-6\ S01-S06\ \(1080p\ Mixed\ x265\ HEVC\ 10bit\ EAC3\ 5.1\ Silence\)
+cd Specials
+cc
+cp Black\ Mirror\ \(2011\)\ Season\ 1-6\ S01-S06\ \(1080p\ Mixed\ x265\ HEVC\ 10bit\ EAC3\ 5.1\ Silence\) "Black Mirror (2011)"
+fuck
+cp -a Black Mirror (2011) Season 1-6 S01-S06 (1080p Mixed x265 HEVC 10bit EAC3 5.1 Silence) "Black Mirror (2011)"
+cd Black\ Mirror\ \(2011\)
+mv Season\ 1\ \(1080p\ Mixed\) "Season 1"
+mv Season\ 2\ \(1080p\ BluRay\) "Season 2"
+mv Season\ 3\ \(1080p\ NF\ WEB-DL\) "Season 3"
+mv Season\ 4\ \(1080p\ NF\ WEB-DL\) "Season 4"
+mv Season\ 5\ \(1080p\ NF\ WEB-DL\) "Season 5"
+mv Season\ 6\ \(1080p\ NF\ WEB-DL\) "Season 6"
+rclone authorize "drive" "eyJjbGllbnRfaWQiOiIyMDI2NjM2MTg5Ni1vMHY5Z2tyMnJraHF1bmE4ZnFtYjI1NWtudnZ1amQ4aC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImNsaWVudF9zZWNyZXQiOiJHT0NTUFgtdGhRTmRSdjA2NENKMlE0b2ZIOGQ1cm5Oc0hOMyIsInNjb3BlIjoiZHJpdmUifQ"
+sudo -E timeshift-gtk
+yay
+ccccc
+yay -S ttf-terminus-nerd
+ghostty +list-fonts
+cat .nvidia-settings-rc
+cd code
+cd projects
+cd jio
+cd personel
+cd sap-sim
+rm -rf sap-sim
+cd nair
+rm -rf nair
+cd others
+nv index.js
+mkdir clone-site
+mv index.js clone-site
+mv clone-site ..
+rm -rf others
+rm -rf backstage
+cd sand
+cd sandis
+git remote -v
+cd altcoiners
+cd ....
+cat .env
+rm -rf altcoiners
+cd http-protocol-tcp
+rm -rf sandis http-protocol-tcp
+cat .wezterm.lua
+l
+rm -rf .wezterm.lua
+cat .zcompdump
+# Create data directory\
+mkdir -p ~/.memos\
+\
+# Run Memos container\
+docker run -d \\
+  --name memos \\
+  --restart unless-stopped \\
+  -p 5230:5230 \\
+  -v ~/.memos:/var/opt/memos \\
+  neosmemo/memos:stable
+docker ps
+cp -a Documents/obsidian-notes/* .memos
+docker stop f7da1e4ca3bf
+cd .memos
+cat memos_prod.db
+bat -A memos_prod.db
+rm -rf .memos
+nr dev
+node
+extract dust-v1.2.3-aarch64-unknown-linux-gnu.tar.gz
+rm -rf dust-v1.2.3-aarch64-unknown-linux-gnu dust-v1.2.3-aarch64-unknown-linux-gnu.tar.gz
+extract dust-v1.2.3-aarch64-unknown-linux-musl.tar.gz
+cd dust-v1.2.3-aarch64-unknown-linux-musl
+rm -rf dust-v1.2.3-aarch64-unknown-linux-musl dust-v1.2.3-aarch64-unknown-linux-musl.tar.gz
+which dust
+cp /usr/bin/dust dust
+./dust
+fastfetch
+sudo -E gsettings
+sudo -E gnome-control-center
+nmcli
+nmcli device wifi list
+nmcli device wifi connect Masterchief_PC password "Mukesh@1981"
+nmcli device wifi connect Masterchief_PC --ask
+cd obsidian-notes
+yay -S onefetch
+cd refine-right
+cd attendance
+rm -rf vendor
+git reset --hard
+cd HeroicGamesLauncher
+cd ..
+ls
+chezmoi re-add
+cd downloads
+mkdir video_frames
+ffmpeg -i thum.mp4 -q:v 2 video_frames/frame_%05d.jpg
+btop
+exit
+cd chezmoi
+ll
+cd
+chezmoi cd
+pwd
+onefetch
+clear
+nv
+c
+: 1755611715:0;nmcli device wifi connect Masterchief_PC --ask
+: 1755702405:0;sudo -E timeshift-gtk
+: 1755702521:0;c
+: 1755702524:0;yay
+: 1755703740:0;clear
+: 1755703741:0;yay
+: 1755703770:0;clear
+: 1755703846:0;nmcli device wifi connect Masterchief_PC --ask
+: 1755703929:0;nmcli device wifi connect "Masterchief_PC" --ask autoconnect yes
+: 1755703967:0;nmcli connection add type wifi con-name "Masterchief_PC-auto" ifname wlan0 ssid "Masterchief_PC"
+: 1755703975:0;nmcli connection modify "Masterchief_PC-auto" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "your_password_here"
+: 1755703986:0;nmcli connection modify "Masterchief_PC-auto" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "Mukesh@1981"
+: 1755703991:0;nmcli connection modify "Masterchief_PC-auto" connection.autoconnect yes
+: 1755703996:0;nmcli connection show
+: 1755704017:0;nmcli connection modify "Masterchief_PC" connection.autoconnect yes
+: 1755704019:0;clear
+: 1755747329:0;rclone authorize "drive" "eyJjbGllbnRfaWQiOiIyMDI2NjM2MTg5Ni1vMHY5Z2tyMnJraHF1bmE4ZnFtYjI1NWtudnZ1amQ4aC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImNsaWVudF9zZWNyZXQiOiJHT0NTUFgtdGhRTmRSdjA2NENKMlE0b2ZIOGQ1cm5Oc0hOMyIsInNjb3BlIjoiZHJpdmUifQ"
+: 1755916971:0;chezmoi re-add
+: 1755916975:0;chezmoi add ~/.config/hypr
+: 1755916978:0;clear
+: 1755916980:0;nv
+: 1755917026:0;c
+: 1755917031:0;cd .cache/dots-hyprland
+: 1755917035:0;git pull origin main
+: 1755917045:0;clear
+: 1755917088:0;./install.sh
+: 1755917515:0;clear
+: 1755918077:0;ls
+: 1755918079:0;clear
+: 1755918089:0;chezmoi re-add
+: 1755918094:0;chezmoi add ~/.config/hypr
+: 1755918095:0;clear
+: 1755918096:0;nv
+: 1755918473:0;clear
+: 1755918481:0;cd .config/hypr
+: 1755918483:0;clear
+: 1755918486:0;c
+: 1755918487:0;nv
+: 1755918566:0;chezmoi add ~/.config/hypr
+: 1755918568:0;clear
+: 1755918568:0;nv
+: 1755918868:0;c
+: 1755918911:0;clear
+: 1755918926:0;nv
+: 1755918938:0;chezmoi apply dot_config/hypr
+: 1755918949:0;chezmoi apply ~/.config/hypr
+: 1755918952:0;clear
+: 1755922489:0;ll
+: 1755922490:0;clear
+: 1755922491:0;nv
+: 1755922524:0;clear
+: 1755922786:0;cd downloads
+: 1755922787:0;clear
+: 1755922788:0;ll
+: 1755922810:0;rm -rf Mafia\ Definitive\ Edition\ No\ Intro\ Mod-1-1-0-1601098638 Mafia\ Definitive\ Edition\ No\ Intro\ Mod-1-1-0-1601098638.zip
+: 1755922816:0;rm -rf Weapon\ sounds\ overhaul-95-2-4-2-1724977878
+: 1755922818:0;clear
+: 1755922819:0;ll
+: 1755922823:0;rm -rf Weapon\ sounds\ overhaul-95-2-4-2-1724977878.zip
+: 1755922841:0;extract FlipWitch-Forbidden-Sex-Hex-AnkerGames.rar
+: 1755922846:0;clear
+: 1755922846:0;ll
+: 1755922853:0;extract Nine-Sols-AnkerGames.rar
+: 1755922874:0;clear
+: 1755922875:0;ll
+: 1755922895:0;extract Outer-Wilds-AnkerGames.rar
+: 1755922921:0;clear
+: 1755922922:0;ll
+: 1755922996:0;mv FlipWitch-Forbidden-Sex-Hex-AnkerGames Nine-Sols-AnkerGames Outer-Wilds-AnkerGames ~/game-drive/Games
+: 1755924075:0;clear
+: 1755924075:0;ll
+: 1755924084:0;cd game-drive
+: 1755924085:0;clear
+: 1755924085:0;ls
+: 1755924087:0;cd Game
+: 1755924092:0;cd -
+: 1755924093:0;clear
+: 1755924093:0;ls
+: 1755924097:0;cd Games
+: 1755924098:0;clear
+: 1755924098:0;ls
+: 1755934861:0;btop
+: 1755954102:0;ls
+: 1755954108:0;c
+: 1755954110:0;ll
+: 1755954323:0;cat .zprofile
+: 1755954346:0;chezmoi apply ~/.bat
+: 1755954368:0;chezmoi apply ~/.config/bat
+: 1755954371:0;cat .zprofile
+: 1755954384:0;cd .config
+: 1755954385:0;clear
+: 1755954385:0;nv
+: 1755954408:0;clear
+: 1755954423:0;bat cache --build
+: 1755954429:0;cat .zprofile
+: 1755954430:0;cd
+: 1755954431:0;clear
+: 1755954433:0;cat .zprofile
+: 1755954434:0;clear
+: 1755954448:0;ll
+: 1755954454:0;rm -rf .zprofile
+: 1755954537:0;nv
+: 1755954810:0;clear
+: 1755954812:0;source ~/.zshrc
+: 1755954813:0;clear
+: 1755954814:0;ll
+: 1755954815:0;clear
+: 1755954835:0;chezmoi add .zsh .zshrc .zshenv
+: 1755954838:0;nv
+: 1755954943:0;chezmoi re-add
+: 1755954945:0;clear
+: 1755954945:0;nv
+: 1755955024:0;clea
+: 1755955026:0;clear
+: 1755955124:0;echo $XDG_CONFIG_HOME
+: 1755955128:0;echo XDG_CONFIG_HOME
+: 1755955131:0;echo $XDG_CONFIG_HOME
+: 1755955161:0;clear
+: 1755955161:0;nv
+: 1755955378:0;clear
+: 1755955384:0;mkdir ~/.config/zsh
+: 1755955399:0;mv .zsh_history .zshrc .zsh .config/zsh

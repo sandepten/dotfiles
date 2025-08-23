@@ -1,10 +1,9 @@
 # zmodload zsh/zprof
 
-# Zinit
-source ~/.zsh/zinit.zsh
-
-source ~/.zsh/tmux.zsh
-source ~/.zsh/alias.zsh
+# source ~/.zsh/zinit.zsh
+# source ~/.zsh/tmux.zsh
+# source ~/.zsh/alias.zsh
+source ./zsh/*.zsh
 
 # Shell integrations
 # source <(fzf --zsh)

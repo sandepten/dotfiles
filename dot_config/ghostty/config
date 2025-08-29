@@ -13,8 +13,11 @@ bold-is-bright = true
 theme="catppuccin-mocha"
 
 # adjust-cell-height=15%
-background-opacity = 0.92
-background-blur-radius = 0
+# background-opacity = 0.85
+# background-blur-radius = 20
+background-image= "~/Downloads/jinx.png"
+background-image-opacity=0.10
+background-image-fit = "cover"
 
 cursor-style="bar"
 mouse-hide-while-typing=true

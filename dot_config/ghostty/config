@@ -1,20 +1,15 @@
 # Font
-# font-family = "MonaspiceNe Nerd Font"
-# font-family = "CaskaydiaCove Nerd Font Mono"
 font-family = "TX-02"
-font-style="ExtraBold"
-font-size= 17
+font-style="Bold"
+font-size= 18
 font-feature="-liga"
-font-thicken=true
+# font-thicken=true
 bold-is-bright = true
 
 # Theme
 # theme="tokyonight_night"
 theme="catppuccin-mocha"
 
-# adjust-cell-height=15%
-# background-opacity = 0.85
-# background-blur-radius = 20
 background-image= "~/Downloads/jinx.png"
 background-image-opacity=0.10
 background-image-fit = "cover"

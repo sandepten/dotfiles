@@ -1,12 +1,11 @@
 return {
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    ---@module 'obsidian'
+    ---@type obsidian.config
     opts = {
       workspaces = {
         {
@@ -15,8 +14,15 @@ return {
         },
       },
       notes_subdir = "Cards",
+
+      -- new notes
       new_notes_location = "Cards",
-      disable_frontmatter = true,
+      ---@param title string|?
+      ---@return string
+      note_id_func = function(title)
+        return title or tostring(os.time())
+      end,
+
       templates = {
         folder = "Extras/Templates",
         date_format = "%Y-%m-%d",
@@ -24,40 +30,12 @@ return {
         -- A map for custom variables, the key should be the variable and the value a function
         substitutions = {},
       },
-      mappings = {
-        ["<leader>ot"] = {
-          action = function()
-            -- insert template :ObsidianTemplate
-            return vim.cmd.ObsidianTemplate()
-          end,
-          opts = { buffer = true },
-          desc = "Insert template",
-        },
+      completion = {
+        blink = true,
+        create_new = true,
       },
-      ui = {
-        enable = false, -- Use bullet marks for non-checkbox lists.
-        bullets = { char = "•", hl_group = "ObsidianBullet" },
-        external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-        -- Replace the above with this if you don't have a patched font:
-        -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-        reference_text = { hl_group = "ObsidianRefText" },
-        highlight_text = { hl_group = "ObsidianHighlightText" },
-        tags = { hl_group = "ObsidianTag" },
-        block_ids = { hl_group = "ObsidianBlockID" },
-        hl_groups = {
-          -- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
-          ObsidianTodo = { bold = true, fg = "#f78c6c" },
-          ObsidianDone = { bold = true, fg = "#89ddff" },
-          ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-          ObsidianTilde = { bold = true, fg = "#ff5370" },
-          ObsidianImportant = { bold = true, fg = "#d73128" },
-          ObsidianBullet = { bold = true, fg = "#89ddff" },
-          ObsidianRefText = { underline = true, fg = "#89b4fa" },
-          ObsidianExtLinkIcon = { fg = "#89b4fa" },
-          ObsidianTag = { italic = true, fg = "#89ddff" },
-          ObsidianBlockID = { italic = true, fg = "#89ddff" },
-          ObsidianHighlightText = { bg = "#75662e" },
-        },
+      picker = {
+        name = "snacks.pick",
       },
     },
   },

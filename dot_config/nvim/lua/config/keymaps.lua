@@ -32,3 +32,5 @@ map("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
 map("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
 map("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
 map("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
+
+map("n", "<leader>ot", vim.cmd.ObsidianTemplate, { desc = "Insert template" })

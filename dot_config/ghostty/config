@@ -8,7 +8,7 @@ bold-is-bright = true
 
 # Theme
 # theme="tokyonight_night"
-theme="catppuccin-mocha"
+theme="Catppuccin Mocha"
 
 background-image= "~/Downloads/jinx.png"
 background-image-opacity=0.10

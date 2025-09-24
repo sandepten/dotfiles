@@ -33,7 +33,13 @@ fi
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh)"
 eval $(thefuck --alias)
-eval "$(fnm env --use-on-cd --shell zsh)"
+# eval "$(fnm env --use-on-cd --shell zsh)"
+# fnm
+FNM_PATH="/home/sandepten/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
 
 # theo video node cache speed up
 export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache

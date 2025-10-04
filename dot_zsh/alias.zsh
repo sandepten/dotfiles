@@ -50,10 +50,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# antfu ni (choose the right shell)
-export NI_DEFAULT_AGENT="pnpm"
-export NI_GLOBAL_AGENT="npm"
-
 # port process and kill
 function whichport() {
   lsof -i tcp:$1

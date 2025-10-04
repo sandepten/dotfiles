@@ -17,15 +17,6 @@ map("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
   replace_keycodes = false,
 })
 
--- mapping for movements to stay centered (zz)
-map("n", "j", "jzz")
-map("n", "k", "kzz")
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
-map("n", "J", "mzJ`z") -- keep cursor in the middle when joining lines
-
 -- tmux-sessionizer
 map("n", "<C-p>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 map("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")

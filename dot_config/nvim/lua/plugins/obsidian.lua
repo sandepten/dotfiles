@@ -7,6 +7,10 @@ return {
     ---@module 'obsidian'
     ---@type obsidian.config
     opts = {
+      disable_frontmatter = false,
+      ui = {
+        enable = false,
+      },
       workspaces = {
         {
           name = "personal",
@@ -40,9 +44,13 @@ return {
     },
   },
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {},
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+
+    -- For blink.cmp's completion
+    -- source
+    -- dependencies = {
+    --     "saghen/blink.cmp"
+    -- },
   },
 }

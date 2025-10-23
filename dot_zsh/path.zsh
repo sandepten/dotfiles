@@ -36,7 +36,7 @@ fi
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh)"
 eval $(thefuck --alias)
-# eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 # fnm
 FNM_PATH="/home/sandepten/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -48,12 +48,12 @@ fi
 export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache
 
 # antfu ni (choose the right shell)
-export NI_DEFAULT_AGENT="pnpm"
+export NI_DEFAULT_AGENT="bun"
 export NI_GLOBAL_AGENT="npm"
 
 # fzf catppuccin
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=bg:-1,spinner:#F5E0DC,hl:#F38BA8 \
 --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
 --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
 --color=selected-bg:#45475A \

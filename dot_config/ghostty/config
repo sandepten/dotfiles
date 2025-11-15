@@ -1,7 +1,7 @@
 # Font
 font-family = "TX-02"
-font-style="SemiBold"
-font-size= 18
+font-style="Bold"
+font-size= 14
 font-feature="-liga"
 font-thicken=true
 bold-is-bright = true
@@ -10,7 +10,7 @@ bold-is-bright = true
 theme="Catppuccin Mocha"
 
 background-image= "~/Downloads/jinx.png"
-background-image-opacity=0.15
+background-image-opacity=0.25
 background-image-fit = "cover"
 
 cursor-style="bar"

@@ -40,4 +40,7 @@ bindkey '^f' autosuggest-accept
 # zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 # source <(carapace _carapace)
 
+# mac too many files error fix
+ulimit -n 99999
+
 # zprof

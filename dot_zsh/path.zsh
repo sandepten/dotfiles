@@ -36,7 +36,6 @@ fi
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh)"
 eval $(thefuck --alias)
-eval "$(fnm env --use-on-cd --shell zsh)"
 # fnm
 FNM_PATH="/home/sandepten/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -68,6 +67,7 @@ export LANG=en_US.UTF-8
 
 # if whoami is sandeep450.kumar then export node unsafe environment variables as on work laptop zcaler hinders npm install
 if [[ "$(whoami)" == "sandeep450.kumar" ]]; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
   # disable TLS certificate validation for Node.js
   export NODE_TLS_REJECT_UNAUTHORIZED=0
 

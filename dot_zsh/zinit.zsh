@@ -5,7 +5,15 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 #— Initialize completions
-autoload -U compinit && compinit
+autoload -Uz compinit
+# Check if .zcompdump exists and is less than 24 hours old
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+   # If old, run full security check
+   compinit
+else
+   # If new, skip check (-C) and strict security check (-i) to save time
+   compinit -C
+fi
 zinit cdreplay -q
 
 #— Turbo-load lightweight snippets

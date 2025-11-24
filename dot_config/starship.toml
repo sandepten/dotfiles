@@ -37,6 +37,9 @@ cherry_pick = "🍒 PICKING"
 
 # ────────────────────────────
 [git_status]
+format = '([$all_status$ahead_behind]($style) )'
+disabled = false
+timeout = 10
 conflicted = " 🏳 "
 ahead = " 🏎💨 "
 behind = " 😰 "

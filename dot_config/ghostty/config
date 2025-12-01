@@ -24,3 +24,5 @@ macos-option-as-alt = true
 window-decoration = none
 confirm-close-surface = false
 maximize = true
+window-colorspace = display-p3
+macos-non-native-fullscreen = true

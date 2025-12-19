@@ -4,6 +4,7 @@
 alias nv=nvim
 alias vi=nvim
 alias vim=nvim
+alias yay=paru
 
 alias prisma="npx prisma"
 alias cat="bat --plain" # bat is a cat clone with syntax highlighting and Git integration

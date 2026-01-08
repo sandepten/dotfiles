@@ -39,7 +39,7 @@ if [[ -f "$CONFIG_FILE_NAME" ]]; then
 	source "$CONFIG_FILE_NAME"
 fi
 
-if [[ $TS_LOG != "true" ]]; then
+if [[ $TS_LOG == "true" || $TS_LOG == "file" ]]; then
 	if [[ -z $TS_LOG_FILE ]]; then
 		TS_LOG_FILE="$HOME/.local/share/tmux-sessionizer/tmux-sessionizer.logs"
 	fi
@@ -72,6 +72,10 @@ while [[ "$#" -gt 0 ]]; do
 		echo "  -s, --session <name>   session command index."
 		echo "  --vsplit               Create vertical split (horizontal layout) for session command"
 		echo "  --hsplit               Create horizontal split (vertical layout) for session command"
+		echo ""
+		echo "Suggested keybindings for ~/.tmux.conf:"
+		echo "  bind-key -r f run-shell \"tmux neww tmux-sessionizer\""
+		echo "  bind-key -r p run-shell \"tmux popup -E -w 80% -h 80% tmux-sessionizer\""
 		exit 0
 		;;
 	-s | --session)
@@ -313,23 +317,50 @@ handle_split_session_cmd() {
 	fi
 }
 
-if [[ ! -z $session_cmd ]]; then
+# Run fzf with beautiful styling
+run_fzf_selector() {
+	find_dirs | fzf \
+		--border=rounded \
+		--border-label="  tmux-sessionizer " \
+		--prompt="  " \
+		--pointer="▶" \
+		--header="ctrl-d: delete session | enter: select" \
+		--layout=reverse
+}
+
+if [[ -n $session_cmd ]]; then
 	handle_session_cmd
-elif [[ ! -z $user_selected ]]; then
+elif [[ -n $user_selected ]]; then
 	selected="$user_selected"
 else
-	selected=$(find_dirs | fzf)
+	selected=$(run_fzf_selector)
 fi
 
 if [[ -z $selected ]]; then
 	exit 0
 fi
 
+# Handle TMUX session selection (just switch to it)
 if [[ "$selected" =~ ^\[TMUX\]\ (.+)$ ]]; then
-	selected="${BASH_REMATCH[1]}"
+	switch_to "${BASH_REMATCH[1]}"
+	exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+# Validate selection before deriving a name to avoid 'basename illegal argument'
+# Reject empty, dash-prefixed, or non-existent paths
+if [[ -z "$selected" || "$selected" == -* || ! -e "$selected" ]]; then
+	echo "Invalid selection for sessionizer: '$selected'"
+	exit 1
+fi
+
+# Derive a safe session name without calling external 'basename'
+selected_name="${selected##*/}"
+selected_name="${selected_name//./_}"
+
+# Fallback if the path ends with '/' or produces an empty name
+if [[ -z "$selected_name" ]]; then
+	selected_name="session_$(date +%s)"
+fi
 
 if ! is_tmux_running; then
 	tmux new-session -ds "$selected_name" -c "$selected"

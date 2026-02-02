@@ -138,3 +138,23 @@ alias f='open -a Finder '
 
 # funny sudo
 alias please='sudo'
+
+# Decode Base64 (atob)
+atob() {
+  if [ -t 0 ]; then
+    # If no pipe, use the first argument
+    node -e "console.log(atob('$1'))"
+  else
+    # If data is piped in
+    node -e "process.stdin.on('data', d => console.log(atob(d.toString().trim())))"
+  fi
+}
+
+# Encode Base64 (btoa)
+btoa() {
+  if [ -t 0 ]; then
+    node -e "console.log(btoa('$1'))"
+  else
+    node -e "process.stdin.on('data', d => console.log(btoa(d.toString().trim())))"
+  fi
+}

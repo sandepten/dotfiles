@@ -1,13 +1,14 @@
+# Performance profiling - uncomment to debug startup performance
 # zmodload zsh/zprof
-# Zinit
-source ~/.zsh/zinit.zsh
-source ~/.zsh/tmux.zsh
-source ~/.zsh/alias.zsh
-source ~/.zsh/path.zsh
+# Zinit - load with error handling
+[[ -f ~/.zsh/zinit.zsh ]] && source ~/.zsh/zinit.zsh || echo "Warning: ~/.zsh/zinit.zsh not found"
+[[ -f ~/.zsh/tmux.zsh ]] && source ~/.zsh/tmux.zsh || echo "Warning: ~/.zsh/tmux.zsh not found"
+[[ -f ~/.zsh/alias.zsh ]] && source ~/.zsh/alias.zsh || echo "Warning: ~/.zsh/alias.zsh not found"
+[[ -f ~/.zsh/path.zsh ]] && source ~/.zsh/path.zsh || echo "Warning: ~/.zsh/path.zsh not found"
 
 # only source arch if the system is arch linux
-if [[ -f ~/.zsh/arch.zsh && -d /etc/arch-release ]]; then
-  source ~/.zsh/arch.zsh
+if [[ "$(uname)" == "Linux" && -f /etc/arch-release && -f ~/.zsh/arch.zsh ]]; then
+  source ~/.zsh/arch.zsh || echo "Warning: ~/.zsh/arch.zsh failed to load"
 fi
 
 # History
@@ -41,6 +42,7 @@ bindkey '^f' autosuggest-accept
 # source <(carapace _carapace)
 
 # mac too many files error fix
-ulimit -n 99999
+ulimit -n 65536
 
+# Performance profiling output - uncomment after zprof at top
 # zprof

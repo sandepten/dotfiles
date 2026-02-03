@@ -41,30 +41,41 @@ alias ......="cd ../../../../.."
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-# yazi file explorer
+# yazi file explorer - with error handling
 function y() {
+	if ! command -v yazi >/dev/null 2>&1; then
+		echo "yazi not found - install with: cargo install yazi"
+		return 1
+	fi
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+	if cwd="$(command cat -- "$tmp" 2>/dev/null)" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
 
-# port process and kill
+# port process and kill - with error handling
 function whichport() {
-  lsof -i tcp:$1
+  lsof -i tcp:$1 2>/dev/null || echo "No process found on port $1"
 }
 function killport() {
-  lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill -9
+  local pids
+  pids=$(lsof -i tcp:$1 2>/dev/null | awk 'NR!=1 {print $2}')
+  if [[ -n "$pids" ]]; then
+    echo "$pids" | xargs kill -9
+    echo "Killed processes on port $1"
+  else
+    echo "No process found on port $1"
+  fi
 }
 
-# clenaup node_modules in the current directory recursively
+# cleanup node_modules in the current directory recursively
 function cleanmodules() {
-  find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
+  find . -name "node_modules" -type d -prune -exec rm -rf {} + 2>/dev/null || true
 }
 
-# extract
+# extract - improved error handling
 function extract() {
   local remove_archive
   local success
@@ -76,6 +87,7 @@ function extract() {
     echo
     echo Options:
     echo "    -r, --remove    Remove archive."
+    return 1
   fi
 
   remove_archive=1
@@ -95,7 +107,7 @@ function extract() {
     file_name="$( basename "$1" )"
     extract_dir="$( echo "$file_name" | sed "s/\.${1##*.}//g" )"
     case "$1" in
-      (*.tar.gz|*.tgz) [ -z $commands[pigz] ] && tar zxvf "$1" || pigz -dc "$1" | tar xv ;;
+      (*.tar.gz|*.tgz) command -v pigz >/dev/null && pigz -dc "$1" | tar xv || tar zxvf "$1" ;;
       (*.tar.bz2|*.tbz|*.tbz2) tar xvjf "$1" ;;
       (*.tar.xz|*.txz) tar --xz --help &> /dev/null \
         && tar --xz -xvf "$1" \
@@ -104,37 +116,41 @@ function extract() {
       && tar --lzma -xvf "$1" \
       || lzcat "$1" | tar xvf - ;;
   (*.tar) tar xvf "$1" ;;
-  (*.gz) [ -z $commands[pigz] ] && gunzip "$1" || pigz -d "$1" ;;
+  (*.gz) command -v pigz >/dev/null && pigz -d "$1" || gunzip "$1" ;;
   (*.bz2) bunzip2 "$1" ;;
   (*.xz) unxz "$1" ;;
   (*.lzma) unlzma "$1" ;;
   (*.Z) uncompress "$1" ;;
-  (*.zip|*.war|*.jar|*.sublime-package) unzip "$1" -d $extract_dir ;;
-  (*.rar) unrar x -ad "$1" ;;
-  (*.7z) 7za x "$1" ;;
+  (*.zip|*.war|*.jar|*.sublime-package) mkdir -p "$extract_dir" && unzip "$1" -d "$extract_dir" ;;
+  (*.rar) unrar x -ad "$1" 2>/dev/null || echo "unrar not found, install for .rar support" ;;
+  (*.7z) 7za x "$1" 2>/dev/null || echo "7za not found, install for .7z support" ;;
   (*.deb)
-    mkdir -p "$extract_dir/control"
-    mkdir -p "$extract_dir/data"
-    cd "$extract_dir"; ar vx "../${1}" > /dev/null
-    cd control; tar xzvf ../control.tar.gz
-    cd ../data; tar xzvf ../data.tar.gz
-    cd ..; rm *.tar.gz debian-binary
-    cd ..
+    mkdir -p "$extract_dir/control" "$extract_dir/data"
+    cd "$extract_dir" || continue
+    ar vx "../${1}" > /dev/null 2>&1 || { echo "ar not found, install for .deb support"; cd ..; continue; }
+    cd control && tar xzvf ../control.tar.gz 2>/dev/null
+    cd ../data && tar xzvf ../data.tar.gz 2>/dev/null
+    cd .. && rm -f *.tar.gz debian-binary 2>/dev/null
+    cd .. || continue
     ;;
   (*)
-    echo "extract: '$1' cannot be extracted" 1>&2
+    echo "extract: '$1' cannot be extracted (unsupported format)" 1>&2
     success=1
     ;;
 esac
 
-(( success = $success > 0 ? $success : $? ))
-(( $success == 0 )) && (( $remove_archive == 0 )) && rm "$1"
+success=$?
+(( success == 0 && remove_archive == 0 )) && rm -f "$1"
 shift
   done
 }
 
-# finder
-alias f='open -a Finder '
+# finder - macOS only
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias f='open -a Finder '
+else
+  alias f='xdg-open '  # Linux alternative
+fi
 
 # funny sudo
 alias please='sudo'

@@ -22,7 +22,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
-if [ "$(uname)" = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ] && [ -x "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -31,16 +31,40 @@ if [ -x "$(command -v nvim)" ]; then
   export EDITOR=nvim
 fi
 
-# Shell integrations
+# Shell integrations - lazy loaded for better startup performance
 # source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(atuin init zsh)"
-eval $(thefuck --alias)
-# fnm
-FNM_PATH="/home/sandepten/.local/share/fnm"
+
+# Lazy load zoxide
+if command -v zoxide >/dev/null 2>&1; then
+  zoxide() {
+    unfunction zoxide
+    eval "$(zoxide init --cmd cd zsh)"
+    zoxide "$@"
+  }
+fi
+
+# Lazy load atuin
+if command -v atuin >/dev/null 2>&1; then
+  atuin() {
+    unfunction atuin
+    eval "$(atuin init zsh)"
+    atuin "$@"
+  }
+fi
+
+# Lazy load thefuck
+if command -v thefuck >/dev/null 2>&1; then
+  fuck() {
+    unfunction fuck
+    eval $(thefuck --alias)
+    fuck "$@"
+  }
+fi
+# fnm - dynamic path detection
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env)" 2>/dev/null || echo "Warning: fnm env failed"
 fi
 
 # theo video node cache speed up
@@ -65,12 +89,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# if whoami is sandeep450.kumar then export node unsafe environment variables as on work laptop zcaler hinders npm install
-if [[ "$(whoami)" == "sandeep450.kumar" ]]; then
-  eval "$(fnm env --use-on-cd --shell zsh)"
+# Work environment settings - activated via config file for security
+if [[ -f "$HOME/.config/work-node-config" ]]; then
+  command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)" || echo "Warning: fnm not found for work config"
   # disable TLS certificate validation for Node.js
   export NODE_TLS_REJECT_UNAUTHORIZED=0
 
   # disable strict SSL checks in npm
-  npm config set strict-ssl false >/dev/null 2>&1
+  command -v npm >/dev/null 2>&1 && npm config set strict-ssl false >/dev/null 2>&1 || echo "Warning: npm not found"
 fi

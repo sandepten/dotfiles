@@ -31,17 +31,11 @@ if [ -x "$(command -v nvim)" ]; then
   export EDITOR=nvim
 fi
 
-# Shell integrations - lazy loaded for better startup performance
+# Shell integrations
 # source <(fzf --zsh)
 
-# Lazy load zoxide
-if command -v zoxide >/dev/null 2>&1; then
-  zoxide() {
-    unfunction zoxide
-    eval "$(zoxide init --cmd cd zsh)"
-    zoxide "$@"
-  }
-fi
+# zoxide - must be initialized immediately to override cd
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
 
 # Lazy load atuin
 if command -v atuin >/dev/null 2>&1; then

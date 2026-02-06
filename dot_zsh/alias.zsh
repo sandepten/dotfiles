@@ -174,3 +174,12 @@ btoa() {
     node -e "process.stdin.on('data', d => console.log(btoa(d.toString().trim())))"
   fi
 }
+
+
+function generate_uuid() {
+  # Generate a UUID and remove the trailing newline.
+  uuid=$(uuidgen | tr -d '\n')
+  # Optional: convert to lowercase, as some systems output uppercase by default
+  # uuid=${uuid:l} 
+  echo "$uuid"
+}

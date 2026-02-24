@@ -4,7 +4,11 @@
 alias nv=nvim
 alias vi=nvim
 alias vim=nvim
+
+{{- if eq .chezmoi.os "linux" }}
+
 alias yay=paru
+{{- end }}
 
 alias prisma="npx prisma"
 alias cat="bat --plain" # bat is a cat clone with syntax highlighting and Git integration
@@ -145,12 +149,15 @@ shift
   done
 }
 
-# finder - macOS only
-if [[ "$(uname)" == "Darwin" ]]; then
-  alias f='open -a Finder '
-else
-  alias f='xdg-open '  # Linux alternative
-fi
+{{- if eq .chezmoi.os "darwin" }}
+
+# finder
+alias f='open -a Finder '
+{{- else }}
+
+# file manager
+alias f='xdg-open '
+{{- end }}
 
 # funny sudo
 alias please='sudo'

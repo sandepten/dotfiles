@@ -8,6 +8,15 @@ export PATH=$PATH:~/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:~/.local/bin"
 
+{{- if eq .chezmoi.os "darwin" }}
+
+# Homebrew
+if [ -x "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+{{- end }}
+
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
@@ -21,10 +30,6 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
   PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-
-if [ "$(uname)" = "Darwin" ] && [ -x "/opt/homebrew/bin/brew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
 
 ## nvim as default editor
 if [ -x "$(command -v nvim)" ]; then
@@ -54,6 +59,7 @@ if command -v thefuck >/dev/null 2>&1; then
     fuck "$@"
   }
 fi
+
 # fnm - dynamic path detection
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -65,7 +71,7 @@ fi
 export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache
 
 # antfu ni (choose the right shell)
-export NI_DEFAULT_AGENT="bun"
+export NI_DEFAULT_AGENT="{{ .default_node_agent }}"
 export NI_GLOBAL_AGENT="npm"
 
 # fzf catppuccin
@@ -83,12 +89,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Work environment settings - activated via config file for security
-if [[ -f "$HOME/.config/work-node-config" ]]; then
-  command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)" || echo "Warning: fnm not found for work config"
-  # disable TLS certificate validation for Node.js
-  export NODE_TLS_REJECT_UNAUTHORIZED=0
+{{- if .is_work }}
 
-  # disable strict SSL checks in npm
-  command -v npm >/dev/null 2>&1 && npm config set strict-ssl false >/dev/null 2>&1 || echo "Warning: npm not found"
-fi
+# Work environment settings
+command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)" || echo "Warning: fnm not found for work config"
+# disable TLS certificate validation for Node.js
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+# disable strict SSL checks in npm
+command -v npm >/dev/null 2>&1 && npm config set strict-ssl false >/dev/null 2>&1 || echo "Warning: npm not found"
+{{- end }}

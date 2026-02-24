@@ -6,10 +6,13 @@
 [[ -f ~/.zsh/alias.zsh ]] && source ~/.zsh/alias.zsh || echo "Warning: ~/.zsh/alias.zsh not found"
 [[ -f ~/.zsh/path.zsh ]] && source ~/.zsh/path.zsh || echo "Warning: ~/.zsh/path.zsh not found"
 
+{{- if eq .chezmoi.os "linux" }}
+
 # only source arch if the system is arch linux
-if [[ "$(uname)" == "Linux" && -f /etc/arch-release && -f ~/.zsh/arch.zsh ]]; then
+if [[ -f /etc/arch-release && -f ~/.zsh/arch.zsh ]]; then
   source ~/.zsh/arch.zsh || echo "Warning: ~/.zsh/arch.zsh failed to load"
 fi
+{{- end }}
 
 # History
 HISTFILE=~/.zsh_history
@@ -41,8 +44,11 @@ bindkey '^f' autosuggest-accept
 # zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 # source <(carapace _carapace)
 
+{{- if eq .chezmoi.os "darwin" }}
+
 # mac too many files error fix
 ulimit -n 65536
+{{- end }}
 
 # Performance profiling output - uncomment after zprof at top
 # zprof

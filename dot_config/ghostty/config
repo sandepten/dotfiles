@@ -1,6 +1,6 @@
 # Font
 font-family = "Maple Mono NF"
-font-style="Bold"
+font-style="SemiBold"
 font-size= 16
 font-feature="-liga"
 font-thicken=true

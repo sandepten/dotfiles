@@ -4,23 +4,25 @@ return {
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
+    keys = {
+      {
+        "<leader>ot",
+        "<Cmd>Obsidian template<CR>",
+        desc = "Insert template",
+      },
+    },
     ---@module 'obsidian'
     ---@type obsidian.config
     opts = {
-      disable_frontmatter = false,
-      ui = {
-        enable = false,
-      },
+      legacy_commands = false,
       workspaces = {
         {
           name = "personal",
-          path = "~/Documents/obsidian-notes/",
+          path = "~/code/projects/personel/obsidian-notes/",
         },
       },
       notes_subdir = "Cards",
 
-      -- new notes
-      new_notes_location = "Cards",
       ---@param title string|?
       ---@return string
       note_id_func = function(title)
@@ -33,13 +35,6 @@ return {
         time_format = "%H:%M",
         -- A map for custom variables, the key should be the variable and the value a function
         substitutions = {},
-      },
-      completion = {
-        blink = true,
-        create_new = true,
-      },
-      picker = {
-        name = "snacks.pick",
       },
     },
   },

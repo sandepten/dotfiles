@@ -50,6 +50,27 @@ zinit light Aloxaf/fzf-tab
 #— Atuín history tracker
 zinit load atuinsh/atuin
 
+#— Weekly zinit plugin update
+_zinit_weekly_update() {
+    local last_update_file="${XDG_STATE_HOME:-${HOME}/.local/state}/zinit/last_update"
+    local update_interval=604800
+    local now=$(date +%s)
+    mkdir -p "$(dirname $last_update_file)"
+    if [[ -f "$last_update_file" ]]; then
+        local last_update=$(cat "$last_update_file")
+        local elapsed=$((now - last_update))
+        if (( elapsed >= update_interval )); then
+            echo "[zinit] Running weekly plugin update..."
+            zinit update --all --parallel 40
+            echo "$now" > "$last_update_file"
+        fi
+    else
+        echo "$now" > "$last_update_file"
+    fi
+}
+zinit cdreplay -q
+_zinit_weekly_update
+
 #— zsh-vi-mode
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode

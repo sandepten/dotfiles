@@ -4,10 +4,17 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+#— Brew completions (macOS & Linux with brew)
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+elif [[ -d /usr/share/zsh/vendor-completions ]]; then
+    FPATH="/usr/share/zsh/vendor-completions:${FPATH}"
+fi
+
 #— Initialize completions
 autoload -Uz compinit
 # Check if .zcompdump exists and is less than 24 hours old
-if [[ -n "${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24)" ]]; then
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
    # If old, run full security check
    compinit
 else
@@ -15,6 +22,13 @@ else
    compinit -C
 fi
 zinit cdreplay -q
+
+#— Turbo-load lightweight snippets
+zinit ice turbo depth=1 lucid
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::vscode
 
 #— Fast syntax highlighting & autosuggestions
 zinit ice atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay'

@@ -5,11 +5,11 @@ return {
     lazy = true,
     ft = "markdown",
     keys = {
-      {
-        "<leader>ot",
-        "<Cmd>Obsidian template<CR>",
-        desc = "Insert template",
-      },
+      { "<leader>ot", "<Cmd>Obsidian template<CR>", desc = "Insert template" },
+      { "<leader>on", "<Cmd>Obsidian new<CR>", desc = "New note" },
+      { "<leader>od", "<Cmd>Obsidian today<CR>", desc = "Daily note" },
+      { "<leader>os", "<Cmd>Obsidian search<CR>", desc = "Search notes" },
+      { "<leader>ob", "<Cmd>Obsidian backlinks<CR>", desc = "Backlinks" },
     },
     ---@module 'obsidian'
     ---@type obsidian.config
@@ -40,6 +40,6 @@ return {
   },
   {
     "OXY2DEV/markview.nvim",
-    lazy = false,
+    ft = "markdown",
   },
 }

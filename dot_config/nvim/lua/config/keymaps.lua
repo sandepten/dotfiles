@@ -1,25 +1,32 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
 local map = vim.keymap.set
+local wk = require("which-key")
 
--- better redo
-map("n", "U", ":redo<cr>", { noremap = true, silent = true })
-
--- moving lines
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
-map("n", "J", "mzJ`z")
-
--- copilot
-map("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false,
+wk.add({
+  { "<leader>o", group = "Obsidian" },
+  { "<leader>h", group = "Worklog" },
 })
 
--- tmux-sessionizer
-map("n", "<C-p>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-map("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
-map("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
-map("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
-map("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
+map("n", "U", "<cmd>redo<cr>", { desc = "Redo" })
+
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
+map("n", "J", "mzJ`z", { desc = "Join lines (cursor stays)" })
+
+map("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+map("n", "N", "Nzzzv", { desc = "Prev search result (centered)" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Half-page down (centered)" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Half-page up (centered)" })
+
+map("n", "<leader>tc", function()
+  local enabled = vim.lsp.inline_completion.is_enabled()
+  vim.lsp.inline_completion.enable(not enabled)
+  vim.notify("Copilot " .. (enabled and "disabled" or "enabled"))
+end, { desc = "Toggle Copilot" })
+
+if vim.env.TMUX then
+  map("n", "<C-p>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Tmux sessionizer" })
+  map("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>", { desc = "Sessionizer slot 0" })
+  map("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>", { desc = "Sessionizer slot 1" })
+  map("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>", { desc = "Sessionizer slot 2" })
+  map("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>", { desc = "Sessionizer slot 3" })
+end

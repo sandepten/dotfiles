@@ -23,10 +23,3 @@ map("n", "<leader>tc", function()
   vim.notify("Copilot " .. (enabled and "disabled" or "enabled"))
 end, { desc = "Toggle Copilot" })
 
-if vim.env.TMUX then
-  map("n", "<C-p>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Tmux sessionizer" })
-  map("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>", { desc = "Sessionizer slot 0" })
-  map("n", "<M-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>", { desc = "Sessionizer slot 1" })
-  map("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>", { desc = "Sessionizer slot 2" })
-  map("n", "<M-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>", { desc = "Sessionizer slot 3" })
-end

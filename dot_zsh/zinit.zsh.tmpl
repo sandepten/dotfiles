@@ -4,12 +4,35 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+#— Remove dead completion links before compinit scans FPATH
+_prune_dead_completion_links() {
+    local dir link pruned=0
+    for dir in \
+        /opt/homebrew/share/zsh/site-functions \
+        "${XDG_CACHE_HOME:-${HOME}/.cache}/zinit/completions" \
+        "${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/completions"
+    do
+        [[ -d "$dir" ]] || continue
+        for link in "$dir"/_*(N); do
+            [[ -L "$link" && ! -e "$link" ]] || continue
+            rm -f -- "$link"
+            pruned=1
+        done
+    done
+
+    if (( pruned )); then
+        rm -f "${ZDOTDIR:-$HOME}/.zcompdump" "${ZDOTDIR:-$HOME}/.zcompdump.zwc"
+    fi
+}
+_prune_dead_completion_links
+
 #— Brew completions (macOS & Linux with brew)
 if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 elif [[ -d /usr/share/zsh/vendor-completions ]]; then
     FPATH="/usr/share/zsh/vendor-completions:${FPATH}"
 fi
+typeset -gU fpath FPATH
 
 #— Initialize completions
 autoload -Uz compinit
@@ -24,11 +47,15 @@ fi
 zinit cdreplay -q
 
 #— Turbo-load lightweight snippets
+{{- if not .is_work }}
 zinit ice turbo depth=1 lucid
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::vscode
+{{- else }}
+# raw.githubusercontent.com is blocked on the work laptop, so skip OMZ snippets.
+{{- end }}
 
 #— Fast syntax highlighting & autosuggestions
 zinit ice atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay'

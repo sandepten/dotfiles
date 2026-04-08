@@ -3,7 +3,7 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    -- disable ghost text as it intefers with copilot
+    -- Native inline completion already renders suggestions separately.
     completion = {
       ghost_text = {
         enabled = false,

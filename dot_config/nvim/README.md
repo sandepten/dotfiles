@@ -1,18 +1,20 @@
 # Neovim Config
 
-LazyVim-based Neovim configuration with Catppuccin (transparent, no italics).
+LazyVim-based Neovim configuration with Catppuccin, native Copilot inline
+completion, and a small set of local plugin overrides.
 
 ## Key Plugins
 
 | Plugin | Purpose |
 | --- | --- |
-| copilot.vim | AI completions (accept with `<C-J>` in insert mode) |
-| cutlass.nvim | Delete without yanking; `x` is the cut key |
-| obsidian.nvim | Obsidian vault integration (vault: `~/Documents/obsidian-notes/`) |
-| markview.nvim | Rich markdown rendering |
-| worklog.nvim | Work logging (`<leader>ha` add, `<leader>hl` list) |
-| wakatime | Coding time tracking |
-| leetcode.nvim | LeetCode problems (default lang: Java) |
+| `catppuccin` | Transparent Catppuccin theme with italics disabled |
+| `blink.cmp` | Completion menu with ghost text disabled so native inline suggestions stay clear |
+| `obsidian.nvim` | Obsidian workflow for `~/code/projects/personel/obsidian-notes/` |
+| `worklog.nvim` | Work logging with quick add and list mappings |
+| `vim-wakatime` | Coding time tracking |
+| `cutlass.nvim` | Delete without yanking; `x` is the cut key |
+| `neo-tree.nvim` | File explorer on the right side |
+| `leetcode.nvim` | LeetCode workflow with Java as the default language |
 
 ## Custom Keymaps
 
@@ -20,23 +22,31 @@ LazyVim-based Neovim configuration with Catppuccin (transparent, no italics).
 | --- | --- | --- |
 | `U` | Normal | Redo |
 | `J` / `K` | Visual | Move selection down / up |
-| `J` | Normal | Join lines (cursor stays in place) |
-| `<C-J>` | Insert | Accept Copilot suggestion |
-| `<C-p>` | Normal | Tmux sessionizer (requires tmux) |
-| `<M-h/t/n/s>` | Normal | Tmux sessionizer slots 0-3 |
+| `J` | Normal | Join lines and keep the cursor in place |
+| `n` / `N` | Normal | Next / previous search result and recenter |
+| `<C-d>` / `<C-u>` | Normal | Half-page jump and recenter |
+| `<leader>tc` | Normal | Toggle native inline completion |
 | `<leader>ot` | Normal | Insert Obsidian template |
-| `<leader>ha` | Normal | Add worklog |
-| `<leader>hl` | Normal | List worklogs |
+| `<leader>on` | Normal | Create a new Obsidian note |
+| `<leader>od` | Normal | Open today's daily note |
+| `<leader>os` | Normal | Search Obsidian notes |
+| `<leader>ob` | Normal | Show Obsidian backlinks |
+| `<leader>ha` | Normal | Add worklog entry |
+| `<leader>hl` | Normal | List worklog entries |
 
 ## Machine-Specific Assumptions
 
-- **Tmux**: Sessionizer keymaps are only registered inside a tmux session.
-- **Obsidian vault**: Expected at `~/Documents/obsidian-notes/`.
-- **Markdownlint config**: Uses `~/.markdownlint-cli2.yaml` if it exists.
+- Obsidian vault lives at `~/code/projects/personel/obsidian-notes/`.
+- If `~/.markdownlint-cli2.yaml` exists, markdown linting will use it.
+- Native Copilot inline completion expects Neovim 0.12+.
 
 ## LazyVim Extras
 
-Language extras are enabled for: Docker, Git, Go, Helm, Java, JSON, Python,
-Rust, SQL, Tailwind, TOML, TypeScript, YAML. Formatting via Prettier and Black.
-Linting via ESLint. Re-enable removed extras (angular, cmake, elixir, prisma,
-svelte, zig) in `lazyvim.json` if needed.
+Enabled extras currently cover:
+
+- AI: Copilot native
+- Coding: mini-surround, yanky
+- Editor: dial, fzf, illuminate, inc-rename, neo-tree
+- Formatting: black, prettier
+- Languages: Angular, Docker, Git, Go, Helm, Java, JSON, Markdown, Prisma, Python, Rust, SQL, Svelte, Tailwind, TOML, TypeScript, TypeScript OXC, TypeScript tsgo, YAML
+- Utilities: chezmoi, dot, mini-hipatterns

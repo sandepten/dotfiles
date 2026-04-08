@@ -3,6 +3,7 @@ return {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
+    cmd = "Obsidian",
     ft = "markdown",
     keys = {
       { "<leader>ot", "<Cmd>Obsidian template<CR>", desc = "Insert template" },
@@ -37,9 +38,5 @@ return {
         substitutions = {},
       },
     },
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    ft = "markdown",
   },
 }

@@ -20,6 +20,6 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Half-page up (centered)" })
 map("n", "<leader>tc", function()
   local enabled = vim.lsp.inline_completion.is_enabled()
   vim.lsp.inline_completion.enable(not enabled)
-  vim.notify("Copilot " .. (enabled and "disabled" or "enabled"))
-end, { desc = "Toggle Copilot" })
+  vim.notify("Inline completion " .. (enabled and "disabled" or "enabled"))
+end, { desc = "Toggle Inline Completion" })
 

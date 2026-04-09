@@ -36,20 +36,10 @@ if [ -x "$(command -v nvim)" ]; then
   export EDITOR=nvim
 fi
 
-# Shell integrations
-# source <(fzf --zsh)
+# Shell integrations (fzf loaded via zinit in dot_zsh/zinit.zsh.tmpl)
 
 # zoxide - must be initialized immediately to override cd
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
-
-# Lazy load atuin
-if command -v atuin >/dev/null 2>&1; then
-  atuin() {
-    unfunction atuin
-    eval "$(atuin init zsh)"
-    atuin "$@"
-  }
-fi
 
 # Lazy load thefuck
 if command -v thefuck >/dev/null 2>&1; then
@@ -93,6 +83,8 @@ export LANG=en_US.UTF-8
 
 # Work environment settings
 command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)" || echo "Warning: fnm not found for work config"
+# WARNING: insecure TLS workaround for constrained corporate environments only.
+# Prefer proper CA trust configuration when possible.
 # disable TLS certificate validation for Node.js
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 # disable strict SSL checks in npm

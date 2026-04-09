@@ -4,6 +4,14 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+#— Keep vi keymap available before delayed vi-mode plugin loads
+bindkey -v
+
+#— Completion dump location (XDG cache, host + zsh version specific)
+typeset -g ZSH_CACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
+mkdir -p -- "$ZSH_CACHE_DIR"
+typeset -g ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}-${ZSH_VERSION}"
+
 #— Remove dead completion links before compinit scans FPATH
 _prune_dead_completion_links() {
     local dir link pruned=0
@@ -20,9 +28,7 @@ _prune_dead_completion_links() {
         done
     done
 
-    if (( pruned )); then
-        rm -f "${ZDOTDIR:-$HOME}/.zcompdump" "${ZDOTDIR:-$HOME}/.zcompdump.zwc"
-    fi
+    (( pruned )) && rm -f -- "$ZSH_COMPDUMP" "${ZSH_COMPDUMP}.zwc"
 }
 _prune_dead_completion_links
 
@@ -34,72 +40,132 @@ elif [[ -d /usr/share/zsh/vendor-completions ]]; then
 fi
 typeset -gU fpath FPATH
 
-#— Initialize completions
-autoload -Uz compinit
-# Check if .zcompdump exists and is less than 24 hours old
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-   # If old, run full security check
-   compinit
-else
-   # If new, skip check (-C) and strict security check (-i) to save time
-   compinit -C
-fi
-zinit cdreplay -q
-
-#— Turbo-load lightweight snippets
+#— Load lightweight snippets (macOS command-not-found only)
 {{- if not .is_work }}
-zinit ice turbo depth=1 lucid
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
+{{- if eq .chezmoi.os "darwin" }}
+zinit ice depth=1 lucid
 zinit snippet OMZP::command-not-found
-zinit snippet OMZP::vscode
+{{- end }}
 {{- else }}
 # raw.githubusercontent.com is blocked on the work laptop, so skip OMZ snippets.
 {{- end }}
 
+#— Completion providers (load before compinit)
+zinit light zsh-users/zsh-completions
+
+#— fzf (load binary + shell integration before compinit)
+zinit ice from"gh-r" as"program" atclone"./install --bin" atpull"%atclone"
+zinit light junegunn/fzf
+if command -v fzf >/dev/null 2>&1; then
+    source <(fzf --zsh)
+    (( ${+widgets[fzf-history-widget]} )) && bindkey "^R" fzf-history-widget
+    (( ${+widgets[autosuggest-accept]} )) && bindkey "^f" autosuggest-accept
+fi
+
+#— Initialize completions once
+autoload -Uz compinit
+if [[ -n ${ZSH_COMPDUMP}(#qN.mh-24) ]]; then
+   compinit -C -d "$ZSH_COMPDUMP"
+else
+   compinit -d "$ZSH_COMPDUMP"
+fi
+zinit cdreplay -q
+
 #— Fast syntax highlighting & autosuggestions
-zinit ice atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay'
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice atload"!_zsh_autosuggest_start" lucid
 zinit light zsh-users/zsh-autosuggestions
 
-#— zsh-completions, loaded after compinit
-zinit light zsh-users/zsh-completions
-
-#— fzf & fzf-tab
-zinit ice from"gh-r" as"program" atclone"./install --bin"
-zinit light junegunn/fzf
-
+#— fzf-tab
 zinit ice depth=1
 zinit light Aloxaf/fzf-tab
 
-#— Atuín history tracker
-zinit load atuinsh/atuin
+#— Atuín history tracker (eager)
+zinit light atuinsh/atuin
 
-#— Weekly zinit plugin update
+#— Weekly zinit plugin update (non-blocking)
+typeset -g _ZINIT_UPDATE_WARNED=0
+
 _zinit_weekly_update() {
-    local last_update_file="${XDG_STATE_HOME:-${HOME}/.local/state}/zinit/last_update"
+    [[ -o interactive ]] || return 0
+
+    local state_dir="${XDG_STATE_HOME:-${HOME}/.local/state}/zinit"
+    local last_update_file="${state_dir}/last_update"
+    local lock_file="${state_dir}/weekly_update.lock"
+    local lock_token="${state_dir}/weekly_update.lock.${HOST}.$$"
+    local log_file="${state_dir}/weekly_update.log"
+    local error_file="${state_dir}/weekly_update.error"
     local update_interval=604800
-    local now=$(date +%s)
-    mkdir -p "$(dirname $last_update_file)"
+    local now
+
+    now=$(date +%s)
+    mkdir -p -- "$state_dir"
+
+    local last_update=0
     if [[ -f "$last_update_file" ]]; then
-        local last_update=$(cat "$last_update_file")
-        local elapsed=$((now - last_update))
-        if (( elapsed >= update_interval )); then
-            echo "[zinit] Running weekly plugin update..."
-            zinit update --all --parallel 40
-            echo "$now" > "$last_update_file"
+        read -r last_update < "$last_update_file"
+    fi
+    if (( now - last_update < update_interval )); then
+        return 0
+    fi
+
+    (
+        if command -v flock >/dev/null 2>&1; then
+            exec 9>"$lock_file" || exit 0
+            flock -n 9 || exit 0
+        else
+            : >| "$lock_token" || exit 0
+            ln "$lock_token" "$lock_file" 2>/dev/null || {
+                rm -f -- "$lock_token"
+                exit 0
+            }
+            trap 'rm -f -- "$lock_file" "$lock_token"' EXIT
         fi
-    else
-        echo "$now" > "$last_update_file"
+
+        local now_inner last_inner rc
+        now_inner=$(date +%s)
+        last_inner=0
+        if [[ -f "$last_update_file" ]]; then
+            read -r last_inner < "$last_update_file"
+        fi
+        if (( now_inner - last_inner < update_interval )); then
+            exit 0
+        fi
+
+        {
+            print -r -- "[zinit] weekly update started at $(date "+%Y-%m-%dT%H:%M:%S%z")"
+            zinit update --all --parallel 40
+            rc=$?
+            print -r -- "[zinit] weekly update finished with exit code ${rc}"
+        } >>"$log_file" 2>&1
+
+        print -r -- "$now_inner" >! "$last_update_file"
+        if (( rc == 0 )); then
+            rm -f -- "$error_file"
+        else
+            print -r -- "$now_inner:${rc}" >! "$error_file"
+        fi
+    ) &!
+}
+
+_zinit_update_warn_once() {
+    [[ -o interactive ]] || return 0
+    (( _ZINIT_UPDATE_WARNED )) && return 0
+
+    local error_file="${XDG_STATE_HOME:-${HOME}/.local/state}/zinit/weekly_update.error"
+    if [[ -s "$error_file" ]]; then
+        print -u2 -- "[zinit] warning: last weekly update failed (see ${error_file})"
+        _ZINIT_UPDATE_WARNED=1
     fi
 }
-zinit cdreplay -q
+
+_zinit_update_warn_once
 _zinit_weekly_update
 
 #— zsh-vi-mode
-zinit ice depth=1
+zinit ice depth=1 lucid wait'0' \
+          atload'bindkey -M viins "^f" autosuggest-accept; (( ${+widgets[fzf-history-widget]} )) && bindkey -M viins "^R" fzf-history-widget'
 zinit light jeffreytse/zsh-vi-mode
 
 #— Starship prompt

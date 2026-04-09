@@ -1,5 +1,7 @@
-# Performance profiling - uncomment to debug startup performance
-# zmodload zsh/zprof
+# Optional startup profiling: ZSH_PROFILE_STARTUP=1 zsh -i -c exit
+if [[ -n "${ZSH_PROFILE_STARTUP:-}" ]]; then
+  zmodload zsh/zprof
+fi
 # Zinit - load with error handling
 [[ -f ~/.zsh/zinit.zsh ]] && source ~/.zsh/zinit.zsh || echo "Warning: ~/.zsh/zinit.zsh not found"
 [[ -f ~/.zsh/alias.zsh ]] && source ~/.zsh/alias.zsh || echo "Warning: ~/.zsh/alias.zsh not found"
@@ -29,8 +31,11 @@ setopt hist_find_no_dups
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z}={A-Z}' \
+  'r:|[._-]=** r:|=**'
+zstyle ':completion:*' menu select
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always -- "$realpath"'
 # zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
@@ -49,5 +54,6 @@ bindkey '^f' autosuggest-accept
 ulimit -n 65536
 {{- end }}
 
-# Performance profiling output - uncomment after zprof at top
-# zprof
+if [[ -n "${ZSH_PROFILE_STARTUP:-}" ]]; then
+  zprof
+fi

@@ -2,10 +2,11 @@
 if [[ -n "${ZSH_PROFILE_STARTUP:-}" ]]; then
   zmodload zsh/zprof
 fi
+# Paths and XDG vars (must be before zinit which uses XDG_*)
+[[ -f ~/.zsh/path.zsh ]] && source ~/.zsh/path.zsh || echo "Warning: ~/.zsh/path.zsh not found"
 # Zinit - load with error handling
 [[ -f ~/.zsh/zinit.zsh ]] && source ~/.zsh/zinit.zsh || echo "Warning: ~/.zsh/zinit.zsh not found"
 [[ -f ~/.zsh/alias.zsh ]] && source ~/.zsh/alias.zsh || echo "Warning: ~/.zsh/alias.zsh not found"
-[[ -f ~/.zsh/path.zsh ]] && source ~/.zsh/path.zsh || echo "Warning: ~/.zsh/path.zsh not found"
 
 {{- if eq .chezmoi.os "linux" }}
 

@@ -1,6 +1,8 @@
 return {
   {
     "kawre/leetcode.nvim",
+    lazy = true,
+    cmd = "Leet",
     dependencies = {
       "MunifTanjim/nui.nvim",
     },

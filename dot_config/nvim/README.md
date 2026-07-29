@@ -7,14 +7,15 @@ completion, and a small set of local plugin overrides.
 
 | Plugin | Purpose |
 | --- | --- |
-| `catppuccin` | Transparent Catppuccin theme with italics disabled |
+| `catppuccin` | Transparent Catppuccin theme (`catppuccin-nvim`) with italics disabled |
 | `blink.cmp` | Completion menu with ghost text disabled so native inline suggestions stay clear |
-| `obsidian.nvim` | Obsidian workflow for `~/code/projects/personel/obsidian-notes/` |
+| `obsidian.nvim` | Obsidian workflow for `~/code/projects/personel/obsidian-notes/` (skipped if vault missing) |
 | `worklog.nvim` | Work logging with quick add and list mappings |
 | `vim-wakatime` | Coding time tracking |
 | `cutlass.nvim` | Delete without yanking; `x` is the cut key |
+| `hardtime.nvim` | Hint-mode motion training; quiet (no popup notifications) |
 | `neo-tree.nvim` | File explorer on the right side |
-| `leetcode.nvim` | LeetCode workflow with Java as the default language |
+| `leetcode.nvim` | LeetCode workflow with Java as the default language (`:Leet`) |
 
 ## Custom Keymaps
 
@@ -23,8 +24,6 @@ completion, and a small set of local plugin overrides.
 | `U` | Normal | Redo |
 | `J` / `K` | Visual | Move selection down / up |
 | `J` | Normal | Join lines and keep the cursor in place |
-| `n` / `N` | Normal | Next / previous search result and recenter |
-| `<C-d>` / `<C-u>` | Normal | Half-page jump and recenter |
 | `<leader>tc` | Normal | Toggle native inline completion |
 | `<leader>ot` | Normal | Insert Obsidian template |
 | `<leader>on` | Normal | Create a new Obsidian note |
@@ -33,6 +32,11 @@ completion, and a small set of local plugin overrides.
 | `<leader>ob` | Normal | Show Obsidian backlinks |
 | `<leader>ha` | Normal | Add worklog entry |
 | `<leader>hl` | Normal | List worklog entries |
+
+## Options of Note
+
+- `scrolloff = 999` keeps the cursor vertically centered while scrolling.
+- TypeScript LSP uses `tsgo` via the LazyVim `lang.typescript.tsgo` extra.
 
 ## Machine-Specific Assumptions
 
@@ -44,7 +48,7 @@ completion, and a small set of local plugin overrides.
 
 Enabled extras currently cover:
 
-- AI: Copilot native
+- AI: Copilot chat, Copilot native
 - Coding: mini-surround, yanky
 - Editor: dial, fzf, illuminate, inc-rename, neo-tree
 - Formatting: black, prettier

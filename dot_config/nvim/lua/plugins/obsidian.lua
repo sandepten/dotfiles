@@ -1,7 +1,11 @@
+local vault = vim.fn.expand("~/code/projects/personel/obsidian-notes")
+local vault_exists = vim.uv.fs_stat(vault) ~= nil
+
 return {
   {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
+    enabled = vault_exists,
     lazy = true,
     cmd = "Obsidian",
     ft = "markdown",
@@ -19,7 +23,7 @@ return {
       workspaces = {
         {
           name = "personal",
-          path = "~/code/projects/personel/obsidian-notes/",
+          path = vault,
         },
       },
       notes_subdir = "Cards",
@@ -34,7 +38,6 @@ return {
         folder = "Extras/Templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M",
-        -- A map for custom variables, the key should be the variable and the value a function
         substitutions = {},
       },
     },

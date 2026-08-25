@@ -36,9 +36,16 @@ return {
 
       templates = {
         folder = "Extras/Templates",
-        date_format = "%Y-%m-%d",
-        time_format = "%H:%M",
-        substitutions = {},
+        date_format = "YYYY-MM-DD",
+        time_format = "HH:mm",
+      },
+
+      daily_notes = {
+        -- "YYYY/YYYY-MM-DD" nests dailies per year: Calendar/2026/2026-08-25.md
+        folder = "Calendar",
+        date_format = "YYYY/YYYY-MM-DD",
+        default_tags = { "journal" },
+        template = "Daily note.md",
       },
     },
   },

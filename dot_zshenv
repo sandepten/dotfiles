@@ -1,1 +1,3 @@
-. "$HOME/.cargo/env"
+# Omarchy env — needed even for non-interactive/login shells (mirrors bash env-bootstrap)
+[[ -r /usr/share/omarchy/default/bash/env-bootstrap ]] && source /usr/share/omarchy/default/bash/env-bootstrap
+[[ -r "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"

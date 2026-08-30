@@ -14,15 +14,33 @@
   pager = delta
 	longpaths = true
 	editor = nvim
+[alias] # Omarchy - useful shortcuts
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
 [pull]
 	rebase = true
 [push]
   autoSetupRemote = true
   default = current
+[diff] # Omarchy - clearer diffs
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+[commit] # Omarchy
+	verbose = true
+[column] # Omarchy
+	ui = auto
+[branch] # Omarchy
+	sort = -committerdate
+[tag] # Omarchy
+	sort = -version:refname
 [rebase]
   autoStash = true
   missingCommitsCheck = warn
 [rerere]
 	enabled = true
+	autoupdate = true # Omarchy
 [delta]
   line-numbers = true

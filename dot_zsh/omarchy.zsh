@@ -1,72 +1,55 @@
-# Omarchy zsh bridge — migrated from /usr/share/omarchy/default/bash/rc
-# Keeps your zsh config (chezmoi) + Omarchy bash things (aliases, functions, env)
-# Sourced from ~/.zshrc after path.zsh so user's aliases can overwrite omarchy's on conflict.
-# See /usr/share/omarchy/default/bash/* for originals.
+# Omarchy zsh bridge — aligned to https://github.com/omacom/omarchy-zsh
+# Architecture: zoptions (zsh-specific, 249 lines) + shell/all (shared envs/aliases/functions/inits via omadots)
+# Shared config lives in /usr/share/omarchy-zsh/shell/*, sourced directly so package updates apply.
+# Falls back to legacy /usr/share/omarchy/default/bash/* if omarchy-zsh not installed.
 
-: "${OMARCHY_PATH:=/usr/share/omarchy}"
-export OMARCHY_PATH
-
-# ---- env (mirrors bash/env-bootstrap + bash/envs) ----
-[[ -r "$OMARCHY_PATH/default/bash/env-bootstrap" ]] && source "$OMARCHY_PATH/default/bash/env-bootstrap"
-[[ -r "$OMARCHY_PATH/default/bash/envs" ]] && source "$OMARCHY_PATH/default/bash/envs"
-
-# ---- aliases (Omarchy file system, directories, tools) ----
-if [[ -r "$OMARCHY_PATH/default/bash/aliases" ]]; then
-  # Source Omarchy aliases; user's ~/.zsh/alias.zsh is sourced AFTER this file
-  # so chezmoi aliases win on conflict (e.g., `c`, `ls`, `lt`).
-  source "$OMARCHY_PATH/default/bash/aliases" 2>/dev/null || true
+# Prefer official omarchy-zsh package (1.5.0-2)
+if [[ -f /usr/share/omarchy-zsh/shell/zoptions ]]; then
+  source /usr/share/omarchy-zsh/shell/zoptions 2>/dev/null || true
 fi
 
-# ---- functions / fns (compression, drives, herdr, rsyncing, ssh, tmux, worktrees) ----
-if [[ -d "$OMARCHY_PATH/default/bash/fns" ]]; then
-  for f in "$OMARCHY_PATH/default/bash/fns"/*(N.); do
-    [[ -r "$f" ]] && source "$f" 2>/dev/null || true
-  done
-fi
-
-# ---- zsh-specific init (port of bash/init) ----
-# mise
-if command -v mise &>/dev/null; then
-  eval "$(mise activate zsh 2>/dev/null)" || true
-fi
-
-# zoxide — restore user's preferred `zoxide init --cmd cd zsh` (path.zsh does this)
-# Omarchy's aliases set `alias cd="zd"` which would clobber it, so re-init.
-if command -v zoxide &>/dev/null; then
-  eval "$(zoxide init --cmd cd zsh 2>/dev/null)" || true
-fi
-
-# fzf — zinit already does `fzf --zsh`, provide system fallback only
-if command -v fzf &>/dev/null; then
-  if [[ -f /usr/share/fzf/completion.zsh ]]; then
-    source /usr/share/fzf/completion.zsh 2>/dev/null || true
+if [[ -f /usr/share/omarchy-zsh/shell/all ]]; then
+  source /usr/share/omarchy-zsh/shell/all 2>/dev/null || true
+else
+  # Legacy fallback — mirrors previous /usr/share/omarchy/default/bash/rc
+  : "${OMARCHY_PATH:=/usr/share/omarchy}"
+  export OMARCHY_PATH
+  [[ -r "$OMARCHY_PATH/default/bash/env-bootstrap" ]] && source "$OMARCHY_PATH/default/bash/env-bootstrap"
+  [[ -r "$OMARCHY_PATH/default/bash/envs" ]] && source "$OMARCHY_PATH/default/bash/envs"
+  if [[ -r "$OMARCHY_PATH/default/bash/aliases" ]]; then
+    source "$OMARCHY_PATH/default/bash/aliases" 2>/dev/null || true
   fi
-  if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-    source /usr/share/fzf/key-bindings.zsh 2>/dev/null || true
+  if [[ -d "$OMARCHY_PATH/default/bash/fns" ]]; then
+    for f in "$OMARCHY_PATH/default/bash/fns"/*(N.); do
+      [[ -r "$f" ]] && source "$f" 2>/dev/null || true
+    done
+  fi
+  # legacy inits (mise/starship/zoxide/try/fzf) — now handled by omarchy-zsh/shell/inits
+  if command -v mise &>/dev/null; then eval "$(mise activate zsh 2>/dev/null)" || true; fi
+  if command -v zoxide &>/dev/null; then eval "$(zoxide init zsh 2>/dev/null)" || true; fi
+  if command -v fzf &>/dev/null; then
+    [[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh 2>/dev/null || true
+    [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh 2>/dev/null || true
+  fi
+  if [[ -o interactive && "${TERM:-}" != "dumb" ]] && command -v starship &>/dev/null; then
+    eval "$(starship init zsh 2>/dev/null)" || true
+  fi
+  if [[ -r "$OMARCHY_PATH/default/bash/completions" ]]; then
+    autoload -Uz bashcompinit 2>/dev/null && bashcompinit 2>/dev/null || true
+    source "$OMARCHY_PATH/default/bash/completions" 2>/dev/null || true
   fi
 fi
 
-# starship — handled via zinit (starship/starship), fallback if zinit not loaded
-if [[ -o interactive ]] && [[ "${TERM:-}" != "dumb" ]] && command -v starship &>/dev/null; then
-  # zinit's starship plugin defines prompt via init.zsh; if not present, init now
-  if ! (( $+functions[starship] )) && [[ -z "${STARSHIP_SHELL:-}" ]]; then
-    # Avoid double init when zinit already sourced it
-    if ! whence prompt_starship_setup >/dev/null 2>&1; then
-      eval "$(starship init zsh 2>/dev/null)" || true
-    fi
-  fi
-fi
+# zoxide: official omarchy-zsh uses `alias cd="zd"` + zd() wrapper (with icon+pwd).
+# Your path.zsh previously did `zoxide init --cmd cd` (direct cd). Keep official behavior
+# for full omarchy-zsh compliance; uncomment below to restore direct cd:
+# if command -v zoxide &>/dev/null; then
+#   unalias cd 2>/dev/null; eval "$(zoxide init --cmd cd zsh 2>/dev/null)" || true
+# fi
 
-# completions — bash completions via bashcompinit for zsh
-if [[ -r "$OMARCHY_PATH/default/bash/completions" ]]; then
-  autoload -Uz bashcompinit 2>/dev/null && bashcompinit 2>/dev/null || true
-  source "$OMARCHY_PATH/default/bash/completions" 2>/dev/null || true
-fi
-
-# local bin env (bashrc does `. "$HOME/.local/share/../bin/env"` and `~/.local/bin/env`)
+# Local env fallbacks (bashrc compatibility)
 [[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env" 2>/dev/null || true
 [[ -f "$HOME/.local/share/../bin/env" ]] && source "$HOME/.local/share/../bin/env" 2>/dev/null || true
-# cargo env is already in ~/.zshenv, but keep fallback
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env" 2>/dev/null || true
 
-export OMARCHY_PATH
+# OMARCHY_PATH already exported via env-bootstrap

@@ -1,44 +1,29 @@
--- This file sources other files in `hyprland` and `custom` folders
--- You wanna add your stuff in files in `custom`
+-- Learn how to configure Hyprland: https://wiki.hypr.land/Configuring/Start/
 
--- Internal stuff --
-require("hyprland.lib")
-require("hyprland.services")
+-- Omarchy's bootstrap keeps path setup out of this user config.
+dofile((os.getenv("OMARCHY_PATH") or "/usr/share/omarchy") .. "/default/hypr/bootstrap.lua")
 
--- Environment variables --
-require("hyprland.env")
-if is_file_exists(HOME .. "/.config/hypr/custom/env.lua") then
-    require("custom.env")
-end
+-- Disable all Omarchy default bindings. Add your own in hypr/bindings.lua.
+-- omarchy_default_bindings = false
+--
+-- Or disable only bindings for Omarchy's preinstalled apps/web apps while
+-- keeping core window-manager bindings:
+-- omarchy_preinstalled_bindings = false
 
--- Default configurations --
-require("hyprland.execs")
-require("hyprland.general")
-require("hyprland.rules")
-require("hyprland.colors")
-require("hyprland.keybinds")
+-- Load Omarchy defaults.
+require("default.hypr.omarchy")
 
--- Custom configurations --
-if is_file_exists(HOME .. "/.config/hypr/custom/execs.lua") then
-    require("custom.execs")
-end
-if is_file_exists(HOME .. "/.config/hypr/custom/general.lua") then
-    require("custom.general")
-end
-if is_file_exists(HOME .. "/.config/hypr/custom/rules.lua") then
-    require("custom.rules")
-end
-if is_file_exists(HOME .. "/.config/hypr/custom/keybinds.lua") then
-    require("custom.keybinds")
-end
+-- Put your personal overrides in these files. They're loaded after Omarchy's
+-- defaults so package updates can improve the defaults without rewriting your
+-- ~/.config/hypr files.
+require("hypr.monitors")
+require("hypr.input")
+require("hypr.bindings")
+require("hypr.looknfeel")
+require("hypr.autostart")
 
--- nwg-displays support --
-if is_file_exists(HOME .. "/.config/hypr/workspaces.lua") then
-    require("workspaces")
-end
-if is_file_exists(HOME .. "/.config/hypr/monitors.lua") then
-    require("monitors")
-end
+-- Toggle config flags dynamically.
+require("default.hypr.toggles")
 
--- Shell overrides --
-require("hyprland.shellOverrides.main")
+-- Add any other personal Hyprland configuration below.
+-- o.window("qemu", { workspace = "5" })

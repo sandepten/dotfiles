@@ -1,28 +1,58 @@
-# Font
+# Ghostty - merged: your Maple/Catppuccin/jinx + Omarchy theme/keybinds/performance
+# Omarchy dynamic theme (switches with `omarchy theme set`); keep this first
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
+
+# Font — your Maple Mono NF (Omarchy default is JetBrainsMono Nerd Font 9)
 font-family = "Maple Mono NF"
-font-style="Bold"
-font-size= 14
-font-feature="-liga"
+font-style = "Bold"
+font-size = 14
+font-feature = "-liga"
 bold-is-bright = true
 
-# Theme
-theme="Catppuccin Mocha"
+# Window — Omarchy defaults + your padding/background
+window-theme = ghostty
+window-padding-x = 0
+window-padding-y = 0
+confirm-close-surface = false
+resize-overlay = never
+gtk-toolbar-style = flat
+window-decoration = none
+maximize = true
 
-background-image= "~/Downloads/jinx.png"
-background-image-opacity=0.25
+# Background image — your jinx
+background-image = "~/Downloads/jinx.png"
+background-image-opacity = 0.25
 background-image-fit = "cover"
 
-cursor-style="bar"
-mouse-hide-while-typing=true
-window-padding-x = 0 
-window-padding-y = 0
+# Cursor — your bar + Omarchy blink handling
+cursor-style = "bar"
+cursor-style-blink = false
+mouse-hide-while-typing = true
 
+# Shell integration + SSH terminfo (Omarchy - must be passed together)
+shell-integration-features = no-cursor,ssh-env
+
+# Keybinds (Omarchy)
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
+# Send Shift+Enter as CSI-u so TUIs can distinguish it from Enter.
+keybind = shift+enter=csi:13;2u
+# Legacy encoding sends Alt+Shift+Enter the same as Alt+Enter; send CSI-u so tmux can match M-S-Enter.
+keybind = alt+shift+enter=csi:13;4u
+keybind = super+control+shift+alt+arrow_down=resize_split:down,100
+keybind = super+control+shift+alt+arrow_up=resize_split:up,100
+keybind = super+control+shift+alt+arrow_left=resize_split:left,100
+keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+
+# Mouse / performance (Omarchy)
+mouse-scroll-multiplier = 0.95
+# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
+
+# macOS (your)
 macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
-window-decoration = none
-confirm-close-surface = false
-maximize = true
 {{- if eq .chezmoi.os "darwin" }}
 window-colorspace = display-p3
 {{- end }}

@@ -1,14 +1,28 @@
 local config_path = vim.fn.expand("~/.markdownlint-cli2.yaml")
 
 return {
-  "mfussenegger/nvim-lint",
-  optional = true,
-  opts = function(_, opts)
-    opts.linters = opts.linters or {}
-    if vim.uv.fs_stat(config_path) then
-      opts.linters["markdownlint-cli2"] = {
-        args = { "--config", config_path, "--" },
-      }
-    end
-  end,
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = function(_, opts)
+      opts.linters = opts.linters or {}
+      if vim.uv.fs_stat(config_path) then
+        opts.linters["markdownlint-cli2"] = {
+          args = { "--config", config_path, "-" },
+        }
+      end
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = function(_, opts)
+      if vim.uv.fs_stat(config_path) then
+        opts.formatters = opts.formatters or {}
+        opts.formatters["markdownlint-cli2"] = {
+          prepend_args = { "--config", config_path },
+        }
+      end
+    end,
+  },
 }

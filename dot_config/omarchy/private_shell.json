@@ -19,25 +19,13 @@
           "id": "omarchy.weather"
         },
         {
+          "id": "sandepten.media"
+        },
+        {
           "id": "stappmus.lyrics"
         },
         {
           "id": "omarchy.spacer"
-        },
-        {
-          "id": "quickshell.spotify",
-          "deviceName": "Omarchy Spotify",
-          "idleShutdownMinutes": 15,
-          "showMiniPlayer": "On",
-          "shortcutPlayer": "Omarchy Music app",
-          "shortcutHints": "On",
-          "showTrackTitle": "On",
-          "showArtistName": "Off",
-          "showPausedTrack": "On",
-          "scrollBarText": "Off",
-          "scrollSpeed": "1",
-          "maxBarTextWidth": "240",
-          "audioQuality": "320 kbps"
         },
         {
           "id": "omarchy.system-update"
@@ -90,5 +78,11 @@
     "screensaver": 150
   },
   "plugins": [],
-  "version": 1
+  "version": 1,
+  "disabledPlugins": [
+    "omarchy.media"
+  ],
+  "cloneSourceRestores": [
+    "sandepten.media"
+  ]
 }

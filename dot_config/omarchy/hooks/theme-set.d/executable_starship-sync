@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Omarchy theme-set hook: sync Starship prompt with Omarchy colors.
+# Runs after every `omarchy theme set`. Idempotent. Safe to run manually.
+# Reads: ~/.local/state/omarchy/current/theme/starship.toml (rendered from
+#        ~/.config/omarchy/themed/starship.toml.tpl by omarchy-theme-set-templates)
+# Writes: ~/.config/starship.toml (symlink to the rendered theme file)
+set -euo pipefail
+
+THEME_FILE="$HOME/.local/state/omarchy/current/theme/starship.toml"
+TARGET="$HOME/.config/starship.toml"
+
+[ -f "$THEME_FILE" ] || exit 0
+mkdir -p "$(dirname "$TARGET")"
+
+# Point starship at the rendered theme file so prompt colors follow the theme.
+ln -snf "$THEME_FILE" "$TARGET"

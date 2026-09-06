@@ -25,5 +25,11 @@ require("hypr.autostart")
 -- Toggle config flags dynamically.
 require("default.hypr.toggles")
 
+-- Plex HTPC: fix transparent window on Hyprland+NVIDIA (force opaque, no blur).
+-- Related: QT_QPA_PLATFORM=xcb override in ~/.local/share/applications/tv.plex.PlexHTPC.desktop
+o.window("tv.plex.Plex", { tag = "-default-opacity", opacity = "1 1", no_blur = true, no_shadow = true })
+-- Optional: uncomment to force fullscreen HTPC experience
+o.window("tv.plex.Plex", { fullscreen = true })
+
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })

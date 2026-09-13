@@ -22,9 +22,6 @@
           "id": "sandepten.media"
         },
         {
-          "id": "stappmus.lyrics"
-        },
-        {
           "id": "omarchy.spacer"
         },
         {
@@ -73,16 +70,16 @@
     "position": "top",
     "transparent": true
   },
+  "cloneSourceRestores": [
+    "sandepten.media"
+  ],
+  "disabledPlugins": [
+    "omarchy.media"
+  ],
   "idle": {
     "lock": 300,
     "screensaver": 150
   },
   "plugins": [],
-  "version": 1,
-  "disabledPlugins": [
-    "omarchy.media"
-  ],
-  "cloneSourceRestores": [
-    "sandepten.media"
-  ]
+  "version": 1
 }

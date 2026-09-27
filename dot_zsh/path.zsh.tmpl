@@ -1,3 +1,13 @@
+# Two keys are required from the local chezmoi config, and this file
+# references them directly rather than through a hasKey guard. With a guard, a
+# machine that has not set them renders a silently different shell: npm instead
+# of the configured agent, and no work block. Referenced directly, and with
+# template.options = ["missingkey=error"], chezmoi refuses and names the missing
+# key. Set them in ~/.config/chezmoi/chezmoi.toml:
+#
+#   [data]
+#     is_work = true
+#     default_node_agent = "bun"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -69,7 +79,7 @@ fi
 export NODE_COMPILE_CACHE="$HOME/.cache/nodejs-compile-cache"
 
 # antfu ni (choose the right shell)
-export NI_DEFAULT_AGENT="{{ (index . "default_node_agent") | default "npm" }}"
+export NI_DEFAULT_AGENT="{{ .default_node_agent }}"
 export NI_GLOBAL_AGENT="npm"
 
 # fzf catppuccin
@@ -87,7 +97,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-{{- if (and (hasKey . "is_work") .is_work) }}
+{{- if .is_work }}
 
 # Work environment settings.
 #

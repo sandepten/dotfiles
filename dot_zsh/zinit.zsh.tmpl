@@ -34,7 +34,7 @@ unset _brew_fp
 typeset -gU fpath FPATH
 
 #— Load lightweight snippets (macOS command-not-found only)
-{{- if not (and (hasKey . "is_work") .is_work) }}
+{{- if not .is_work }}
 {{- if eq .chezmoi.os "darwin" }}
 zinit ice depth=1 lucid
 zinit snippet OMZP::command-not-found

@@ -58,3 +58,23 @@ ulimit -n 65536
 if [[ -n "${ZSH_PROFILE_STARTUP:-}" ]]; then
   zprof
 fi
+
+# >>> chezmoi managed toolchain >>>
+# CLI installers (grok, Antigravity, opencode) append PATH exports here.
+# Keep every installer-added line inside these markers so `chezmoi diff` stays
+# empty and the next apply cannot delete a working PATH entry.
+# Credentials stay out of this file. See the jio-ado source line below.
+[ -f "$HOME/.config/jio-ado/env" ] && source "$HOME/.config/jio-ado/env"
+
+# Added by Antigravity CLI installer
+export PATH="$HOME/.local/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
+# <<< chezmoi managed toolchain <<<

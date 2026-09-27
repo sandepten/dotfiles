@@ -17,21 +17,30 @@ fi
 {{- end }}
 
 # History
+#
+# sharehistory already appends, so appendhistory was redundant. hist_ignore_all_dups
+# subsumes hist_ignore_dups, and hist_save_no_dups only mattered alongside
+# appendhistory. Three overlapping dedupe rules meant none of them was doing
+# anything legible.
+#
+# Atuin is the searchable history. HISTFILE stays because zsh itself reads
+# HISTSIZE and SAVEHIST, and because a shell started with Atuin unavailable
+# still wants a history file.
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
-setopt appendhistory
 setopt sharehistory
-setopt hist_ignore_dups
 setopt hist_ignore_all_dups
-setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 # Completion styling
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# No list-colors zstyle. It expanded ${(s.:.)LS_COLORS}, and LS_COLORS is never
+# assigned: fzf-tab's own lscolors module reads it into a local and falls back to
+# $LSCOLORS. fzf-tab colours the menu through its namecolors/modecolors tables,
+# so the zstyle expanded to nothing and did nothing.
 zstyle ':completion:*' matcher-list '' \
   'm:{a-z}={A-Z}' \
   'r:|[._-]=** r:|=**'

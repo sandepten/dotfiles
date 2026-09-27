@@ -1,0 +1,16 @@
+# Jio Azure DevOps credentials. chmod 600, do not commit.
+#
+# The values live in ~/.config/chezmoi/chezmoi.toml under [data] (mode 0600,
+# local, not in this git repo). chezmoi.toml is configured with
+# template.options = ["missingkey=error"], so a machine that has not set these
+# fails to apply with a message naming the missing key rather than silently
+# exporting an empty PAT.
+#
+# To set or rotate a value, edit [data] in ~/.config/chezmoi/chezmoi.toml and
+# re-run chezmoi apply. Issue new PATs in the Azure DevOps user settings page.
+export ADO_ORG="{{ .ADO_ORG }}"
+export ADO_ORG_URL="{{ .ADO_ORG_URL }}"
+export ADO_PROJECT="{{ .ADO_PROJECT }}"
+export ADO_PROJECT_ID="{{ .ADO_PROJECT_ID }}"
+export ADO_PAT="{{ .ADO_PAT }}"
+export ADO_PAT_RW="{{ .ADO_PAT_RW }}"

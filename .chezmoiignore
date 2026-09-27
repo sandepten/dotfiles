@@ -1,3 +1,19 @@
+{{- /*
+Paths here are destination-relative, so .config/hypr and not dot_config/hypr.
+A source-relative path is silently ignored, which is why arch.zsh stayed
+managed on macOS for as long as the old file existed.
+
+This file is a Go template, so the OS conditionals below are honoured.
+*/ -}}
 {{- if ne .chezmoi.os "linux" }}
-dot_zsh/arch.zsh
+.zsh/arch.zsh
+.config/hypr
+.config/niri
+.config/DankMaterialShell
 {{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+.config/kitty
+{{- end }}
+.zsh_history
+.zcompdump
+.DS_Store

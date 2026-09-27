@@ -13,31 +13,24 @@ mkdir -p -- "$ZSH_CACHE_DIR"
 typeset -g ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}-${ZSH_VERSION}"
 
 #— Remove dead completion links before compinit scans FPATH
-_prune_dead_completion_links() {
-    local dir link pruned=0
-    for dir in \
-        /opt/homebrew/share/zsh/site-functions \
-        "${XDG_CACHE_HOME:-${HOME}/.cache}/zinit/completions" \
-        "${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/completions"
-    do
-        [[ -d "$dir" ]] || continue
-        for link in "$dir"/_*(N); do
-            [[ -L "$link" && ! -e "$link" ]] || continue
-            rm -f -- "$link"
-            pruned=1
-        done
-    done
+# Removed. This scanned 182 symlinks on every shell start to find 0 broken
+# links, because the oh-my-zsh set it was written for is no longer installed.
+# The links that remain all resolve into zinit's own plugin directories.
+# If a stale link ever reappears, `ls -l ~/.local/share/zinit/completions` will
+# show it and `find <dir> -xtype l -delete` removes it in one pass.
 
-    (( pruned )) && rm -f -- "$ZSH_COMPDUMP" "${ZSH_COMPDUMP}.zwc"
-}
-_prune_dead_completion_links
-
-#— Brew completions (macOS & Linux with brew)
-if type brew &>/dev/null; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-elif [[ -d /usr/share/zsh/vendor-completions ]]; then
-    FPATH="/usr/share/zsh/vendor-completions:${FPATH}"
-fi
+#— Brew completions
+# Static candidates rather than `brew --prefix`, which was a ~40ms subprocess on
+# every shell start. Only existing directories are added, so this stays correct
+# on Apple Silicon, Linuxbrew, and a plain Linux install.
+for _brew_fp in \
+    /opt/homebrew/share/zsh/site-functions \
+    /home/linuxbrew/.linuxbrew/share/zsh/site-functions \
+    /usr/share/zsh/vendor-completions
+do
+    [[ -d "$_brew_fp" ]] && FPATH="$_brew_fp:$FPATH"
+done
+unset _brew_fp
 typeset -gU fpath FPATH
 
 #— Load lightweight snippets (macOS command-not-found only)
@@ -146,7 +139,34 @@ _zinit_weekly_update() {
         else
             print -r -- "$now_inner:${rc}" >! "$error_file"
         fi
+
+        _zinit_sweep_fnm_multishells "$log_file"
     ) &!
+}
+
+# `fnm env --use-on-cd` creates one directory per shell under
+# ~/.local/share/fnm_multishells and never removes it, so a long-lived machine
+# accumulates tens of thousands of empty directories. du reports 0B, so a disk
+# check never sees it, and every nested shell stacks another entry onto PATH.
+# Called from inside the weekly block above, so it costs nothing at shell start.
+# Keeps the newest 50 so a running shell never loses the directory it points at.
+_zinit_sweep_fnm_multishells() {
+    local log_file="${1:-/dev/null}"
+    local dir="${XDG_STATE_HOME:-${HOME}/.local/state}/fnm_multishells"
+    [[ -d "$dir" ]] || return 0
+
+    local keep=50
+    local -a victims
+    victims=( ${(f)"$(ls -1t "$dir" 2>/dev/null)"} )
+    (( ${#victims} > keep )) || return 0
+
+    local victim dropped=0
+    for victim in "${victims[@]:$keep}"; do
+        rm -rf -- "$dir/$victim" 2>/dev/null || continue
+        (( dropped++ ))
+    done
+    (( dropped )) && print -r -- "[fnm] pruned ${dropped} stale multishell dirs" >>"$log_file"
+    return 0
 }
 
 _zinit_update_warn_once() {

@@ -72,9 +72,21 @@ export PATH="$HOME/.local/bin:$PATH"
 # >>> grok installer >>>
 export PATH="$HOME/.grok/bin:$PATH"
 fpath=(~/.grok/completions/zsh $fpath)
-autoload -Uz compinit && compinit -C
+# compinit is intentionally not called here. ~/.zsh/zinit.zsh owns it and
+# writes the dump to $XDG_CACHE_HOME/zsh. A second `compinit -C` here wrote a
+# duplicate dump to ~/.zcompdump and cost another 18ms per shell start.
 # <<< grok installer <<<
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
 # <<< chezmoi managed toolchain <<<
+
+# PATH hygiene, last, after every startup file and plugin has added its own.
+# ~/.zsh/path.zsh declares `typeset -U path`, which makes a duplicate
+# unrepresentable for anything added after that point. Two gaps remain and this
+# line closes both: zsh does not re-tie an array that was already populated from
+# an inherited PATH, and it does not enforce uniqueness on a scalar `PATH=`
+# assignment. Re-tying keeps the first occurrence of each value, so prepended
+# tool directories keep their priority.
+typeset -U path
+path=(${path})

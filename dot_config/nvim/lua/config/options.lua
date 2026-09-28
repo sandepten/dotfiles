@@ -3,7 +3,7 @@ require("config.remote_clipboard").setup()
 
 vim.g.snacks_animate = false
 vim.opt.relativenumber = false
-vim.g.autoformat = false
+vim.g.autoformat = true
 
 -- Always keep the cursor vertically centered while scrolling
 vim.o.scrolloff = 999

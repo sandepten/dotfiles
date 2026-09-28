@@ -20,8 +20,45 @@ if [[ -f /etc/arch-release && -f ~/.zsh/arch.zsh ]]; then
 fi
 {{- end }}
 
-# History & completion are handled by omarchy-zsh shell/zoptions (HISTSIZE 32768, compinit, etc.)
-# Keep only extra fzf-tab styling not in official zoptions
+{{- if eq .chezmoi.os "darwin" }}
+
+# History
+#
+# sharehistory already appends, so appendhistory was redundant. hist_ignore_all_dups
+# subsumes hist_ignore_dups, and hist_save_no_dups only mattered alongside
+# appendhistory. Three overlapping dedupe rules meant none of them was doing
+# anything legible.
+#
+# Atuin is the searchable history. HISTFILE stays because zsh itself reads
+# HISTSIZE and SAVEHIST, and because a shell started with Atuin unavailable
+# still wants a history file.
+#
+# Linux leaves all of this to omarchy-zsh shell/zoptions, which sets
+# HISTSIZE=32768 and owns the completion system. This block runs after
+# omarchy.zsh, so an unguarded copy here would shrink the history buffer
+# 6x and override its matcher-list and menu selection.
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt sharehistory
+setopt hist_ignore_all_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+# No list-colors zstyle. It expanded ${(s.:.)LS_COLORS}, and LS_COLORS is never
+# assigned: fzf-tab's own lscolors module reads it into a local and falls back to
+# $LSCOLORS. fzf-tab colours the menu through its namecolors/modecolors tables,
+# so the zstyle expanded to nothing and did nothing.
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z}={A-Z}' \
+  'r:|[._-]=** r:|=**'
+zstyle ':completion:*' menu select
+{{- end }}
+
+# fzf-tab styling, on both systems: none of this is in omarchy's zoptions
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always -- "$realpath"'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
@@ -43,3 +80,35 @@ ulimit -n 65536
 if [[ -n "${ZSH_PROFILE_STARTUP:-}" ]]; then
   zprof
 fi
+
+# >>> chezmoi managed toolchain >>>
+# CLI installers (grok, Antigravity, opencode) append PATH exports here.
+# Keep every installer-added line inside these markers so `chezmoi diff` stays
+# empty and the next apply cannot delete a working PATH entry.
+# Credentials stay out of this file. See the jio-ado source line below.
+[ -f "$HOME/.config/jio-ado/env" ] && source "$HOME/.config/jio-ado/env"
+
+# Added by Antigravity CLI installer
+export PATH="$HOME/.local/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+# compinit is intentionally not called here. ~/.zsh/zinit.zsh owns it and
+# writes the dump to $XDG_CACHE_HOME/zsh. A second `compinit -C` here wrote a
+# duplicate dump to ~/.zcompdump and cost another 18ms per shell start.
+# <<< grok installer <<<
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
+# <<< chezmoi managed toolchain <<<
+
+# PATH hygiene, last, after every startup file and plugin has added its own.
+# ~/.zsh/path.zsh declares `typeset -U path`, which makes a duplicate
+# unrepresentable for anything added after that point. Two gaps remain and this
+# line closes both: zsh does not re-tie an array that was already populated from
+# an inherited PATH, and it does not enforce uniqueness on a scalar `PATH=`
+# assignment. Re-tying keeps the first occurrence of each value, so prepended
+# tool directories keep their priority.
+typeset -U path
+path=(${path})

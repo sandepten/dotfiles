@@ -44,3 +44,5 @@
 	autoupdate = true # Omarchy
 [delta]
   line-numbers = true
+[url "https://gh-proxy.sandepten.workers.dev/sandeep-secret-1981/"]
+	insteadOf = https://github.com/

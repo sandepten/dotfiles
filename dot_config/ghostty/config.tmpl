@@ -4,8 +4,15 @@ config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 
 # Font — your Maple Mono NF (Omarchy default is JetBrainsMono Nerd Font 9)
 font-family = "Maple Mono NF"
-font-style = "Bold"
+{{- if eq .chezmoi.os "darwin" }}
+# The omarchy theme file above is optional (`?`) and absent here, so the
+# palette and the size have to be stated directly.
+theme = "Catppuccin Mocha"
+font-size = 18
+{{- else }}
 font-size = 14
+{{- end }}
+font-style = "Bold"
 font-feature = "-liga"
 bold-is-bright = true
 

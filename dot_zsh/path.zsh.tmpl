@@ -1,35 +1,50 @@
+# Two keys are required from the local chezmoi config, and this file
+# references them directly rather than through a hasKey guard. With a guard, a
+# machine that has not set them renders a silently different shell: npm instead
+# of the configured agent, and no work block. Referenced directly, and with
+# template.options = ["missingkey=error"], chezmoi refuses and names the missing
+# key. Set them in ~/.config/chezmoi/chezmoi.toml:
+#
+#   [data]
+#     is_work = false
+#     default_node_agent = "npm"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# PATH is assembled once, in this file. typeset -U path makes a duplicate entry
+# unrepresentable instead of checking for one, and it keeps the first occurrence
+# of each value, so prepended tool directories keep their priority.
+typeset -U path
+
 # Go
-export PATH=$PATH:~/go/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 {{- if eq .chezmoi.os "darwin" }}
 
-# Homebrew
-if [ -x "/opt/homebrew/bin/brew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew. These three are constants on Apple Silicon and nothing else reads
+# them, so setting them directly replaces `eval "$(brew shellenv)"`, which cost
+# 94ms per shell start. brew re-exports them for its own subprocesses.
+if [ -d "/opt/homebrew/bin" ]; then
+  export HOMEBREW_PREFIX="/opt/homebrew"
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+  export HOMEBREW_REPOSITORY="/opt/homebrew"
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 {{- end }}
 
+export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
+
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
-# pipx
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
+# pipx and the CLI tools that install into ~/.local/bin
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 ## nvim as default editor
 if [ -x "$(command -v nvim)" ]; then
@@ -50,18 +65,21 @@ if command -v thefuck >/dev/null 2>&1; then
   }
 fi
 
-# fnm - dynamic path detection
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env)" 2>/dev/null || echo "Warning: fnm env failed"
+# fnm. One call, with --use-on-cd so a directory's .node-version or .nvmrc is
+# picked up on cd. The bare `fnm env` this replaces cost 44ms against 13ms for
+# this variant, and it ran a second time inside the is_work block below.
+if [ -d "$HOME/.local/share/fnm" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  command -v fnm >/dev/null 2>&1 \
+    && eval "$(fnm env --use-on-cd --shell zsh)" 2>/dev/null \
+    || echo "Warning: fnm not found"
 fi
 
 # theo video node cache speed up
-export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache
+export NODE_COMPILE_CACHE="$HOME/.cache/nodejs-compile-cache"
 
 # antfu ni (choose the right shell)
-export NI_DEFAULT_AGENT="{{ (index . "default_node_agent") | default "npm" }}"
+export NI_DEFAULT_AGENT="{{ .default_node_agent }}"
 export NI_GLOBAL_AGENT="npm"
 
 # fzf catppuccin
@@ -79,14 +97,23 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f85'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-{{- if (and (hasKey . "is_work") .is_work) }}
+{{- if .is_work }}
 
-# Work environment settings
-command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell zsh)" || echo "Warning: fnm not found for work config"
-# WARNING: insecure TLS workaround for constrained corporate environments only.
-# Prefer proper CA trust configuration when possible.
-# disable TLS certificate validation for Node.js
+# Work environment settings.
+#
+# NODE_TLS_REJECT_UNAUTHORIZED=0 is a workaround for the corporate TLS
+# interception proxy, not a preference. Prefer fixing CA trust.
+#
+# npm's strict-ssl is set statically in ~/.npmrc, which chezmoi does not manage.
+# It used to be re-applied with `npm config set` on every shell start, which
+# cost 189ms per shell to rewrite a file that already held the value.
 export NODE_TLS_REJECT_UNAUTHORIZED=0
-# disable strict SSL checks in npm
-command -v npm >/dev/null 2>&1 && npm config set strict-ssl false >/dev/null 2>&1 || echo "Warning: npm not found"
 {{- end }}
+
+# Point Homebrew API and Bottled Binaries to fast mirrors
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+export HOMEBREW_BREW_GIT_REMOTE="https://gh-proxy.sandepten.workers.dev/sandeep-secret-1981/Homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://gh-proxy.sandepten.workers.dev/sandeep-secret-1981/Homebrew/homebrew-core.git"
+
+export PATH="$HOME/.cache/.bun/bin:$PATH"

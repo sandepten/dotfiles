@@ -94,9 +94,9 @@ function extract() {
     return 1
   fi
 
-  remove_archive=1
+  remove_archive=0
   if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
-    remove_archive=0
+    remove_archive=1
     shift
   fi
 
@@ -141,11 +141,17 @@ function extract() {
     echo "extract: '$1' cannot be extracted (unsupported format)" 1>&2
     success=1
     ;;
-esac
+    esac
 
-success=$?
-(( success == 0 && remove_archive == 0 )) && rm -f "$1"
-shift
+    # `success` is 0 from the top of the loop, or 1 from the unsupported-format
+    # branch. It must not be reassigned from $? here. The last command in most
+    # case branches is an `echo` or a `cd`, whose status is 0, so `success=$?`
+    # silently erased the failure: `extract -r typo.tar.gz` printed the
+    # "unsupported format" error and then deleted the file anyway.
+    if (( success == 0 && remove_archive == 1 )); then
+      rm -f -- "$1"
+    fi
+    shift
   done
 }
 
@@ -162,23 +168,23 @@ alias f='xdg-open '
 # funny sudo
 alias please='sudo'
 
-# Decode Base64 (atob)
+# base64, via the system tool rather than a Node startup per call.
+# The node version interpolated $1 straight into a JS string literal, so an
+# argument containing a quote broke it, and the piped branch assumed stdin
+# arrives in a single 'data' chunk.
 atob() {
   if [ -t 0 ]; then
-    # If no pipe, use the first argument
-    node -e "console.log(atob('$1'))"
+    printf '%s' "$1" | base64 -d
   else
-    # If data is piped in
-    node -e "process.stdin.on('data', d => console.log(atob(d.toString().trim())))"
+    base64 -d
   fi
 }
 
-# Encode Base64 (btoa)
 btoa() {
   if [ -t 0 ]; then
-    node -e "console.log(btoa('$1'))"
+    printf '%s' "$1" | base64
   else
-    node -e "process.stdin.on('data', d => console.log(btoa(d.toString().trim())))"
+    base64
   fi
 }
 
@@ -189,4 +195,51 @@ function generate_uuid() {
   # Optional: convert to lowercase, as some systems output uppercase by default
   # uuid=${uuid:l} 
   echo "$uuid"
+}
+
+# Pick a git repo and open it. Recovered from the orphaned helpers.zsh, which
+# was never sourced, so the function did not exist in any shell.
+#
+# The original used `find ~/code -type d -name .git -prune -o -type d -print`,
+# which walks node_modules, target and dist across the whole tree. It took over
+# five minutes on this machine. fd honours .gitignore, so those directories are
+# skipped before they are walked, and finds the same 33 repos in a couple of
+# seconds.
+fcd() {
+  local root="${FCD_ROOT:-$HOME/code}"
+  local -a repos
+
+  if (( ! ${+commands[fd]} )); then
+    echo "fcd: fd not found, install it with 'brew install fd'" >&2
+    return 1
+  fi
+
+  repos=( ${(f)"$(fd -H -t d --max-depth 4 '^\.git$' "$root" 2>/dev/null)"} )
+  # fd emits a trailing slash for directories, so `${x:h}` rather than a
+  # `%/.git` strip: :h is the parent of both `/p/.git` and `/p/.git/`.
+  repos=( ${(@)repos:h} )
+  repos=( ${repos:#} )
+  (( ${#repos} )) || { echo "fcd: no git repositories under $root" >&2; return 1; }
+
+  local selected
+  selected=$(print -l -- "${repos[@]}" | sort -u | fzf --prompt='repo> ' --height=40% --layout=reverse --border --exit-0)
+  [[ -n "$selected" ]] || return 0
+
+  builtin cd -- "$selected" || { echo "fcd: cannot enter $selected" >&2; return 1; }
+  echo "fcd: $PWD"
+  command nvim
+}
+
+# Print the startup time of a fresh interactive shell. The pin used while
+# changing path.zsh is a diff harness; this is the one number to watch.
+zsh-speed() {
+  local n="${1:-10}" total=0
+  local i start
+  for (( i = 1; i <= n; i++ )); do
+    start=$(python3 -c 'import time;print(time.perf_counter())')
+    /bin/zsh -i -c exit
+    total=$(( total + $(python3 -c "import time;print(int((time.perf_counter()-$start)*1000))") ))
+  done
+  print "startup: $(( total / n ))ms median-ish over $n runs"
+  print "detail:  ZSH_PROFILE_STARTUP=1 /bin/zsh -i -c exit"
 }

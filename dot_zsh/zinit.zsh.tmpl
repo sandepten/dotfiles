@@ -188,7 +188,14 @@ zinit ice depth=1 lucid wait'0' \
           atload'bindkey -M viins "^f" autosuggest-accept; (( ${+widgets[fzf-history-widget]} )) && bindkey -M viins "^R" fzf-history-widget'
 zinit light jeffreytse/zsh-vi-mode
 
-#— Starship prompt
+#— Starship prompt (self-heal a missing generated init.zsh)
+_starship_dir="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/plugins/starship---starship"
+if [[ -d "$_starship_dir" && ! -f "$_starship_dir/init.zsh" && -x "$_starship_dir/starship" ]]; then
+    "$_starship_dir/starship" init zsh > "$_starship_dir/init.zsh"
+    "$_starship_dir/starship" completions zsh > "$_starship_dir/_starship"
+fi
+unset _starship_dir
+
 zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
           atpull"%atclone" src"init.zsh"
